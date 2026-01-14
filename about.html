@@ -17,15 +17,32 @@
 <body class="bg-[#fdfaf6] text-neutral-900">
 
   <!-- Header -->
-  <header class="sticky top-0 bg-white border-b border-neutral-200 shadow-sm">
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-neutral-200">
     <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
       <a href="index.html" class="text-lg font-semibold hover:opacity-80 transition">Ishaan Madan</a>
-      <nav class="text-sm">
+
+      <!-- Mobile menu button -->
+      <button id="menuBtn" class="md:hidden p-2 rounded hover:bg-neutral-100" aria-label="Toggle menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <nav class="hidden md:block text-sm">
         <ul class="flex gap-5">
           <li><a href="about.html" class="underline font-medium">My Story</a></li>
+          <li><a href="work-with-me.html" class="hover:underline">Work With Me</a></li>
         </ul>
       </nav>
     </div>
+
+    <!-- Mobile nav -->
+    <nav id="mobileNav" class="hidden md:hidden border-t border-neutral-200 bg-white shadow-sm">
+      <ul class="px-4 py-3 space-y-3 text-sm">
+        <li><a href="about.html" class="block font-medium underline">My Story</a></li>
+        <li><a href="work-with-me.html" class="block hover:underline">Work With Me</a></li>
+      </ul>
+    </nav>
   </header>
 
   <!-- Main -->
@@ -153,5 +170,20 @@
 
     </section>
   </main>
+
+  <!-- Mobile menu script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('menuBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      if (!btn || !mobileNav) return;
+
+      btn.addEventListener('click', () => {
+        mobileNav.classList.toggle('hidden');
+        const open = !mobileNav.classList.contains('hidden');
+        btn.setAttribute('aria-expanded', String(open));
+      });
+    });
+  </script>
 </body>
 </html>
