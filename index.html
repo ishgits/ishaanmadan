@@ -51,34 +51,34 @@
 
   <!-- Main content -->
   <main class="max-w-7xl mx-auto px-4 py-10 md:py-14">
-    <section class="grid min-h-[calc(100vh-5rem)] gap-10 lg:grid-cols-[minmax(280px,0.85fr)_minmax(0,1.35fr)] lg:items-start" aria-labelledby="home-heading">
-      <div class="lg:sticky lg:top-24">
-        <figure class="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-lg">
-          <img src="assets/headshot.jpg" alt="Ishaan Madan"
-               class="aspect-[4/5] w-full object-cover">
-          <figcaption class="border-t border-neutral-200 bg-white p-5 text-sm leading-relaxed text-neutral-600">
-            PhD student in Planetary Science &amp; Astrobiology at Purdue University · NSF Graduate Research Fellow
-          </figcaption>
-        </figure>
+    <section class="min-h-[calc(100vh-5rem)] space-y-10" aria-labelledby="home-heading">
+      <div class="rounded-2xl border border-neutral-200 bg-white/80 p-6 shadow-sm md:p-8">
+        <p class="text-sm uppercase tracking-[0.18em] text-neutral-500">Computational astrobiology · workflows · science communication</p>
+        <h1 id="home-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
+          I model chemical pathways for life beyond Earth.
+        </h1>
+        <p class="mt-6 max-w-5xl text-lg leading-relaxed text-neutral-700 md:text-xl">
+          I’m a PhD student in Planetary Science &amp; Astrobiology at Purdue, building computational workflows that connect prebiotic chemistry, planetary environments, and future mission science.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 text-sm sm:flex-row">
+          <a href="#selected-work" class="rounded-lg border border-neutral-300 bg-neutral-900 px-4 py-2 text-center font-medium text-white transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-sm">Selected Work</a>
+          <a href="work-with-me.html" class="rounded-lg border border-neutral-300 px-4 py-2 text-center font-medium transition hover:-translate-y-0.5 hover:bg-white hover:shadow-sm">Work With Me</a>
+          <a href="#contact" class="rounded-lg border border-neutral-300 px-4 py-2 text-center font-medium transition hover:-translate-y-0.5 hover:bg-white hover:shadow-sm">CV &amp; Links</a>
+        </div>
       </div>
 
-      <div>
-        <div class="rounded-2xl border border-neutral-200 bg-white/80 p-6 shadow-sm md:p-8">
-          <p class="text-sm uppercase tracking-[0.18em] text-neutral-500">Computational astrobiology · workflows · science communication</p>
-          <h1 id="home-heading" class="mt-4 text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
-            I model chemical pathways for life beyond Earth.
-          </h1>
-          <p class="mt-6 max-w-3xl text-lg leading-relaxed text-neutral-700 md:text-xl">
-            I’m a PhD student in Planetary Science &amp; Astrobiology at Purdue, building computational workflows that connect prebiotic chemistry, planetary environments, and future mission science.
-          </p>
-          <div class="mt-8 flex flex-col gap-3 text-sm sm:flex-row">
-            <a href="#selected-work" class="rounded-lg border border-neutral-300 bg-neutral-900 px-4 py-2 text-center font-medium text-white transition hover:-translate-y-0.5 hover:bg-neutral-800 hover:shadow-sm">Selected Work</a>
-            <a href="work-with-me.html" class="rounded-lg border border-neutral-300 px-4 py-2 text-center font-medium transition hover:-translate-y-0.5 hover:bg-white hover:shadow-sm">Work With Me</a>
-            <a href="#contact" class="rounded-lg border border-neutral-300 px-4 py-2 text-center font-medium transition hover:-translate-y-0.5 hover:bg-white hover:shadow-sm">CV &amp; Links</a>
-          </div>
+      <div class="grid gap-10 lg:grid-cols-[minmax(280px,0.85fr)_minmax(0,1.35fr)] lg:items-start">
+        <div class="lg:sticky lg:top-24">
+          <figure class="overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-lg">
+            <img src="assets/headshot.jpg" alt="Ishaan Madan"
+                 class="aspect-[4/5] w-full object-cover">
+            <figcaption class="border-t border-neutral-200 bg-white p-5 text-sm leading-relaxed text-neutral-600">
+              PhD student in Planetary Science &amp; Astrobiology at Purdue University · NSF Graduate Research Fellow
+            </figcaption>
+          </figure>
         </div>
 
-        <section id="selected-work" class="mt-8" aria-labelledby="selected-work-heading">
+        <section id="selected-work" aria-labelledby="selected-work-heading">
           <div class="max-w-3xl">
             <p class="text-sm uppercase tracking-[0.18em] text-neutral-500">Selected Work</p>
             <h2 id="selected-work-heading" class="mt-2 text-3xl font-semibold tracking-tight">Focused projects across research, tooling, and public understanding.</h2>
@@ -113,21 +113,6 @@
                   <h4 class="font-semibold text-neutral-900">Why it matters</h4>
                   <p class="mt-1">This connects prebiotic chemistry to future mission science and Dragonfly-relevant environments.</p>
                 </div>
-                <span class="mt-1 shrink-0 text-lg leading-none text-neutral-400 transition duration-200 group-open:rotate-45 group-open:text-neutral-700" aria-hidden="true">+</span>
-              </div>
-            </summary>
-            <div class="mt-5 grid gap-4 border-t border-neutral-200 pt-5 text-sm leading-relaxed text-neutral-700 md:grid-cols-3">
-              <div>
-                <h4 class="font-semibold text-neutral-900">Question</h4>
-                <p class="mt-1">Which organic products could become accessible in Titan-like environments?</p>
-              </div>
-              <div>
-                <h4 class="font-semibold text-neutral-900">Method</h4>
-                <p class="mt-1">Thermodynamic modeling of atmospheric feedstocks, impact melt pools, and reaction networks.</p>
-              </div>
-              <div>
-                <h4 class="font-semibold text-neutral-900">Why it matters</h4>
-                <p class="mt-1">This connects prebiotic chemistry to future mission science and Dragonfly-relevant environments.</p>
               </div>
             </details>
 
@@ -159,21 +144,6 @@
                   <h4 class="font-semibold text-neutral-900">Why it matters</h4>
                   <p class="mt-1">Better workflows reduce repetitive labor, clarify assumptions, and make complex research easier to inspect, share, and build upon.</p>
                 </div>
-                <span class="mt-1 shrink-0 text-lg leading-none text-neutral-400 transition duration-200 group-open:rotate-45 group-open:text-neutral-700" aria-hidden="true">+</span>
-              </div>
-            </summary>
-            <div class="mt-5 grid gap-4 border-t border-neutral-200 pt-5 text-sm leading-relaxed text-neutral-700 md:grid-cols-3">
-              <div>
-                <h4 class="font-semibold text-neutral-900">Question</h4>
-                <p class="mt-1">How can scientific workflows become clearer, faster, and easier to reproduce?</p>
-              </div>
-              <div>
-                <h4 class="font-semibold text-neutral-900">Method</h4>
-                <p class="mt-1">Python tools for Gaussian input generation, thermochemical data parsing, Cantera equilibrium modeling, and figure generation.</p>
-              </div>
-              <div>
-                <h4 class="font-semibold text-neutral-900">Why it matters</h4>
-                <p class="mt-1">Better workflows reduce repetitive labor, clarify assumptions, and make complex research easier to inspect, share, and build upon.</p>
               </div>
             </details>
 
@@ -205,21 +175,6 @@
                   <h4 class="font-semibold text-neutral-900">Why it matters</h4>
                   <p class="mt-1">Science communication helps people connect technical ideas with curiosity, meaning, and possibility.</p>
                 </div>
-                <span class="mt-1 shrink-0 text-lg leading-none text-neutral-400 transition duration-200 group-open:rotate-45 group-open:text-neutral-700" aria-hidden="true">+</span>
-              </div>
-            </summary>
-            <div class="mt-5 grid gap-4 border-t border-neutral-200 pt-5 text-sm leading-relaxed text-neutral-700 md:grid-cols-3">
-              <div>
-                <h4 class="font-semibold text-neutral-900">Question</h4>
-                <p class="mt-1">How can complex science become easier to understand without losing nuance?</p>
-              </div>
-              <div>
-                <h4 class="font-semibold text-neutral-900">Method</h4>
-                <p class="mt-1">Videos, writing, presentations, educational content, and audience-specific storytelling.</p>
-              </div>
-              <div>
-                <h4 class="font-semibold text-neutral-900">Why it matters</h4>
-                <p class="mt-1">Science communication helps people connect technical ideas with curiosity, meaning, and possibility.</p>
               </div>
             </details>
           </div>
