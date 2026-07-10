@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Accordion from '../components/Accordion.astro';
+import Chip from '../components/Chip.astro';
+import Button from '../components/Button.astro';
+
+const talks = [
+  {
+    tag: 'AbSciCon · 2026',
+    title: 'Prebiotic Chemistry Insights for Dragonfly',
+    lede: 'Thermodynamics of amino acid, nucleobase, ribose, and fatty acid synthesis in Selk crater on Titan.',
+    more: [
+      'I initially submitted this work as a poster for the 2026 Astrobiology Science Conference — and was later invited to present it as an oral talk instead. A fitting outcome for a project centered on molecular abundance!',
+      'The presentation explores how thermodynamic modeling can help predict the accessibility and abundance of biologically relevant molecules in Titan’s Selk crater, a future exploration site for NASA’s Dragonfly mission.',
+    ],
+    href: 'https://canva.link/yps6w2wag24ecop',
+  },
+  {
+    tag: 'Telluride Science · 2025',
+    title: 'Alternative Chemistries Beyond Earth',
+    lede: 'Venusian heteropolymers and Titan’s amino acids.',
+    more: [
+      'I presented this work at the Telluride Science Workshop in October 2025 alongside some of the most experienced researchers in astrobiology. I was the only graduate student in attendance, which made the opportunity especially meaningful — and slightly intimidating!',
+      'The talk brings together two projects that challenge familiar assumptions about life beyond Earth: the possibility of non-carbon-based heteropolymers in Venus’s sulfuric-acid clouds and the thermodynamic accessibility of amino acids in Titan’s post-impact environments.',
+    ],
+    href: 'https://canva.link/ads34memmvt7hba',
+  },
+  {
+    tag: 'Astrobiology Missions · 2026',
+    title: 'Organics',
+    lede: 'A lecture on organic chemistry in the context of planetary environments and space exploration.',
+    more: [
+      'This lecture was created for an Astrobiology Missions course and examines organic chemistry in the context of planetary environments and space exploration.',
+      'The slide deck took a long time to make, but I genuinely enjoy the creative process of turning dense scientific material into something visual, structured, and engaging. Some things cannot — and probably should not — be rushed.',
+    ],
+    href: 'https://canva.link/wbuoig9gxvd8wpv',
+  },
+  {
+    tag: 'Lab meeting · 2026',
+    title: 'Fellowships',
+    lede: 'Finding, applying for, and receiving undergraduate and graduate fellowships.',
+    more: [
+      'A practical presentation about my experience finding, applying for, and receiving undergraduate and graduate fellowships.',
+      'I originally presented this during a lab meeting to share lessons from my own application journey, including how I approached opportunity discovery, personal storytelling, research proposals, rejection, and persistence.',
+    ],
+    href: 'https://canva.link/b04tqud6l7zurv6',
+  },
+];
+---
+
+<Layout
+  title="Resources | Ishaan Madan"
+  description="A growing collection of presentations, lectures, and application materials created by Ishaan Madan through research, teaching, mentorship, and science communication."
+>
+  <section class="max-w-2xl">
+    <p class="eyebrow">Presentations &amp; lectures · Applications</p>
+    <h1 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">Resources</h1>
+    <p class="mt-6 text-lg leading-relaxed text-ink-muted">
+      A growing collection of presentations, lectures, application materials, and other resources I
+      have created through research, teaching, mentorship, and science communication.
+    </p>
+    <p class="mt-4 leading-relaxed text-ink-muted">
+      I am sharing these materials in the hope that they help others learn, build, apply, or ask
+      better questions. Some reflect my knowledge, goals, and circumstances at the time they were
+      created, so please use them as examples rather than universal templates.
+    </p>
+  </section>
+
+  <!-- Presentations & Lectures -->
+  <section class="mt-14" aria-labelledby="talks-heading">
+    <h2 id="talks-heading" class="border-l-2 border-accent pl-3 text-2xl font-semibold tracking-tight">
+      Presentations &amp; Lectures
+    </h2>
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      {
+        talks.map((t) => (
+          <Accordion>
+            <div slot="summary" class="min-w-0">
+              <Chip>{t.tag}</Chip>
+              <h3 class="mt-3 font-display text-lg font-semibold">{t.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-ink-muted">{t.lede}</p>
+            </div>
+            <div class="space-y-3 text-sm leading-relaxed text-ink-muted">
+              {t.more.map((p) => (
+                <p>{p}</p>
+              ))}
+              <div class="pt-2">
+                <Button href={t.href} variant="primary" external>
+                  View presentation
+                </Button>
+              </div>
+            </div>
+          </Accordion>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Applications & Fellowships -->
+  <section class="mt-14" aria-labelledby="apps-heading">
+    <h2 id="apps-heading" class="border-l-2 border-accent pl-3 text-2xl font-semibold tracking-tight">
+      Applications &amp; Fellowships
+    </h2>
+    <div class="mt-6">
+      <Accordion>
+        <div slot="summary" class="min-w-0">
+          <div class="flex flex-wrap gap-2">
+            <Chip>Submitted Fall 2024</Chip>
+            <Chip>2025 award cycle</Chip>
+            <Chip tone="success">Awarded</Chip>
+          </div>
+          <h3 class="mt-3 font-display text-lg font-semibold">
+            NSF Graduate Research Fellowship Application
+          </h3>
+          <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+            The full application package I submitted — personal statement and graduate research plan
+            — shared as an example.
+          </p>
+        </div>
+        <div class="space-y-3 text-sm leading-relaxed text-ink-muted">
+          <p>
+            I applied for the NSF Graduate Research Fellowship Program in Fall 2024 and received the
+            fellowship as part of the 2025 award cycle.
+          </p>
+          <p>
+            The initial announcement included approximately 1,000 recipients — fewer than in a
+            typical year — and I was not selected in that first group. A few months later, NSF
+            announced approximately 500 additional awards, and I was fortunate to be included.
+          </p>
+          <p>I am sharing the application package I submitted, including:</p>
+          <ul class="list-disc space-y-1 pl-5">
+            <li><span class="font-medium text-ink">Personal, Background, and Future Goals Statement</span></li>
+            <li><span class="font-medium text-ink">Graduate Research Plan Statement</span></li>
+          </ul>
+          <p>
+            The personal statement connects my childhood fascination with space, immigration
+            experience, scientific development, and commitment to mentorship and accessible science.
+            The research proposal outlines a project applying computational and thermochemical
+            modeling to Titan's prebiotic chemistry in support of the Dragonfly mission.
+          </p>
+          <blockquote class="border-l-2 border-accent pl-4 text-ink-faint italic">
+            A note for applicants: These statements reflect my individual experiences, research
+            direction, and application strategy at the time. They are shared as examples — not as
+            official NSF guidance or templates to copy. The strongest application will tell your own
+            story and clearly communicate why your proposed work matters.
+          </blockquote>
+          <div class="pt-2">
+            <Button
+              href="https://drive.google.com/drive/folders/1NHL4GLXRj_xQLOyMbSSxaXk2cYUm_COK?usp=share_link"
+              variant="primary"
+              external
+            >
+              View the application materials
+            </Button>
+          </div>
+        </div>
+      </Accordion>
+    </div>
+  </section>
+
+  <section class="mt-14 max-w-2xl">
+    <p class="leading-relaxed text-ink-faint">
+      This page will continue to grow as I add new lectures, presentations, application materials,
+      and resources from my research and mentorship work.
+    </p>
+  </section>
+</Layout>

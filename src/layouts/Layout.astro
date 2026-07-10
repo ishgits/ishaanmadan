@@ -1,0 +1,107 @@
+---
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Starfield from '../components/Starfield.astro';
+import { SITE } from '../consts';
+
+interface Props {
+  title: string;
+  description: string;
+  /** path of the page's own OG image, defaults to the site card */
+  ogImage?: string;
+}
+
+const { title, description, ogImage = '/og-card.png' } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL(ogImage, Astro.site);
+
+const personJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Ishaan Madan',
+  jobTitle: 'PhD Student, Planetary Science & Astrobiology',
+  affiliation: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Purdue University',
+  },
+  email: `mailto:${SITE.email}`,
+  url: Astro.site?.href,
+  sameAs: [
+    SITE.orcid,
+    SITE.linkedin,
+    SITE.github,
+    SITE.youtube.scientish,
+    SITE.youtube.spiritualish,
+    SITE.youtube.notesbyish,
+  ],
+});
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Ishaan Madan" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <script type="application/ld+json" set:html={personJsonLd} />
+
+    <!-- Theme boot: runs before paint so there is no flash. Dark is the
+         default; first visit honors prefers-color-scheme; an explicit
+         choice from the toggle wins and persists. -->
+    <script is:inline>
+      (function () {
+        function preferred() {
+          try {
+            const stored = localStorage.getItem('theme');
+            if (stored === 'light' || stored === 'dark') return stored;
+          } catch {}
+          return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.dataset.theme = preferred();
+        // re-apply after Astro view-transition swaps replace <html> attributes
+        document.addEventListener('astro:after-swap', function () {
+          document.documentElement.dataset.theme = preferred();
+        });
+      })();
+    </script>
+
+    <ClientRouter />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-100 focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:font-medium focus:text-canvas"
+      >Skip to content</a
+    >
+    <Starfield />
+    <Header />
+    <main id="main" class="mx-auto w-full max-w-(--container-site) flex-1 px-5 pt-10 pb-4 md:pt-14">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

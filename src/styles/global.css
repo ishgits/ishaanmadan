@@ -1,0 +1,192 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Design tokens — cosmic / observatory theme.
+   Dark is the default; light reinterprets the old cream/amber site.
+   Theme switching = swapping the [data-theme] attribute on <html>.
+------------------------------------------------------------------- */
+
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  /* canvas & surfaces */
+  --c-canvas: #070b15;
+  --c-surface: #0d1424;
+  --c-raised: #131c31;
+  --c-inset: #0a101d;
+
+  /* text */
+  --c-ink: #e8edf9;
+  --c-ink-muted: #a3aecb;
+  --c-ink-faint: #7c88a8;
+
+  /* lines */
+  --c-line: #232e4a;
+  --c-line-strong: #35426a;
+
+  /* accent system: starlight amber + a restrained spectral cyan */
+  --c-accent: #f0c26a;
+  --c-accent-strong: #ffd98f;
+  --c-accent-ink: #f0c26a; /* accent used as text on canvas */
+  --c-glow: #8fd8e8;
+
+  /* decorative */
+  --star-opacity: 0.55;
+  --nebula-opacity: 0.5;
+  --shadow-card: 0 1px 2px rgb(2 6 16 / 0.5), 0 8px 24px -12px rgb(2 6 16 / 0.6);
+  --shadow-lift: 0 2px 4px rgb(2 6 16 / 0.5), 0 16px 40px -16px rgb(2 6 16 / 0.7);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --c-canvas: #faf6ee;
+  --c-surface: #fffdf8;
+  --c-raised: #ffffff;
+  --c-inset: #f4eee1;
+
+  --c-ink: #1d2438;
+  --c-ink-muted: #4d5872;
+  --c-ink-faint: #6b7690;
+
+  --c-line: #e5ddca;
+  --c-line-strong: #cfc4a9;
+
+  --c-accent: #b07818;
+  --c-accent-strong: #8a5a06;
+  --c-accent-ink: #815408;
+  --c-glow: #1e7a96;
+
+  --star-opacity: 0;
+  --nebula-opacity: 0.35;
+  --shadow-card: 0 1px 2px rgb(90 75 40 / 0.08), 0 8px 24px -12px rgb(90 75 40 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(90 75 40 / 0.08), 0 16px 40px -16px rgb(90 75 40 / 0.25);
+}
+
+@theme inline {
+  /* colors → Tailwind utilities (bg-canvas, text-ink, border-line, …) */
+  --color-canvas: var(--c-canvas);
+  --color-surface: var(--c-surface);
+  --color-raised: var(--c-raised);
+  --color-inset: var(--c-inset);
+  --color-ink: var(--c-ink);
+  --color-ink-muted: var(--c-ink-muted);
+  --color-ink-faint: var(--c-ink-faint);
+  --color-line: var(--c-line);
+  --color-line-strong: var(--c-line-strong);
+  --color-accent: var(--c-accent);
+  --color-accent-strong: var(--c-accent-strong);
+  --color-accent-ink: var(--c-accent-ink);
+  --color-glow: var(--c-glow);
+
+  /* typography */
+  --font-display: 'Space Grotesk Variable', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* one canonical container width, used site-wide */
+  --container-site: 64rem;
+
+  --shadow-card: var(--shadow-card);
+  --shadow-lift: var(--shadow-lift);
+}
+
+/* ------------------------------------------------------------------
+   Base
+------------------------------------------------------------------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--c-canvas);
+  color: var(--c-ink);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--c-accent) 30%, transparent);
+}
+
+/* visible, on-brand focus everywhere */
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* eyebrow label used above section headings */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--c-accent-ink);
+}
+
+/* prose links */
+.link {
+  color: var(--c-accent-ink);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--c-accent) 45%, transparent);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 150ms;
+}
+.link:hover {
+  text-decoration-color: var(--c-accent-ink);
+}
+
+/* ------------------------------------------------------------------
+   Reveal-on-scroll (About timeline). Elements are fully visible by
+   default; JS opts them in only when motion is allowed, so no-JS and
+   reduced-motion visitors always see plain readable content.
+------------------------------------------------------------------- */
+
+.will-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+}
+.will-reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ------------------------------------------------------------------
+   Motion safety net: collapse every animation/transition when the
+   visitor asks for reduced motion.
+------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  /* Astro view transitions off, too */
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

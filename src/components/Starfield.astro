@@ -1,0 +1,77 @@
+---
+/**
+ * Pure-CSS decorative starfield + nebula wash. Zero JS. Stars are
+ * box-shadow points generated at build time; the slow twinkle is
+ * disabled by the global reduced-motion rules and the whole layer
+ * fades out in light mode via --star-opacity.
+ */
+function stars(count: number, seed: number) {
+  // deterministic PRNG so builds are reproducible
+  let s = seed;
+  const rand = () => {
+    s = (s * 1664525 + 1013904223) % 4294967296;
+    return s / 4294967296;
+  };
+  const pts: string[] = [];
+  for (let i = 0; i < count; i++) {
+    const x = (rand() * 100).toFixed(2);
+    const y = (rand() * 100).toFixed(2);
+    const a = (0.3 + rand() * 0.7).toFixed(2);
+    pts.push(`${x}vw ${y}vh 0 0 rgb(232 237 249 / ${a})`);
+  }
+  return pts.join(', ');
+}
+
+const small = stars(90, 12);
+const large = stars(28, 7);
+---
+
+<div class="starfield" aria-hidden="true">
+  <i class="stars stars-sm" style={`box-shadow: ${small}`}></i>
+  <i class="stars stars-lg" style={`box-shadow: ${large}`}></i>
+  <i class="nebula"></i>
+</div>
+
+<style>
+  .starfield {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    opacity: var(--star-opacity);
+    transition: opacity 400ms;
+  }
+  .stars-sm {
+    width: 1px;
+    height: 1px;
+  }
+  .stars-lg {
+    width: 2px;
+    height: 2px;
+    animation: twinkle 7s ease-in-out infinite alternate;
+  }
+  .nebula {
+    position: absolute;
+    inset: -20%;
+    opacity: var(--nebula-opacity);
+    transition: opacity 400ms;
+    background:
+      radial-gradient(60rem 40rem at 85% -10%, color-mix(in srgb, var(--c-accent) 9%, transparent), transparent 65%),
+      radial-gradient(50rem 36rem at -10% 30%, color-mix(in srgb, var(--c-glow) 7%, transparent), transparent 60%);
+  }
+  @keyframes twinkle {
+    from {
+      opacity: calc(var(--star-opacity) * 0.55);
+    }
+    to {
+      opacity: var(--star-opacity);
+    }
+  }
+</style>

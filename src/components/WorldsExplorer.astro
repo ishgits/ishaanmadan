@@ -1,0 +1,251 @@
+---
+import { WORLDS } from '../data/worlds';
+
+// Serialize the data for the client island.
+const worldsJson = JSON.stringify(WORLDS);
+const first = WORLDS[0];
+---
+
+<section
+  class="rounded-2xl border border-line bg-surface/70 p-5 shadow-card md:p-8"
+  aria-labelledby="worlds-heading"
+  data-worlds-root
+>
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div class="max-w-xl">
+      <p class="eyebrow">Explore the science</p>
+      <h2 id="worlds-heading" class="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
+        Worlds &amp; chemical possibility
+      </h2>
+      <p class="mt-3 text-sm leading-relaxed text-ink-muted">
+        Pick a world to see the environment I model and how thermodynamic accessibility shifts
+        across it. The curves are <strong class="text-ink">schematic</strong> — they show the
+        <em>shape</em> of the question, not published numbers. Real results are in the
+        <a href="/notes/" class="link">publications</a>.
+      </p>
+    </div>
+  </div>
+
+  <!-- World selector -->
+  <div
+    class="mt-6 flex flex-wrap gap-2"
+    role="tablist"
+    aria-label="Select a world"
+    data-worlds-tabs
+  >
+    {
+      WORLDS.map((w, i) => (
+        <button
+          type="button"
+          role="tab"
+          id={`worldtab-${w.id}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          aria-controls="worlds-panel"
+          data-world-id={w.id}
+          class="rounded-full border border-line px-4 py-2 text-sm font-medium text-ink-muted transition hover:border-line-strong hover:text-ink aria-selected:border-accent/60 aria-selected:bg-accent/10 aria-selected:text-accent-ink"
+        >
+          {w.name}
+        </button>
+      ))
+    }
+  </div>
+
+  <div id="worlds-panel" role="tabpanel" aria-labelledby={`worldtab-${first.id}`} class="mt-6 grid gap-8 lg:grid-cols-[1fr_1.1fr]">
+    <!-- Left: description + conditions (server-rendered fallback = first world) -->
+    <div>
+      <p data-world-blurb class="text-sm leading-relaxed text-ink-muted">{first.blurb}</p>
+
+      <dl data-world-conditions class="mt-5 grid grid-cols-3 gap-3">
+        {
+          first.conditions.map((c) => (
+            <div class="rounded-lg border border-line bg-inset p-3">
+              <dt class="font-mono text-[0.68rem] tracking-wide text-ink-faint uppercase">{c.label}</dt>
+              <dd class="mt-1 text-sm font-medium text-ink">{c.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <div class="mt-5">
+        <h3 class="eyebrow">Related work</h3>
+        <ul data-world-projects class="mt-2 flex flex-wrap gap-2">
+          {
+            first.projects.map((p) => (
+              <li class="rounded-full border border-line bg-inset px-3 py-1 text-xs text-ink-muted">{p}</li>
+            ))
+          }
+        </ul>
+        {first.mission && (
+          <p data-world-mission class="mt-3 text-xs text-ink-faint">
+            Mission tie-in: <span class="text-accent-ink">{first.mission}</span>
+          </p>
+        )}
+      </div>
+    </div>
+
+    <!-- Right: schematic chart -->
+    <figure class="rounded-xl border border-line bg-inset p-4">
+      <div class="relative">
+        <svg
+          data-world-chart
+          viewBox="0 0 320 200"
+          class="w-full"
+          role="img"
+          aria-label="Schematic accessibility curves"
+        >
+          <!-- grid -->
+          <g stroke="var(--c-line)" stroke-width="1">
+            <line x1="36" y1="14" x2="36" y2="166"></line>
+            <line x1="36" y1="166" x2="310" y2="166"></line>
+            {[0.25, 0.5, 0.75].map((f) => {
+              const y = 166 - f * 152;
+              return <line x1="36" y1={y} x2="310" y2={y} stroke-dasharray="2 4" opacity="0.5" />;
+            })}
+          </g>
+          <text x="6" y="20" fill="var(--c-ink-faint)" font-size="8" font-family="var(--font-mono)">high</text>
+          <text x="6" y="164" fill="var(--c-ink-faint)" font-size="8" font-family="var(--font-mono)">low</text>
+          <text
+            x="8" y="90" fill="var(--c-ink-faint)" font-size="8" font-family="var(--font-mono)"
+            transform="rotate(-90 8 90)" text-anchor="middle"
+          >accessibility</text>
+
+          <g data-world-curves></g>
+        </svg>
+      </div>
+      <div class="mt-1 flex justify-between px-2 font-mono text-[0.6rem] text-ink-faint">
+        <span data-world-axislow>{first.axisLow}</span>
+        <span data-world-axislabel class="text-ink-muted">{first.axisLabel}</span>
+        <span data-world-axishigh>{first.axisHigh}</span>
+      </div>
+      <figcaption data-world-legend class="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs"></figcaption>
+      <p class="mt-3 text-[0.68rem] leading-relaxed text-ink-faint">
+        Schematic / illustrative curves — qualitative shape only, not measured data.
+      </p>
+    </figure>
+  </div>
+</section>
+
+<script is:inline set:html={`window.__WORLDS__ = ${worldsJson};`}></script>
+
+<script>
+  interface Curve { label: string; points: number[]; color: string; }
+  interface World {
+    id: string; name: string; blurb: string; axisLabel: string; axisLow: string; axisHigh: string;
+    conditions: { label: string; value: string }[]; curves: Curve[]; projects: string[]; mission?: string;
+  }
+
+  function buildPath(points: number[]): string {
+    // map schematic points across x∈[36,310], y∈[166,14] with a smooth-ish polyline
+    const n = points.length;
+    return points
+      .map((p, i) => {
+        const x = 36 + (i / (n - 1)) * (310 - 36);
+        const y = 166 - p * 152;
+        return `${i === 0 ? 'M' : 'L'}${x.toFixed(1)},${y.toFixed(1)}`;
+      })
+      .join(' ');
+  }
+
+  function initWorlds() {
+    const root = document.querySelector<HTMLElement>('[data-worlds-root]');
+    if (!root) return;
+    const worlds: World[] = (window as any).__WORLDS__;
+    if (!worlds) return;
+
+    const svgNS = 'http://www.w3.org/2000/svg';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const tabs = root.querySelectorAll<HTMLButtonElement>('[data-world-id]');
+    const blurb = root.querySelector<HTMLElement>('[data-world-blurb]')!;
+    const conditions = root.querySelector<HTMLElement>('[data-world-conditions]')!;
+    const projects = root.querySelector<HTMLElement>('[data-world-projects]')!;
+    const missionEl = root.querySelector<HTMLElement>('[data-world-mission]');
+    const curvesG = root.querySelector<SVGGElement>('[data-world-curves]')!;
+    const legend = root.querySelector<HTMLElement>('[data-world-legend]')!;
+    const axisLow = root.querySelector<HTMLElement>('[data-world-axislow]')!;
+    const axisHigh = root.querySelector<HTMLElement>('[data-world-axishigh]')!;
+    const axisLabel = root.querySelector<HTMLElement>('[data-world-axislabel]')!;
+    const panel = root.querySelector<HTMLElement>('#worlds-panel')!;
+
+    function render(w: World) {
+      blurb.textContent = w.blurb;
+      conditions.innerHTML = w.conditions
+        .map(
+          (c) =>
+            `<div class="rounded-lg border border-line bg-inset p-3"><dt class="font-mono text-[0.68rem] tracking-wide text-ink-faint uppercase">${c.label}</dt><dd class="mt-1 text-sm font-medium text-ink">${c.value}</dd></div>`,
+        )
+        .join('');
+      projects.innerHTML = w.projects
+        .map(
+          (p) =>
+            `<li class="rounded-full border border-line bg-inset px-3 py-1 text-xs text-ink-muted">${p}</li>`,
+        )
+        .join('');
+      if (missionEl) {
+        if (w.mission) {
+          missionEl.innerHTML = `Mission tie-in: <span class="text-accent-ink">${w.mission}</span>`;
+          missionEl.style.display = '';
+        } else {
+          missionEl.style.display = 'none';
+        }
+      }
+      axisLow.textContent = w.axisLow;
+      axisHigh.textContent = w.axisHigh;
+      axisLabel.textContent = w.axisLabel;
+
+      // curves
+      curvesG.innerHTML = '';
+      legend.innerHTML = '';
+      w.curves.forEach((c, idx) => {
+        const path = document.createElementNS(svgNS, 'path');
+        path.setAttribute('d', buildPath(c.points));
+        path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', c.color);
+        path.setAttribute('stroke-width', '2.5');
+        path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('stroke-linejoin', 'round');
+        curvesG.appendChild(path);
+        if (!reduce) {
+          const len = path.getTotalLength();
+          path.style.strokeDasharray = String(len);
+          path.style.strokeDashoffset = String(len);
+          path.animate(
+            [{ strokeDashoffset: len }, { strokeDashoffset: 0 }],
+            { duration: 700, delay: idx * 120, easing: 'ease-out', fill: 'forwards' },
+          );
+        }
+        const item = document.createElement('span');
+        item.className = 'flex items-center gap-1.5 text-ink-muted';
+        item.innerHTML = `<span class="inline-block h-2 w-2 rounded-full" style="background:${c.color}"></span>${c.label}`;
+        legend.appendChild(item);
+      });
+    }
+
+    function select(id: string) {
+      const w = worlds.find((x) => x.id === id);
+      if (!w) return;
+      tabs.forEach((t) => t.setAttribute('aria-selected', String(t.dataset.worldId === id)));
+      panel.setAttribute('aria-labelledby', `worldtab-${id}`);
+      render(w);
+    }
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(tab.dataset.worldId!));
+      // arrow-key navigation across tabs
+      tab.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        e.preventDefault();
+        const dir = e.key === 'ArrowRight' ? 1 : -1;
+        const next = tabs[(i + dir + tabs.length) % tabs.length];
+        next.focus();
+        select(next.dataset.worldId!);
+      });
+    });
+
+    // hydrate first world (also upgrades the static fallback with animation)
+    select(worlds[0].id);
+  }
+
+  initWorlds();
+  document.addEventListener('astro:after-swap', initWorlds);
+</script>

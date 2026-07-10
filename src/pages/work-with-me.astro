@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import { SITE } from '../consts';
+---
+
+<Layout
+  title="Work With Me | Ishaan Madan"
+  description="Connect with Ishaan Madan for community, mentorship, and focused project-based collaborations across science, systems thinking, and clear communication."
+>
+  <section class="max-w-2xl">
+    <p class="eyebrow">Work With Me</p>
+    <h1 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">
+      Community, mentorship, and focused collaboration.
+    </h1>
+    <p class="mt-6 text-lg leading-relaxed text-ink-muted">
+      I care about helping people turn complex ideas into clearer thinking and better decisions. My
+      work is shaped by computational astrobiology, research workflows, and science communication,
+      and I most enjoy connecting with people who are exploring, building, or figuring out their
+      next step.
+    </p>
+  </section>
+
+  <section class="mt-12 rounded-2xl border border-line bg-surface/70 p-6 shadow-card md:p-8" aria-labelledby="connect-heading">
+    <h2 id="connect-heading" class="text-2xl font-semibold tracking-tight">Ways to connect</h2>
+    <div class="mt-4 space-y-4 leading-relaxed text-ink-muted">
+      <p>I'm most interested in community, mentorship, and focused project-based collaborations.</p>
+      <p>
+        That could mean helping someone think through a scientific or technical direction,
+        brainstorming around a research idea, giving feedback on a project, or collaborating on
+        something that benefits from systems thinking, scientific judgment, and clear communication.
+      </p>
+      <p>
+        I'm especially drawn to work that helps people understand complex ideas, make better
+        decisions, or move from scattered possibilities toward a clearer next step.
+      </p>
+      <p>
+        I try to keep much of this freely available, especially for students, early-career
+        researchers, and curious people who are still finding their path. My time and energy are
+        limited and currently spread across multiple PhD projects, research collaborations, science
+        communication, and mentoring — so if you're not sure where your idea fits, just send a short
+        note about what you're working on and what kind of support would be most helpful.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-8 rounded-2xl border border-line bg-surface/70 p-6 shadow-card md:p-8" aria-labelledby="start-heading">
+    <h2 id="start-heading" class="text-2xl font-semibold tracking-tight">Start a Conversation</h2>
+    <p class="mt-3 leading-relaxed text-ink-muted">
+      The easiest way to begin is to send a short note with what you are working on, what feels
+      unclear, and what kind of support would be useful.
+    </p>
+    <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+      <Button href={`mailto:${SITE.email}`} variant="primary">Email me</Button>
+      <Button href={SITE.calendar} external>Book a time</Button>
+      <Button href="/#contact">CV &amp; links</Button>
+    </div>
+  </section>
+</Layout>

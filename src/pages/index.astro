@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Accordion from '../components/Accordion.astro';
+import Button from '../components/Button.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import WorldsExplorer from '../components/WorldsExplorer.astro';
+import { SITE } from '../consts';
+
+const selectedWork = [
+  {
+    n: '01',
+    title: 'Prebiotic Chemistry on Titan',
+    lede: "Modeling how life's molecular building blocks could become accessible in Titan-relevant environments.",
+    question: "Which organic products could become accessible on Titan's surface?",
+    method: 'Thermodynamic modeling of the molecular inventory in impact melt pools.',
+    why: "This connects prebiotic chemistry to future mission science for NASA's Dragonfly mission.",
+  },
+  {
+    n: '02',
+    title: 'Research Automation Workflows',
+    lede: 'Building Python-based workflows that make computational chemistry and thermodynamic modeling more reproducible.',
+    question: 'How can scientific workflows become clearer, faster, and easier to reproduce?',
+    method:
+      'Python tools for Gaussian input generation, thermochemical data parsing, Cantera equilibrium modeling, and figure generation.',
+    why: 'Better workflows reduce repetitive labor, clarify assumptions, and make complex research easier to inspect, share, and build upon.',
+  },
+  {
+    n: '03',
+    title: 'Science Communication',
+    lede: 'Translating astrobiology, space science, and scientific uncertainty into accessible public-facing stories.',
+    question: 'How can complex science become easier to understand without losing nuance?',
+    method: 'Videos, writing, presentations, educational content, and audience-specific storytelling.',
+    why: 'Science communication helps people connect technical ideas with curiosity, meaning, and possibility.',
+  },
+];
+---
+
+<Layout
+  title="Ishaan Madan | Planetary Science & Astrobiology"
+  description="Computational astrobiologist and PhD student at Purdue modeling chemical pathways for life beyond Earth, building research workflows, and communicating science."
+>
+  <!-- Hero -->
+  <section class="space-y-12" aria-labelledby="home-heading">
+    <div class="relative overflow-hidden rounded-3xl border border-line bg-surface/70 p-7 shadow-card md:p-12">
+      <div
+        class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full opacity-60 blur-3xl"
+        style="background: radial-gradient(circle, color-mix(in srgb, var(--c-accent) 22%, transparent), transparent 70%)"
+        aria-hidden="true"
+      >
+      </div>
+      <p class="eyebrow relative">{SITE.tagline}</p>
+      <h1
+        id="home-heading"
+        class="relative mt-5 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl"
+      >
+        I study chemical possibility on worlds beyond Earth.
+      </h1>
+      <p class="relative mt-6 max-w-2xl text-lg leading-relaxed text-ink-muted md:text-xl">
+        I'm a PhD student in Planetary Science &amp; Astrobiology at Purdue, where I build automated
+        scientific workflows that connect computational chemistry, thermodynamic modeling, prebiotic
+        chemistry, planetary environments, and future mission science.
+      </p>
+      <div class="relative mt-8 flex flex-col gap-3 sm:flex-row">
+        <Button href="#selected-work" variant="primary">Selected Work</Button>
+        <Button href="/work-with-me/">Work With Me</Button>
+        <Button href="#contact">CV &amp; Links</Button>
+      </div>
+    </div>
+
+    <!-- Headshot + selected work -->
+    <div class="grid gap-10 lg:grid-cols-[minmax(240px,0.8fr)_minmax(0,1.4fr)] lg:items-start">
+      <div class="lg:sticky lg:top-24">
+        <figure class="overflow-hidden rounded-2xl border border-line bg-surface shadow-lift">
+          <img
+            src="/assets/headshot.jpg"
+            alt="Ishaan Madan"
+            width="800"
+            height="1000"
+            class="aspect-[4/5] w-full object-cover"
+          />
+          <figcaption class="border-t border-line bg-surface p-5 text-sm leading-relaxed text-ink-muted">
+            PhD student in Planetary Science &amp; Astrobiology at Purdue University · NSF Graduate
+            Research Fellow
+          </figcaption>
+        </figure>
+      </div>
+
+      <section id="selected-work" aria-labelledby="selected-work-heading" class="scroll-mt-24">
+        <p class="eyebrow">Selected Work</p>
+        <h2 id="selected-work-heading" class="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
+          Focused projects across research, tooling, and public understanding.
+        </h2>
+
+        <div class="mt-8 grid gap-4">
+          {
+            selectedWork.map((w) => (
+              <Accordion>
+                <div slot="summary" class="flex gap-4">
+                  <span class="pt-1 font-mono text-xs font-semibold tracking-[0.18em] text-accent-ink">
+                    {w.n}
+                  </span>
+                  <div>
+                    <h3 class="font-display font-semibold">{w.title}</h3>
+                    <p class="mt-2 text-sm leading-relaxed text-ink-muted">{w.lede}</p>
+                  </div>
+                </div>
+                <div class="grid gap-4 text-sm leading-relaxed text-ink-muted md:grid-cols-3">
+                  <div>
+                    <h4 class="font-display font-semibold text-ink">Question</h4>
+                    <p class="mt-1">{w.question}</p>
+                  </div>
+                  <div>
+                    <h4 class="font-display font-semibold text-ink">Method</h4>
+                    <p class="mt-1">{w.method}</p>
+                  </div>
+                  <div>
+                    <h4 class="font-display font-semibold text-ink">Why it matters</h4>
+                    <p class="mt-1">{w.why}</p>
+                  </div>
+                </div>
+              </Accordion>
+            ))
+          }
+        </div>
+      </section>
+    </div>
+
+    <!-- Interactive worlds explorer -->
+    <WorldsExplorer />
+
+    <!-- Contact -->
+    <section id="contact" class="scroll-mt-24 rounded-2xl border border-line bg-surface/70 p-6 shadow-card md:p-8" aria-labelledby="contact-heading">
+      <h2 id="contact-heading" class="text-2xl font-semibold tracking-tight">Contact, CV, and Socials</h2>
+      <div class="mt-6 grid gap-8 border-t border-line pt-6 lg:grid-cols-3">
+        <div>
+          <h3 class="eyebrow">Contact</h3>
+          <p class="mt-4 text-ink-muted">
+            Email: <a href={`mailto:${SITE.email}`} class="link">{SITE.email}</a>
+          </p>
+          <p class="mt-4">
+            <a href={SITE.calendar} target="_blank" rel="noopener" class="link font-medium">Book a time to meet with me</a>
+          </p>
+          <p class="mt-1 text-sm text-ink-faint">
+            For collaborations, brainstorming ideas, mentoring, or just connecting.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="eyebrow">CV</h3>
+          <div class="mt-4 space-y-5">
+            <div>
+              <a href={SITE.academicCV} class="link font-medium" target="_blank" rel="noopener">View my Academic CV</a>
+              <p class="mt-2 text-sm text-ink-faint">
+                I keep this master CV document up to date with all of my publications, experience,
+                conferences, and more.
+              </p>
+            </div>
+            <div>
+              <a href={SITE.industryCV} class="link font-medium" target="_blank" rel="noopener">View my Industry CV</a>
+              <p class="mt-2 text-sm text-ink-faint">I keep this industry-relevant CV concise for quick context.</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="eyebrow">Socials</h3>
+          <SocialLinks class="mt-4 text-ink-muted" />
+        </div>
+      </div>
+    </section>
+  </section>
+</Layout>

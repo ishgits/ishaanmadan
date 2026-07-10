@@ -1,0 +1,61 @@
+---
+import { SITE, NAV } from '../consts';
+import SocialLinks from './SocialLinks.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-20 border-t border-line bg-surface/60">
+  <div class="mx-auto grid max-w-(--container-site) gap-10 px-5 py-12 sm:grid-cols-2 lg:grid-cols-3">
+    <div>
+      <p class="font-display text-lg font-semibold">Ishaan Madan</p>
+      <p class="mt-2 max-w-xs text-sm leading-relaxed text-ink-muted">
+        PhD student in Planetary Science &amp; Astrobiology at Purdue University · NSF Graduate
+        Research Fellow
+      </p>
+      <p class="mt-4 text-sm">
+        <a href={`mailto:${SITE.email}`} class="link">{SITE.email}</a>
+      </p>
+      <p class="mt-2 text-sm">
+        <a href={SITE.calendar} class="link" target="_blank" rel="noopener">Book a time to meet with me</a>
+      </p>
+    </div>
+
+    <nav aria-label="Footer navigation">
+      <h2 class="eyebrow">Explore</h2>
+      <ul class="mt-4 space-y-2 text-sm">
+        {
+          NAV.map((item) => (
+            <li>
+              <a href={item.href} class="text-ink-muted transition hover:text-accent-ink">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href={SITE.academicCV} class="text-ink-muted transition hover:text-accent-ink" target="_blank" rel="noopener">
+            Academic CV
+          </a>
+        </li>
+        <li>
+          <a href={SITE.industryCV} class="text-ink-muted transition hover:text-accent-ink" target="_blank" rel="noopener">
+            Industry CV
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div>
+      <h2 class="eyebrow">Elsewhere</h2>
+      <SocialLinks class="mt-4 text-sm" />
+    </div>
+  </div>
+
+  <div class="border-t border-line">
+    <p class="mx-auto max-w-(--container-site) px-5 py-5 text-xs text-ink-faint">
+      © {year} Ishaan Madan · Built with Astro · Studying chemical possibility on worlds beyond
+      Earth
+    </p>
+  </div>
+</footer>

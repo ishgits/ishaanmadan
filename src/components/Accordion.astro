@@ -1,0 +1,31 @@
+---
+/**
+ * <details>-based accordion card: accessible, keyboard-operable, and
+ * fully functional with JavaScript disabled. Ported from the original
+ * site's pattern (the rotating "+" marker included).
+ */
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<details
+  class:list={[
+    'group rounded-xl border border-line bg-surface p-5 shadow-card transition duration-200 open:border-line-strong open:bg-raised hover:-translate-y-0.5 hover:shadow-lift md:p-6',
+    className,
+  ]}
+>
+  <summary class="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+    <div class="flex items-start justify-between gap-4">
+      <slot name="summary" />
+      <span
+        class="mt-1 shrink-0 font-display text-xl leading-none text-ink-faint transition duration-200 group-open:rotate-45 group-open:text-accent-ink"
+        aria-hidden="true">+</span
+      >
+    </div>
+  </summary>
+  <div class="mt-5 border-t border-line pt-5">
+    <slot />
+  </div>
+</details>

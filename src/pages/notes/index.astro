@@ -1,0 +1,118 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Chip from '../../components/Chip.astro';
+import { getPublications } from '../../data/publications';
+import { SITE } from '../../consts';
+
+const publications = await getPublications();
+const featured = publications.slice(0, 2);
+const rest = publications.slice(2);
+
+const notes = (await getCollection('notes', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+const pubDate = (year: string, month?: string | null) => {
+  if (!year) return '';
+  if (!month) return year;
+  const m = new Date(2000, Number(month) - 1, 1).toLocaleString('en-US', { month: 'short' });
+  return `${m} ${year}`;
+};
+---
+
+<Layout
+  title="Notes & Publications | Ishaan Madan"
+  description="Peer-reviewed publications and short writing from Ishaan Madan on astrobiology, prebiotic chemistry, and research tooling."
+>
+  <section class="max-w-2xl">
+    <p class="eyebrow">Writing &amp; research output</p>
+    <h1 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">Notes &amp; Publications</h1>
+    <p class="mt-6 text-lg leading-relaxed text-ink-muted">
+      Peer-reviewed work and shorter, more personal writing. Publications are pulled from my
+      <a href={SITE.orcid} class="link" target="_blank" rel="noopener">ORCID record</a> at build
+      time; notes are essays tied to <em>Notes by Ish</em>.
+    </p>
+  </section>
+
+  <!-- Publications -->
+  <section class="mt-14" aria-labelledby="pubs-heading">
+    <h2 id="pubs-heading" class="border-l-2 border-accent pl-3 text-2xl font-semibold tracking-tight">
+      Publications
+    </h2>
+
+    <div class="mt-6 grid gap-4 md:grid-cols-2">
+      {
+        featured.map((p) => (
+          <article class="flex flex-col rounded-xl border border-line bg-surface/70 p-6 shadow-card transition hover:-translate-y-0.5 hover:shadow-lift">
+            <div class="flex flex-wrap items-center gap-2">
+              <Chip tone="accent">Featured</Chip>
+              <Chip>{pubDate(p.year, p.month)}</Chip>
+            </div>
+            <h3 class="mt-3 font-display text-lg leading-snug font-semibold text-balance">{p.title}</h3>
+            {p.journal && <p class="mt-2 text-sm text-ink-muted italic">{p.journal}</p>}
+            <div class="mt-4 flex-1" />
+            <a href={p.url} class="link mt-4 text-sm font-medium" target="_blank" rel="noopener">
+              Read the paper{p.doi ? ` (doi:${p.doi})` : ''} →
+            </a>
+          </article>
+        ))
+      }
+    </div>
+
+    {
+      rest.length > 0 && (
+        <ul class="mt-4 divide-y divide-line rounded-xl border border-line bg-surface/50">
+          {rest.map((p) => (
+            <li class="flex flex-col gap-1 p-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+              <div class="min-w-0">
+                <a href={p.url} class="font-medium text-ink transition hover:text-accent-ink" target="_blank" rel="noopener">
+                  {p.title}
+                </a>
+                {p.journal && <p class="mt-1 text-sm text-ink-faint italic">{p.journal}</p>}
+              </div>
+              <span class="shrink-0 font-mono text-xs text-ink-faint">{pubDate(p.year, p.month)}</span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+
+  <!-- Notes -->
+  <section class="mt-16" aria-labelledby="notes-heading">
+    <h2 id="notes-heading" class="border-l-2 border-accent pl-3 text-2xl font-semibold tracking-tight">
+      Notes
+    </h2>
+
+    {
+      notes.length === 0 ? (
+        <p class="mt-6 text-ink-muted">No notes yet — check back soon.</p>
+      ) : (
+        <ul class="mt-6 grid gap-4">
+          {notes.map((note) => (
+            <li>
+              <a
+                href={`/notes/${note.id}/`}
+                class="block rounded-xl border border-line bg-surface/70 p-6 shadow-card transition hover:-translate-y-0.5 hover:border-line-strong hover:shadow-lift"
+              >
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="font-mono text-xs text-ink-faint">{fmtDate(note.data.date)}</span>
+                  {note.data.tags.map((tag) => (
+                    <span class="font-mono text-xs text-accent-ink">#{tag}</span>
+                  ))}
+                </div>
+                <h3 class="mt-2 font-display text-xl font-semibold">{note.data.title}</h3>
+                <p class="mt-2 leading-relaxed text-ink-muted">{note.data.description}</p>
+                <span class="mt-3 inline-block text-sm font-medium text-accent-ink">Read note →</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </section>
+</Layout>
