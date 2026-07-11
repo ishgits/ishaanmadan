@@ -115,7 +115,10 @@ h3,
 h4 {
   font-family: var(--font-display);
   letter-spacing: -0.01em;
-  text-wrap: balance;
+  /* pretty = greedy fill (headings span the full width) while still
+     avoiding a lone orphan word on the last line; balance would compact
+     them into short, centered-looking lines. */
+  text-wrap: pretty;
 }
 
 ::selection {
