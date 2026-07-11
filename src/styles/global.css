@@ -85,8 +85,9 @@
   --font-body: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
 
-  /* one canonical container width, used site-wide */
-  --container-site: 64rem;
+  /* one canonical container width, used site-wide. Full-bleed: content
+     spans the viewport (minus page padding) instead of a fixed measure. */
+  --container-site: 100%;
 
   --shadow-card: var(--shadow-card);
   --shadow-lift: var(--shadow-lift);
