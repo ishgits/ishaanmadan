@@ -1,0 +1,146 @@
+---
+import { NAV } from '../consts';
+
+const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
+const isActive = (href: string) => {
+  const target = href.replace(/\/+$/, '') || '/';
+  return target === '/' ? path === '/' : path.startsWith(target);
+};
+---
+
+<header class="sticky top-0 z-50 border-b border-line bg-canvas/85 backdrop-blur">
+  <div class="mx-auto flex max-w-(--container-site) items-center justify-between px-6 py-3 md:px-10">
+    <a
+      href="/"
+      class="font-display text-lg font-semibold tracking-tight whitespace-nowrap transition hover:text-accent-ink"
+      >Ishaan Madan</a
+    >
+
+    <div class="flex items-center gap-1 md:gap-5">
+      <nav class="hidden md:block" aria-label="Main navigation">
+        <ul class="flex gap-5 text-sm">
+          {
+            NAV.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  class:list={[
+                    'py-2 transition hover:text-accent-ink',
+                    isActive(item.href)
+                      ? 'font-medium text-accent-ink underline decoration-accent/60 underline-offset-8'
+                      : 'text-ink-muted',
+                  ]}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <button
+        id="themeToggle"
+        type="button"
+        class="rounded-lg border border-line p-2 text-ink-muted transition hover:border-line-strong hover:text-ink"
+        aria-label="Switch to light theme"
+      >
+        <!-- moon (shown in dark mode) -->
+        <svg class="theme-icon-moon h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z"></path>
+        </svg>
+        <!-- sun (shown in light mode) -->
+        <svg class="theme-icon-sun h-4.5 w-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"></circle>
+          <path stroke-linecap="round" d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"></path>
+        </svg>
+      </button>
+
+      <button
+        id="menuBtn"
+        type="button"
+        class="rounded-lg border border-line p-2 text-ink-muted transition hover:border-line-strong hover:text-ink md:hidden"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+        aria-controls="mobileNav"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <nav id="mobileNav" class="hidden border-t border-line bg-surface md:hidden" aria-label="Main navigation (mobile)">
+    <ul class="space-y-1 px-5 py-3 text-sm">
+      {
+        NAV.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              class:list={[
+                'block rounded-lg px-2 py-2 transition hover:bg-raised',
+                isActive(item.href) ? 'font-medium text-accent-ink' : 'text-ink-muted',
+              ]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<style>
+  /* icon swap driven purely by the html[data-theme] attribute */
+  :global(html[data-theme='dark']) .theme-icon-sun {
+    display: none;
+  }
+  :global(html[data-theme='light']) .theme-icon-moon {
+    display: none;
+  }
+</style>
+
+<script>
+  function initHeader() {
+    // --- mobile menu: toggles, closes on link click and on Escape ---
+    const btn = document.getElementById('menuBtn');
+    const nav = document.getElementById('mobileNav');
+    if (btn && nav) {
+      const setOpen = (open: boolean) => {
+        nav.classList.toggle('hidden', !open);
+        btn.setAttribute('aria-expanded', String(open));
+      };
+      btn.addEventListener('click', () => setOpen(nav.classList.contains('hidden')));
+      nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !nav.classList.contains('hidden')) {
+          setOpen(false);
+          btn.focus();
+        }
+      });
+    }
+
+    // --- theme toggle: persists choice, label describes the action ---
+    const toggle = document.getElementById('themeToggle');
+    if (toggle) {
+      const label = () => {
+        const dark = document.documentElement.dataset.theme !== 'light';
+        toggle.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+      };
+      label();
+      toggle.addEventListener('click', () => {
+        const next = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+        document.documentElement.dataset.theme = next;
+        localStorage.setItem('theme', next);
+        label();
+      });
+    }
+  }
+
+  initHeader();
+  document.addEventListener('astro:after-swap', initHeader);
+</script>

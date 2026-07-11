@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+/**
+ * Timeline eras. Content is preserved verbatim from the original site;
+ * only the presentation is upgraded to a scrollytelling timeline.
+ * `html` fields hold light inline markup (emphasis / handles) already
+ * present in the source copy.
+ */
+const eras = [
+  {
+    marker: '2000 – 2013',
+    title: 'Wonder Begins',
+    paras: [
+      'I first remember being fascinated by space when I was nine years old.',
+      'I would look up at the Moon from my balcony in New Delhi, read newspaper stories about Mars’s polar ice caps, and flip through encyclopedias trying to understand what else might be out there. At that age, space was not a career path or a research field. It was just wonder.',
+      'Life in India felt simple and steady: school, family dinners, and cricket with friends in the streets. I was born and raised in New Delhi until I was 13, in a world that felt familiar, safe, and predictable.',
+      'Then everything changed.',
+    ],
+  },
+  {
+    marker: '2013 – 2018',
+    title: 'Immigration, Survival, and Adaptation',
+    paras: [
+      'On October 31, 2013, my family and I landed at JFK on a chilly Halloween night. My grandfather, my Nanu, picked us up, and we took a $50 yellow taxi to my grandparents’ two-bedroom apartment near Jackson Heights, Queens.',
+      'For the next few months, my sister and I slept on the floor while my parents searched for jobs and tried to rebuild our lives from scratch.',
+      'That period shaped much of who I became. It taught me work ethic, adaptability, and a kind of resilience that comes from growing up faster than you expected to. I learned how to observe, adjust, and keep moving.',
+      'In high school, I poured myself into academics, leadership, volunteering, and summer jobs because I understood that education was the clearest path forward. Eventually, that effort helped me earn the <span class="font-medium text-ink">Posse Foundation Full-Tuition Leadership Scholarship</span>, which opened the door to Wheaton College in Massachusetts. By then, my parents had regained enough stability to help support my housing costs, which was a major privilege and something I never took for granted.',
+    ],
+  },
+  {
+    marker: '2018 – 2022',
+    title: 'Finding Astrobiology',
+    paras: [
+      'I entered Wheaton as a pre-med student planning to become a surgeon. It was a practical dream, and one that made sense given where I came from.',
+      'But my curiosity kept pulling me elsewhere.',
+      'After taking a few astronomy courses, I joined a research project mapping geologic features on Enceladus, one of Saturn’s icy moons. It was fascinating, but not quite... me. I pivoted into an astronomy project, then a biology lab. Each experience taught me something, but none of them felt complete.',
+      'Then I took Astrobiology, and things began to click as I saw a clear application of the fundamental concepts of chemistry — cell biology, chemistry, and biochemistry — that I had learned and enjoyed through my pre-med track. For the first time, I could see a path that combined chemistry, space science, and the search for life beyond Earth.',
+      'My childhood curiosity had found a new scientific home.',
+    ],
+  },
+  {
+    marker: '2022 – 2024',
+    title: 'Stability vs. Alignment',
+    paras: [
+      'After graduating summa cum laude, I joined Epic Systems on the Beacon Oncology team, where I helped develop and maintain healthcare software. It was a stable, well-paying job that made my family proud and helped me grow technically and professionally.',
+      'It also gave me the chance to move out of my parents’ home and begin a new chapter hundreds of miles away from my family and friends. That distance created space for a different kind of growth. I had to learn who I was outside of school, outside of survival mode, and outside of the expectations that had carried me for so long.',
+      'The job was meaningful, and I learned a lot. But over time, I realized I was living in a constant state of stress and pressure. I was good at the work, but it didn’t feel like... me.',
+      'I was concurrently working on writing up a paper from my summer 2021 project, which was published in November/December 2023, and that kept my curiosity alive. The pull toward space sciences never left.',
+      'So I made a decision that did not make perfect sense on paper. I decided I was going to quit my job and go to grad school. I started applying in Fall 2023, quit my job in April 2024, went to Sweden for a summer research project, and started at Purdue in Fall 2024.',
+    ],
+  },
+  {
+    marker: '2024 – Present',
+    title: 'Coming Full Circle',
+    paras: [
+      'Before starting my PhD, I received the CASSUM fellowship to work with Dr. Martin Rahm at Chalmers University of Technology in Sweden — another fun story; ask me about it sometime. There, I studied how non-carbon-based polymers could exist in the sulfuric-acid clouds of Venus. It was the kind of question I LOVE: chemically rigorous, planetary in scale, and open enough to challenge assumptions about what life could be. So creative, yet so grounded in scientific principles.',
+      'Soon after, I began my PhD in Planetary Science and Astrobiology at Purdue University. Today, I study prebiotic chemistry and use computational tools to model how life’s molecular building blocks might form or become accessible in environments beyond Earth, especially on worlds like Titan.',
+      'My work sits at the intersection of chemistry, computation, automation, and planetary science. I build workflows that help turn complex chemical systems into clearer scientific insight. More broadly, I am interested in how better tools, models, and ways of thinking can help us explore chemical possibility across worlds.',
+      'In many ways, this feels like coming full circle.',
+    ],
+  },
+  {
+    marker: 'Beyond',
+    title: 'Beyond Research',
+    paras: [
+      'Alongside research, I care deeply about communication, mentorship, and community.',
+      'I share parts of my scientific journey online through @scient_ish, where I try to make space science and astrobiology more accessible. I also reflect on growth, purpose, and self-understanding through more personal creative work, @spiritual_ish.',
+      'Over time, I have come to see these threads as connected. Science is one way I study the universe. Reflection is one way I understand my place within it.',
+      'Both are attempts to ask better questions, live with uncertainty, and move closer to truth.',
+    ],
+  },
+  {
+    marker: 'Reflection',
+    title: 'What I’ve Learned',
+    paras: [
+      'Looking back, each phase of my life — childhood in India, immigration, college, corporate work, and now research — has felt like a recalibration toward greater alignment.',
+      'I used to think success meant achievement. Now, I see it more as the combination of clear intention, sustained effort, patience, and the willingness to keep realigning when something no longer fits.',
+      'I do not know exactly what will come after the PhD. That uncertainty used to scare me more than it does now. These days, I see it as part of the work: staying open, building useful things, following meaningful questions, and trusting that no sincere effort is ever wasted.',
+    ],
+  },
+];
+---
+
+<Layout
+  title="My Story | Ishaan Madan"
+  description="Ishaan Madan's story across planetary science, astrobiology, migration, curiosity, and purpose."
+>
+  <article class="mx-auto max-w-4xl">
+    <header>
+      <p class="eyebrow">My Story</p>
+      <h1 class="mt-3 text-4xl font-semibold tracking-tight md:text-5xl">A path toward alignment</h1>
+      <p class="mt-6 text-lg leading-relaxed text-ink-muted italic">
+        It took a lot of effort, support, risk, and realignment to become the person I am today.
+        This is a short version of that path: from childhood curiosity, to immigration, to
+        scientific training, to the questions that now guide my work.
+      </p>
+      <p class="mt-4 text-lg leading-relaxed text-ink-muted italic">
+        At the center of it all has been one recurring pull: understanding how life becomes
+        possible, on Earth and beyond it.
+      </p>
+    </header>
+
+    <!-- Timeline. The orbit line is the cosmic through-line; each era is a
+         node. Content reads as a plain document with JS off / reduced motion. -->
+    <div class="relative mt-16 pl-8 md:pl-10">
+      <span
+        class="absolute top-2 bottom-2 left-[7px] w-px bg-gradient-to-b from-accent/70 via-line-strong to-transparent md:left-[9px]"
+        aria-hidden="true"></span>
+
+      <div class="space-y-16">
+        {
+          eras.map((era) => (
+            <section class="relative will-reveal">
+              <span
+                class="absolute top-1.5 -left-8 h-3.5 w-3.5 rounded-full border-2 border-accent bg-canvas md:-left-10"
+                aria-hidden="true"
+              />
+              <p class="font-mono text-xs tracking-[0.2em] text-accent-ink uppercase">{era.marker}</p>
+              <h2 class="mt-2 text-2xl font-semibold tracking-tight">{era.title}</h2>
+              <div class="mt-4 space-y-4 leading-relaxed text-ink-muted">
+                {era.paras.map((p) => (
+                  <p set:html={p} />
+                ))}
+              </div>
+            </section>
+          ))
+        }
+      </div>
+    </div>
+
+    <p class="mt-16 text-center font-medium text-ink">
+      With love and gratitude,<br />Ishaan
+    </p>
+  </article>
+</Layout>
+
+<script>
+  // Reveal-on-scroll for timeline eras. Content is visible by default and
+  // only hidden while `html.js-anim` is set (JS on + motion allowed); this
+  // observer then reveals each era as it scrolls in. If IntersectionObserver
+  // is unavailable, reveal everything so nothing stays hidden.
+  function initTimeline() {
+    const items = document.querySelectorAll<HTMLElement>('.will-reveal');
+    if (!items.length) return;
+
+    if (!document.documentElement.classList.contains('js-anim') || !('IntersectionObserver' in window)) {
+      items.forEach((el) => el.classList.add('revealed'));
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -12% 0px', threshold: 0.15 },
+    );
+    items.forEach((el) => io.observe(el));
+  }
+
+  initTimeline();
+  document.addEventListener('astro:after-swap', initTimeline);
+</script>

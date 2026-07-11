@@ -1,0 +1,24 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'ghost';
+  external?: boolean;
+  class?: string;
+}
+const { href, variant = 'ghost', external = false, class: className } = Astro.props;
+---
+
+<a
+  href={href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener' : undefined}
+  class:list={[
+    'inline-block rounded-lg border px-4 py-2 text-center text-sm font-medium transition hover:-translate-y-0.5',
+    variant === 'primary'
+      ? 'border-accent/60 bg-accent text-canvas hover:bg-accent-strong hover:shadow-lift'
+      : 'border-line bg-surface/60 text-ink hover:border-line-strong hover:bg-raised hover:shadow-card',
+    className,
+  ]}
+>
+  <slot />
+</a>

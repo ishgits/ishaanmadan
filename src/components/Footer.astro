@@ -1,0 +1,62 @@
+---
+import { SITE } from '../consts';
+import SocialLinks from './SocialLinks.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer id="site-footer" class="mt-20 scroll-mt-24 border-t border-line bg-surface/60">
+  <div class="mx-auto grid max-w-(--container-site) gap-10 px-6 py-12 sm:grid-cols-2 md:px-10 lg:grid-cols-3">
+    <!-- Identity -->
+    <div>
+      <p class="font-display text-lg font-semibold">Ishaan Madan</p>
+      <p class="mt-2 text-sm leading-relaxed text-ink-muted">
+        PhD student in Planetary Science and Astrobiology<br />
+        Purdue University
+      </p>
+      <p class="mt-3 text-sm text-ink-muted">Frederick N. Andrews Fellow (2024–26)</p>
+      <p class="text-sm text-ink-muted">NSF Graduate Research Fellow (2026–28/29)</p>
+      <p class="mt-4 text-sm">
+        <a href={`mailto:${SITE.email}`} class="link">{SITE.email}</a>
+      </p>
+    </div>
+
+    <!-- Meet & CV -->
+    <div>
+      <p>
+        <a href={SITE.calendar} class="link font-medium" target="_blank" rel="noopener"
+          >Book a time to meet with me</a
+        >
+      </p>
+      <p class="mt-1 text-sm text-ink-faint">
+        For collaboration, brainstorming, mentoring, or just connecting.
+      </p>
+      <div class="mt-5 space-y-4">
+        <div>
+          <a href={SITE.academicCV} class="link font-medium" target="_blank" rel="noopener">View my Academic CV</a>
+          <p class="mt-1 text-sm text-ink-faint">
+            I keep this master CV document up to date with all of my publications, experience,
+            conferences, and more.
+          </p>
+        </div>
+        <div>
+          <a href={SITE.industryCV} class="link font-medium" target="_blank" rel="noopener">View my Industry CV</a>
+          <p class="mt-1 text-sm text-ink-faint">I keep this industry-relevant CV concise for quick context.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Socials -->
+    <div>
+      <h2 class="eyebrow">Elsewhere</h2>
+      <SocialLinks variant="inline" class="mt-4 text-sm" />
+    </div>
+  </div>
+
+  <div class="border-t border-line">
+    <p class="mx-auto max-w-(--container-site) px-6 py-5 text-xs text-ink-faint md:px-10">
+      © {year} Ishaan Madan · Built with Astro · Studying chemical possibility on worlds beyond
+      Earth
+    </p>
+  </div>
+</footer>
