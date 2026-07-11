@@ -74,6 +74,7 @@ const personJsonLd = JSON.stringify({
          choice from the toggle wins and persists. -->
     <script is:inline>
       (function () {
+        var root = document.documentElement;
         function preferred() {
           try {
             const stored = localStorage.getItem('theme');
@@ -81,10 +82,19 @@ const personJsonLd = JSON.stringify({
           } catch {}
           return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
         }
-        document.documentElement.dataset.theme = preferred();
+        // Enable JS-gated entrance animations only when motion is allowed.
+        // Without this flag, `.will-reveal` content stays fully visible, so
+        // no-JS and reduced-motion visitors always see plain content.
+        function applyAnim() {
+          var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+          root.classList.toggle('js-anim', !reduce);
+        }
+        root.dataset.theme = preferred();
+        applyAnim();
         // re-apply after Astro view-transition swaps replace <html> attributes
         document.addEventListener('astro:after-swap', function () {
-          document.documentElement.dataset.theme = preferred();
+          root.dataset.theme = preferred();
+          applyAnim();
         });
       })();
     </script>

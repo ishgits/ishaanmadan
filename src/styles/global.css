@@ -150,19 +150,21 @@ h4 {
 }
 
 /* ------------------------------------------------------------------
-   Reveal-on-scroll (About timeline). Elements are fully visible by
-   default; JS opts them in only when motion is allowed, so no-JS and
-   reduced-motion visitors always see plain readable content.
+   Reveal-on-scroll (About timeline). Content is fully visible by
+   default — the hidden starting state only applies once JS adds the
+   `js-anim` flag to <html>, and that flag is withheld when JavaScript
+   is off or the visitor prefers reduced motion. So no-JS and
+   reduced-motion visitors always see the plain, readable timeline.
 ------------------------------------------------------------------- */
 
-.will-reveal {
+html.js-anim .will-reveal {
   opacity: 0;
   transform: translateY(18px);
   transition:
     opacity 700ms ease,
     transform 700ms ease;
 }
-.will-reveal.revealed {
+html.js-anim .will-reveal.revealed {
   opacity: 1;
   transform: none;
 }

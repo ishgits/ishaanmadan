@@ -136,15 +136,15 @@ const eras = [
 </Layout>
 
 <script>
-  // Reveal-on-scroll for timeline eras. Opt-in only: if the visitor
-  // prefers reduced motion or IntersectionObserver is unavailable, we
-  // reveal everything immediately so content is never hidden.
+  // Reveal-on-scroll for timeline eras. Content is visible by default and
+  // only hidden while `html.js-anim` is set (JS on + motion allowed); this
+  // observer then reveals each era as it scrolls in. If IntersectionObserver
+  // is unavailable, reveal everything so nothing stays hidden.
   function initTimeline() {
     const items = document.querySelectorAll<HTMLElement>('.will-reveal');
     if (!items.length) return;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (reduce || !('IntersectionObserver' in window)) {
+    if (!document.documentElement.classList.contains('js-anim') || !('IntersectionObserver' in window)) {
       items.forEach((el) => el.classList.add('revealed'));
       return;
     }
