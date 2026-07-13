@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ishaanmadan.pages.dev/sitemap-index.xml
+Sitemap: https://ishaanmadan.org/sitemap-index.xml
