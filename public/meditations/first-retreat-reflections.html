@@ -35,6 +35,8 @@
     .nav { display: flex; gap: 18px; color: var(--muted); font-size: 12px; }
     .nav a { text-decoration: none; border-bottom: 1px solid transparent; }
     .nav a:hover, .nav a:focus-visible { color: var(--green); border-color: var(--green); }
+    .site-return { display: inline-flex; align-items: center; margin-top: 22px; padding: 9px 13px; border: 1px solid var(--green); background: var(--white); box-shadow: 0 4px 12px rgba(38, 50, 46, .09); color: var(--green); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-decoration: none; text-transform: uppercase; transition: background .16s ease, color .16s ease, transform .16s ease; }
+    .site-return:hover, .site-return:focus-visible { background: var(--green); color: var(--white); transform: translateY(-1px); }
     .hero { padding: 92px 0 88px; }
     .hero-grid { display: flex; flex-direction: column; gap: 32px; }
     .hero-title h1 { max-width: none; }
@@ -150,7 +152,7 @@
     <header class="topbar">
       <div class="shell topbar-inner">
         <a class="brand" href="#top" aria-label="Back to top"><span class="brand-mark">R</span> Ishaan Madan</a>
-        <nav class="nav" aria-label="Report navigation"><a href="/meditations/">Meditations</a><a href="#story">The story</a><a href="#learnings">What I learned</a></nav>
+        <nav class="nav" aria-label="Report navigation"><a href="#story">The story</a><a href="#learnings">What I learned</a></nav>
       </div>
     </header>
 
@@ -160,6 +162,7 @@
           <div class="hero-title">
             <p class="eyebrow">Ishaan Madan / virtual meditation retreat / August 12-16, 2026</p>
             <h1 id="title">First Virtual Meditation Retreat</h1>
+            <a class="site-return" href="/meditations/">(Back to the Website)</a>
           </div>
           <aside class="hero-aside"><div class="retreat-context"><strong>The retreat</strong><p>This was Unified Mindfulness's <em>Nonduality is Love</em> virtual retreat: five days of guided meditation practice and community, joined from home. <a href="https://unifiedmindfulness.com/retreat" target="_blank" rel="noopener">Learn more about the retreat</a>.</p></div><div class="retreat-stats" aria-label="Retreat schedule at a glance"><div class="retreat-stat"><strong>5</strong><span>days total / August 12-16, 2026</span></div><div class="retreat-stat"><strong>52h 15m</strong><span>scheduled meditation-sit time</span></div></div><div class="yaza-highlight"><strong>Yaza highlight</strong><p>Friday night, August 14 into Saturday morning: an all-night sitting. Yaza, the word itself, means extra sitting in zen traditions, in which sleep deprivation is utilized to deepen the meditative practice.</p></div><div class="short-version"><strong>The short version</strong><p>This is a record of a few days when ambition, science, gratitude, surrender, and ordinary life began to look like parts of the same practice.</p></div></aside>
           <div class="hero-body">
