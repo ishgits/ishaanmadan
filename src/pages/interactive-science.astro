@@ -1,5 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+
+const paperCompanions = [
+  {
+    title: 'Venus, Sulfuric Acid, and Alternate Chemistries',
+    description: 'We test the potential for non-carbon polymers in Venusian atmosphere.',
+    href: '/interactive-science/venus-chemistry-story.html',
+  },
+];
 ---
 
 <Layout
@@ -15,11 +24,23 @@ import Layout from '../layouts/Layout.astro';
     </p>
   </section>
 
-  <section class="mt-12 rounded-2xl border border-line bg-surface/70 p-6 shadow-card md:p-8">
-    <h2 class="text-2xl font-semibold tracking-tight">More coming soon</h2>
-    <p class="mt-3 max-w-2xl leading-relaxed text-ink-muted">
-      This page will grow into a collection of paper companions, each with a short overview, DOI,
-      and an interactive way to explore the work.
-    </p>
+  <section class="mt-12" aria-labelledby="paper-companions-heading">
+    <h2 id="paper-companions-heading" class="text-2xl font-semibold tracking-tight md:text-3xl">
+      Paper companions
+    </h2>
+    <div class="mt-6 grid gap-5 md:grid-cols-2">
+      {
+        paperCompanions.map((paper) => (
+          <article class="flex flex-col rounded-2xl border border-line bg-surface/70 p-6 shadow-card md:p-8">
+            <h3 class="text-xl font-semibold tracking-tight md:text-2xl">{paper.title}</h3>
+            <p class="mt-3 flex-1 leading-relaxed text-ink-muted">{paper.description}</p>
+            <div class="mt-6">
+              <Button href={paper.href} variant="primary">Explore the interactive paper</Button>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+    <p class="mt-6 text-sm text-ink-faint">More interactive paper companions are in progress.</p>
   </section>
 </Layout>
