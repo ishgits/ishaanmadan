@@ -1,44 +1,39 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Accordion from '../components/Accordion.astro';
 import Button from '../components/Button.astro';
 import { SITE } from '../consts';
-
-const selectedWork = [
-  {
-    n: '01',
-    title: 'Prebiotic Chemistry on Titan',
-    lede: "Modeling how life's molecular building blocks could become accessible in Titan-relevant environments.",
-    question: "Which organic products could become accessible on Titan's surface?",
-    method: 'Thermodynamic modeling of the molecular inventory in impact melt pools.',
-    why: "This connects prebiotic chemistry to future mission science for NASA's Dragonfly mission.",
-  },
-  {
-    n: '02',
-    title: 'Research Automation Workflows',
-    lede: 'Building Python-based workflows that make computational chemistry and thermodynamic modeling more reproducible.',
-    question: 'How can scientific workflows become clearer, faster, and easier to reproduce?',
-    method:
-      'Python tools for Gaussian input generation, thermochemical data parsing, Cantera equilibrium modeling, and figure generation.',
-    why: 'Better workflows reduce repetitive labor, clarify assumptions, and make complex research easier to inspect, share, and build upon.',
-  },
-  {
-    n: '03',
-    title: 'Science Communication',
-    lede: 'Translating astrobiology, space science, and scientific uncertainty into accessible public-facing stories.',
-    question: 'How can complex science become easier to understand without losing nuance?',
-    method: 'Videos, writing, presentations, educational content, and audience-specific storytelling.',
-    why: 'Science communication helps people connect technical ideas with curiosity, meaning, and possibility.',
-  },
-];
 ---
 
 <Layout
   title="Ishaan Madan | Planetary Science & Astrobiology"
   description="Computational astrobiologist and PhD student at Purdue modeling chemical pathways for life beyond Earth, building research workflows, and communicating science."
 >
-  <!-- Hero -->
-  <section class="space-y-12" aria-labelledby="home-heading">
+  <section
+    class="grid gap-8 lg:grid-cols-[minmax(260px,0.8fr)_minmax(0,1.4fr)] lg:items-start lg:gap-10"
+    aria-labelledby="home-heading"
+  >
+    <figure class="overflow-hidden rounded-2xl border border-line bg-surface shadow-lift">
+      <img
+        src="/assets/headshot.jpg"
+        alt="Ishaan Madan"
+        width="800"
+        height="1000"
+        class="aspect-[4/5] w-full object-cover"
+      />
+      <figcaption class="border-t border-line bg-surface p-5 text-sm leading-relaxed text-ink-muted">
+        Taken Aug 2025 as part of{' '}
+        <a
+          href="https://www.purdue.edu/newsroom/purduetoday/2025/Q3/purdue-students-capture-16-competitive-nsf-graduate-research-fellowships-for-2025-17-others-achieve-honorable-mentions/?TSPD_101_R0=08993c5290ab20001b314169cb8f4153bd123d75b9042c973e0b5791030c24ab5ed4c8c3aa4a4a09088cebe30c143000c1fa2c6cb6216d6c4279113ca3410a62073cfd46aefb419c7630d3dea0ea4cfccc25a25e17f4507c2bab049297f6b33c"
+          class="link"
+          target="_blank"
+          rel="noopener"
+          >Purdue's NSF Story</a
+        >
+        <br />
+        Photo by John Underwood / Purdue University
+      </figcaption>
+    </figure>
+
     <div class="relative overflow-hidden rounded-3xl border border-line bg-surface/70 p-7 shadow-card md:p-12">
       <div
         class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full opacity-60 blur-3xl"
@@ -51,85 +46,18 @@ const selectedWork = [
         id="home-heading"
         class="relative mt-5 text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl"
       >
-        Scientific investigation and contemplative practices are two disciplined ways I am drawn to
-        interrogate life and its potential beyond Earth.
+        I explore life and its potential beyond Earth through scientific investigation and
+        contemplative practice.
       </h1>
       <p class="relative mt-6 text-lg leading-relaxed text-ink-muted md:text-xl">
         I'm a PhD student in Planetary Science &amp; Astrobiology at Purdue, where I build automated
         scientific workflows that connect computational chemistry, thermodynamic modeling, prebiotic
         chemistry, planetary environments, and future mission science.
       </p>
-      <div class="relative mt-8 flex flex-col gap-3 sm:flex-row">
-        <Button href="#selected-work" variant="primary">Selected Work</Button>
-        <Button href="/work-with-me/">Work With Me</Button>
+      <div class="relative mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <Button href="/work-with-me/" variant="primary">Work With Me</Button>
         <Button href="#site-footer">CV &amp; Links</Button>
       </div>
-    </div>
-
-    <!-- Headshot + selected work -->
-    <div class="grid gap-10 lg:grid-cols-[minmax(240px,0.8fr)_minmax(0,1.4fr)] lg:items-start">
-      <div class="lg:sticky lg:top-24">
-        <figure class="overflow-hidden rounded-2xl border border-line bg-surface shadow-lift">
-          <img
-            src="/assets/headshot.jpg"
-            alt="Ishaan Madan"
-            width="800"
-            height="1000"
-            class="aspect-[4/5] w-full object-cover"
-          />
-          <figcaption class="border-t border-line bg-surface p-5 text-sm leading-relaxed text-ink-muted">
-            Taken Aug 2025 as part of{' '}
-            <a
-              href="https://www.purdue.edu/newsroom/purduetoday/2025/Q3/purdue-students-capture-16-competitive-nsf-graduate-research-fellowships-for-2025-17-others-achieve-honorable-mentions/?TSPD_101_R0=08993c5290ab20001b314169cb8f4153bd123d75b9042c973e0b5791030c24ab5ed4c8c3aa4a4a09088cebe30c143000c1fa2c6cb6216d6c4279113ca3410a62073cfd46aefb419c7630d3dea0ea4cfccc25a25e17f4507c2bab049297f6b33c"
-              class="link"
-              target="_blank"
-              rel="noopener"
-              >Purdue's NSF Story</a
-            >
-            <br />
-            Photo by John Underwood / Purdue University
-          </figcaption>
-        </figure>
-      </div>
-
-      <section id="selected-work" aria-labelledby="selected-work-heading" class="scroll-mt-24">
-        <p class="eyebrow">Selected Work</p>
-        <h2 id="selected-work-heading" class="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
-          Focused projects across research, tooling, and public understanding.
-        </h2>
-
-        <div class="mt-8 grid gap-4">
-          {
-            selectedWork.map((w) => (
-              <Accordion>
-                <div slot="summary" class="flex gap-4">
-                  <span class="pt-1 font-mono text-xs font-semibold tracking-[0.18em] text-accent-ink">
-                    {w.n}
-                  </span>
-                  <div>
-                    <h3 class="font-display font-semibold">{w.title}</h3>
-                    <p class="mt-2 text-sm leading-relaxed text-ink-muted">{w.lede}</p>
-                  </div>
-                </div>
-                <div class="grid gap-4 text-sm leading-relaxed text-ink-muted md:grid-cols-3">
-                  <div>
-                    <h4 class="font-display font-semibold text-ink">Question</h4>
-                    <p class="mt-1">{w.question}</p>
-                  </div>
-                  <div>
-                    <h4 class="font-display font-semibold text-ink">Method</h4>
-                    <p class="mt-1">{w.method}</p>
-                  </div>
-                  <div>
-                    <h4 class="font-display font-semibold text-ink">Why it matters</h4>
-                    <p class="mt-1">{w.why}</p>
-                  </div>
-                </div>
-              </Accordion>
-            ))
-          }
-        </div>
-      </section>
     </div>
   </section>
 </Layout>
