@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive guide to two thermodynamic studies of prebiotic chemistry in Titan's Selk crater.">
+  <title>Could an ancient melt pool unlock life's ingredients on Titan?</title>
+  <style>
+    :root {
+      --night: #07110f;
+      --deep: #102e29;
+      --ink: #17352f;
+      --cream: #f7f3e9;
+      --paper: #f4f0e6;
+      --mist: #dce6e0;
+      --muted: #50625c;
+      --teal: #6cc9b8;
+      --amber: #e6a85a;
+      --white: #eff4ed;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--night); color: var(--ink); font-family: Arial, Helvetica, sans-serif; }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    button, summary { font: inherit; }
+    :focus-visible { outline: 3px solid #f5d99b; outline-offset: 4px; }
+    .section { padding: clamp(3.25rem, 6vw, 5.5rem) clamp(1.25rem, 7vw, 7rem); }
+    .kicker, .mini { margin: 0 0 1rem; color: #287669; font-size: .72rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .chapter { position: relative; }
+    .chapter-number { position: absolute; top: clamp(5rem, 10vw, 9rem); right: clamp(1.25rem, 7vw, 7rem); color: rgba(16,48,42,.2); font: 1.25rem Georgia, serif; }
+    .heading { max-width: 1180px; display: grid; grid-template-columns: minmax(0,1fr) minmax(260px,.82fr); align-items: end; column-gap: clamp(2rem, 7vw, 7rem); row-gap: 1rem; margin: 0 auto clamp(2rem, 4vw, 3.25rem); }
+    .heading > .kicker { grid-column: 1 / -1; margin-bottom: 0; }
+    .heading h2, .about h2 { margin: 0; max-width: 21ch; font: 400 clamp(1.95rem, 3.35vw, 3.3rem)/1.05 Georgia, serif; letter-spacing: -.05em; text-wrap: balance; }
+    .heading > p:last-child { max-width: 60ch; margin: 0; color: #4c625c; font-size: 1rem; line-height: 1.7; }
+    .heading.split { max-width: 1180px; grid-template-columns: minmax(0,1fr) minmax(260px,.82fr); gap: 1rem clamp(2rem, 7vw, 7rem); }
+    .heading.split > div { grid-column: 1; }
+    .heading.split > p:last-child { grid-column: 2; margin: 0; }
+
+    .hero { min-height: 82svh; position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0,1.1fr) minmax(320px,.9fr); align-items: center; gap: clamp(2rem,6vw,7rem); padding: 5rem clamp(1.25rem,5vw,5rem) 3rem; isolation: isolate; background: radial-gradient(circle at 78% 35%,rgba(230,168,90,.13),transparent 30%),linear-gradient(145deg,#07110f,#0a1916 54%,#09100f); color: var(--white); }
+    .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .18; background-image: radial-gradient(rgba(255,255,255,.75) .6px,transparent .6px); background-size: 34px 34px; mask-image: linear-gradient(to bottom,black,transparent 72%); }
+    .back { position: absolute; top: 1.6rem; left: clamp(1.25rem,5vw,5rem); color: #b9c7bf; text-decoration: none; font-size: .88rem; }
+    .hero .kicker { color: var(--teal); }
+    h1 { margin: 0; max-width: 14ch; font: 400 clamp(2.55rem,4.8vw,4.6rem)/.98 Georgia, serif; letter-spacing: -.06em; text-wrap: balance; }
+    .hero-intro { max-width: 60ch; margin: 1.4rem 0 0; color: #b9c7bf; font-size: clamp(1rem,1.3vw,1.15rem); line-height: 1.65; }
+    .paper-links { display: flex; flex-wrap: wrap; gap: .75rem 1.4rem; margin-top: 2rem; }
+    .paper-links a { font-size: .9rem; text-underline-offset: .35rem; text-decoration-color: rgba(108,201,184,.55); }
+    .titan-stage { min-height: 0; position: relative; display: grid; place-items: center; margin: 0; padding: 1.5rem 0 0; }
+    .titan-image { width: min(33vw,450px); aspect-ratio: 1; object-fit: cover; border-radius: 50%; box-shadow: 0 0 70px rgba(230,168,90,.25); }
+    .titan-stage figcaption { grid-column: 1 / -1; max-width: 54ch; margin: 1rem auto 0; color: #aebfb7; font-size: .7rem; line-height: 1.45; }
+    .fact { position: absolute; display: grid; gap: .2rem; padding-left: .8rem; border-left: 1px solid rgba(108,201,184,.7); color: #b9c7bf; font-size: .73rem; }
+    .fact strong { color: var(--white); font-size: .82rem; }
+    .f1 { left: 0; top: 18%; } .f2 { right: 0; top: 44%; } .f3 { left: 8%; bottom: 16%; }
+
+    .thesis { background: var(--paper); }
+    .thesis > .kicker { text-align: center; }
+    .thesis h2 { margin: 0 auto; max-width: 28ch; font: 400 clamp(2rem,3.55vw,3.55rem)/1.08 Georgia, serif; letter-spacing: -.05em; text-align: center; text-wrap: balance; }
+    .trust { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 1120px; margin: clamp(2.25rem,4vw,3.5rem) auto 0; }
+    .trust article { display: grid; grid-template-columns: auto 1fr; column-gap: 1rem; align-content: start; border-radius: 1.2rem; padding: clamp(1.35rem,2.5vw,2rem); }
+    .shows { background: #dcece5; } .not-shows { background: #ece4d8; }
+    .icon { display: grid; place-items: center; width: 2rem; aspect-ratio: 1; border: 1px solid currentColor; border-radius: 50%; }
+    .trust .icon { grid-row: 1 / span 2; align-self: start; }
+    .trust h3 { margin: .18rem 0 .55rem; font: 400 1.45rem Georgia, serif; }
+    .trust p { grid-column: 2; margin: 0; color: #4b5c56; line-height: 1.6; }
+
+    .setting { background: #e7ece6; }
+    .sequence { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; overflow: hidden; border: 1px solid #becbc4; border-radius: 1.2rem; background: #becbc4; }
+    .sequence article { min-height: 330px; padding: 1.4rem; background: #f2f5ef; }
+    .sequence .num { color: #416961; font-size: 1.05rem; font-weight: 800; }
+    .sequence-visual { height: 155px; margin: 1.1rem 0; border-radius: .8rem; overflow: hidden; background: #0b211d; }
+    .sequence-visual img { width: 100%; height: 100%; object-fit: cover; }
+    .sequence h3 { margin: 0 0 .6rem; font: 400 1.5rem Georgia, serif; }
+    .sequence p { margin: 0; color: #53665f; font-size: .91rem; line-height: 1.55; }
+    .concept { color: #667971; font-size: .92rem; line-height: 1.5; }
+
+    .gatekeeper { background: var(--cream); }
+    .condition-panel { overflow: hidden; border: 1px solid #cdd5ce; border-radius: 1.4rem; background: #fffdf8; }
+    .controls { display: flex; gap: .45rem; padding: 1rem; border-bottom: 1px solid #d9dfd9; }
+    .controls button { border: 1px solid #b6c4bc; border-radius: 999px; background: transparent; color: #24453e; padding: .7rem 1rem; cursor: pointer; font-weight: 700; }
+    .controls button:hover { background: #e9f1ed; }
+    .controls button.active { border-color: #173c34; background: #173c34; color: white; }
+    .condition-content { display: grid; grid-template-columns: minmax(240px,.65fr) minmax(0,1.35fr); gap: clamp(2rem,5vw,5rem); padding: clamp(1.5rem,4vw,4rem); }
+    .summary { align-self: center; }
+    .summary h3 { margin: 0; font: 400 clamp(2rem,3.5vw,3.3rem)/1 Georgia, serif; letter-spacing: -.035em; }
+    .summary > p:not(.mini) { color: var(--muted); line-height: 1.6; }
+    .summary small { display: block; border-left: 2px solid #d3a45f; padding-left: .8rem; color: #66756f; line-height: 1.5; }
+    .molecules { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+    .molecule { min-height: 145px; display: flex; flex-direction: column; justify-content: space-between; gap: 1rem; padding: 1.2rem; border-radius: .9rem; background: #ebe8e0; }
+    .molecule.open { background: #dcece5; }
+    .molecule div { display: flex; justify-content: space-between; gap: 1rem; font-size: .84rem; }
+    .molecule strong { font: 400 1.4rem Georgia, serif; }
+    .molecule p { margin: 0; color: var(--muted); font-size: .84rem; line-height: 1.45; }
+    .condition-panel > .concept { margin: 0; padding: 0 1.5rem 1.5rem; font-size: .9rem; }
+    .why { display: grid; grid-template-columns: minmax(260px,.7fr) minmax(0,1.1fr); gap: clamp(2rem,6vw,7rem); align-items: center; margin-top: clamp(3rem,5vw,5rem); }
+    .formula { min-height: 330px; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; padding: 1px; overflow: hidden; border-radius: 50%; background: #94aaa2; }
+    .formula span { display: grid; place-items: center; background: #173c34; color: white; font: 400 clamp(1.4rem,3vw,2.4rem) Georgia, serif; }
+    .formula .ammonia { background: #d8a354; color: #152f2a; }
+    .why h3 { margin: 0 0 1rem; font: 400 clamp(1.8rem,3vw,3rem) Georgia, serif; letter-spacing: -.035em; }
+    .why p { color: var(--muted); font-size: 1.04rem; line-height: 1.7; }
+    details { border-top: 1px solid #c7d0ca; margin-top: 1.8rem; padding-top: 1rem; }
+    summary { cursor: pointer; color: #1b5449; font-weight: 700; }
+
+    .evidence { background: var(--mist); }
+    .figures { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: clamp(1rem,3vw,2.5rem); }
+    figure { margin: 0; }
+    .figure-frame { display: grid; place-items: center; padding: clamp(.8rem,2vw,1.5rem); border-radius: 1.2rem; background: white; }
+    .figure-frame img { width: 100%; height: auto; }
+    figcaption { margin-top: 1rem; color: #53665f; font-size: .82rem; line-height: 1.55; }
+    .ladder { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; overflow: hidden; margin-top: clamp(3rem,5vw,5rem); border: 1px solid #b7c7be; border-radius: 1.2rem; background: #b7c7be; }
+    .ladder article { display: grid; grid-template-columns: auto 1fr; gap: 1.2rem; padding: clamp(1.5rem,3vw,2.5rem); background: #eff4ef; }
+    .ladder-index { display: grid; place-items: center; width: 2rem; height: 2rem; border: 1px solid #759188; border-radius: 50%; }
+    .ladder h3 { margin: 0; font: 400 1.5rem Georgia, serif; }
+    .ladder p:last-child { margin: .7rem 0 0; color: #586a64; font-size: .9rem; line-height: 1.55; }
+
+    .dragonfly { background: var(--deep); color: var(--white); }
+    .dragonfly .chapter-number { color: rgba(255,255,255,.2); }
+    .dragonfly .kicker, .dragonfly .mini { color: #76cabb; }
+    .dragonfly .heading > p:last-child { color: #b8c8c1; }
+    .signals { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+    .signals article { padding: 1.5rem; border: 1px solid #395750; border-radius: 1rem; background: rgba(255,255,255,.035); }
+    .signals h3 { margin: 0 0 .75rem; font: 400 1.7rem Georgia, serif; }
+    .signals p { margin: 0; color: #b5c6bf; font-size: .9rem; line-height: 1.6; }
+    .instrument { display: grid; grid-template-columns: minmax(250px,.7fr) minmax(0,1.2fr); align-items: center; gap: clamp(2rem,6vw,6rem); margin-top: clamp(2.5rem,4vw,4rem); padding-top: clamp(1.75rem,3vw,2.75rem); border-top: 1px solid #395750; }
+    .instrument-visual { margin: 0; }
+    .instrument-visual img { width: 100%; height: 320px; object-fit: cover; object-position: 72% center; border-radius: 1rem; }
+    .instrument-visual figcaption { margin-top: .7rem; color: #8fa8a0; font-size: .72rem; letter-spacing: .08em; }
+    .instrument h3 { margin: 0; font: 400 clamp(1.8rem,3vw,3rem) Georgia, serif; letter-spacing: -.035em; }
+    .instrument p:last-child { color: #b5c6bf; line-height: 1.7; }
+
+    .about { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(3rem,8vw,9rem); background: #f1eadc; }
+    .about h2 { font-size: clamp(2rem,3.35vw,3.3rem); }
+    .about-copy p { margin: 0 0 1.3rem; color: var(--muted); line-height: 1.7; }
+    .about-copy a { color: #1c6256; font-weight: 700; text-underline-offset: .3rem; }
+    footer { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(250px,.6fr); gap: clamp(2rem,7vw,7rem); padding: 4rem clamp(1.25rem,7vw,7rem); background: var(--night); color: #9eb0a8; font-size: .76rem; line-height: 1.6; }
+    footer .kicker { color: var(--teal); }
+    footer a { color: #dae8e1; text-underline-offset: .25rem; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; align-items: start; }
+      .titan-stage { min-height: 430px; margin-top: -1rem; }
+      .titan { width: min(70vw,340px); }
+      .f1 { left: 2%; top: 17%; } .f2 { right: 1%; top: 48%; } .f3 { left: 8%; bottom: 8%; }
+      .scroll { display: none; }
+      .heading, .heading.split, .about, .condition-content, .why, .instrument { grid-template-columns: 1fr; gap: 1.5rem; }
+      .heading > .kicker, .heading.split > div, .heading.split > p:last-child { grid-column: 1; }
+      .heading.split > p:last-child { margin: 0; }
+      .sequence { grid-template-columns: 1fr 1fr; }
+      .signals { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .trust, .molecules, .figures, .ladder, footer { grid-template-columns: 1fr; }
+      .sequence { grid-template-columns: 1fr; }
+      .sequence article { min-height: auto; }
+      .controls { overflow-x: auto; }
+      .controls button { white-space: nowrap; }
+      .figure-frame { min-height: 0; }
+      .chapter-number { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <a class="back" href="http://ishaanmadan.org/interactive-science/"><span aria-hidden="true">←</span> Back to the website</a>
+      <div>
+        <p class="kicker">An interactive guide to two complementary studies</p>
+        <h1 id="hero-title">Could an ancient melt pool left behind after an impact unlock life's ingredients on Titan?</h1>
+        <p class="hero-intro">Saturn's largest moon is bitterly cold, but an impact event can briefly melt its icy crust. Two thermodynamic studies ask what chemistry might become possible in that temporary water.</p>
+        <div class="paper-links" aria-label="Source papers">
+          <a href="https://doi.org/10.3847/PSJ/ae1c18">Amino acids, 2025 ↗</a>
+          <a href="https://doi.org/10.3847/PSJ/ae5f91">Nucleobases, ribose &amp; fatty acids, 2026 ↗</a>
+        </div>
+      </div>
+      <figure class="titan-stage">
+        <img class="titan-image" src="titan-selk.jpg" alt="False-color composite of Titan with Selk crater marked by a yellow box.">
+        <div class="fact f1"><strong>Atmospheric chemistry</strong><span>deposits organics on the surface</span></div>
+        <div class="fact f2"><strong>Impact crater sites</strong><span>can mix organics in liquid water</span></div>
+        <div class="fact f3"><strong>Dragonfly at Selk</strong><span>arrival planned for 2034</span></div>
+        <figcaption><em>False color composite of Titan with the red controlled by the 1.59/1.27 µm, green by the 2.03/1.27 µm and blue by the 1.27/1.08 µm band ratios. The equatorial dune fields appear in a consistent brown color. Selk crater is highlighted by the yellow box. Credits NASA/JPL/Univ. Arizona/CNRS/LPG.</em></figcaption>
+      </figure>
+    </section>
+
+    <section class="section thesis" aria-labelledby="thesis-title">
+      <p class="kicker">Key Takeaway</p>
+      <h2 id="thesis-title">In the models, ammonia behaves like a gatekeeper: a little of it opens routes to nearly every molecular class studied.</h2>
+      <div class="trust">
+        <article class="shows"><span class="icon" aria-hidden="true">✓</span><h3>What this shows</h3><p>Given the studies' starting ingredients and equilibrium assumptions, many biologically relevant molecules are energetically accessible in a Selk-like melt pool.</p></article>
+        <article class="not-shows"><span class="icon" aria-hidden="true">×</span><h3>What this does not show</h3><p>It does not show that the reactions happen quickly, that the molecules survive, or that life exists on Titan.</p></article>
+      </div>
+    </section>
+
+    <section class="section chapter setting" aria-labelledby="setting-title">
+      <span class="chapter-number" aria-hidden="true">01</span>
+      <div class="heading"><p class="kicker">A cold world, a temporary pond</p><h2 id="setting-title">It’s so cold that water is essentially frozen solid like a rock, but for a while, an impact can alter the conditions.</h2><p>Titan's surface is built from water ice and coated with organics that are made in, and deposited from, the atmosphere. At Selk crater, a melt pool left after an impact could have allowed for the organics to undergo aqueous processing before the melt froze again.</p></div>
+      <div class="sequence" aria-label="Conceptual sequence from atmosphere to refrozen crater">
+        <article><span class="num">01</span><div class="sequence-visual"><img src="titan-sequence-atmosphere.png" alt="Conceptual illustration of organic particles settling through Titan's hazy atmosphere onto an icy surface."></div><h3>Complex atmospheric chemistry</h3><p>Sunlight and energetic particles turn nitrogen and methane into a rich organic haze that settles on the surface.</p></article>
+        <article><span class="num">02</span><div class="sequence-visual"><img src="titan-sequence-impact-v2.png" alt="Simple conceptual cross-section of an impact striking Titan's icy surface."></div><h3>Impact on surface</h3><p>A collision melts part of the water-ice crust, allowing deposited organics to mix into the water.</p></article>
+        <article><span class="num">03</span><div class="sequence-visual"><img src="titan-sequence-melt-pool-v2.png" alt="Simple conceptual cross-section of a liquid-water melt pool inside an icy Titan crater."></div><h3>Melt pool</h3><p>Shallow zones may last years to centuries. Deeper liquid can persist for thousands of years.</p></article>
+        <article><span class="num">04</span><div class="sequence-visual"><img src="titan-sequence-refreezing-v2.png" alt="Conceptual cross-section of the same crater after the melt pool has frozen into solid ice."></div><h3>Refreezing</h3><p>The chemical record is locked into ice, altered by the process of refreezing and potential environmental changes like exposure to cosmic rays or freeze–thaw cycling.</p></article>
+      </div>
+      <p class="concept">Conceptual sequence. Times and mixing vary with depth and location.</p>
+    </section>
+
+    <section class="section chapter gatekeeper" aria-labelledby="gatekeeper-title">
+      <span class="chapter-number" aria-hidden="true">02</span>
+      <div class="heading split"><div><p class="kicker">The creative question</p><h2 id="gatekeeper-title">What can Titan's simplest ingredients assemble?</h2></div><p>The models begin with water, hydrogen cyanide, acetylene, and a changing amount of ammonia. They then search for the lowest-energy arrangement of atoms, without prescribing a reaction path.</p></div>
+      <div class="condition-panel">
+        <div class="controls" aria-label="Choose the modeled starting ammonia concentration">
+          <button type="button" class="active" data-condition="0" aria-pressed="true">0% NH₃</button>
+          <button type="button" data-condition="1" aria-pressed="false">1% NH₃</button>
+          <button type="button" data-condition="2" aria-pressed="false">2% NH₃</button>
+        </div>
+        <div class="condition-content" aria-live="polite">
+          <div class="summary"><p class="mini">Model result</p><h3 id="condition-title">A narrow chemical window</h3><p id="condition-summary">Only five of the 40 studied molecules are thermodynamically accessible without added ammonia.</p><small id="condition-note">The exceptions are striking because their formulas fit the starting supply of carbon, hydrogen, nitrogen, and oxygen especially well.</small></div>
+          <div class="molecules" id="molecule-grid"></div>
+        </div>
+        <p class="concept">This control displays reported equilibrium-model outcomes. It is not a predictive simulator.</p>
+      </div>
+      <div class="why">
+        <div class="formula" aria-hidden="true"><span>HCN</span><span>C₂H₂</span><span>H₂O</span><span class="ammonia">+ NH₃</span></div>
+        <div><h3>Why does ammonia matter?</h3><p>The starting organics are short on available hydrogen for building many reduced, hydrogen-rich molecules. In the model, ammonia supplies hydrogen while the system balances atoms and lowers its Gibbs free energy.</p><details><summary>For the technically curious</summary><p>The Cantera VCS solver minimizes total Gibbs free energy at fixed temperature, pressure, and elemental abundances. The calculations assume a closed, ideal, homogeneous aqueous phase. They do not include explicit pH, reaction pathways, rate barriers, mineral catalysis, photolysis, radiolysis, adsorption, polymerization, or phase separation.</p></details></div>
+      </div>
+    </section>
+
+    <section class="section chapter evidence" aria-labelledby="evidence-title">
+      <span class="chapter-number" aria-hidden="true">03</span>
+      <div class="heading split"><div><p class="kicker">The evidence</p><h2 id="evidence-title">The pattern appears across four molecular families.</h2></div><p>Each heat map is a published model result. Dark purple means zero modeled yield. Brighter cells mean a larger equilibrium yield relative to the limiting starting ingredient.</p></div>
+      <div class="figures">
+        <figure><div class="figure-frame"><img src="amino-acid-yields.png" alt="Published heat map showing modeled yields for 21 amino acids across zero to ten percent ammonia. Only alanine, beta-alanine, and proline appear at zero ammonia."></div><figcaption><strong>Amino acids.</strong> At zero ammonia, only alanine, beta-alanine, and proline are favored. At 1%, all but the two sulfur-bearing amino acids become accessible. Cropped from Figure 1, Madan &amp; Pearce (2025).</figcaption></figure>
+        <figure><div class="figure-frame"><img src="nucleobase-ribose-fatty-acid-yields.png" alt="Published heat maps showing modeled yields for seven nucleobases, ribose, and eleven fatty acids across zero to ten percent ammonia."></div><figcaption><strong>Nucleobases, ribose, and fatty acids.</strong> Without ammonia, only adenine and butanoic acid appear. At 1%, every investigated molecule in these groups is accessible. Cropped from Figure 2, Madan &amp; Pearce (2026).</figcaption></figure>
+      </div>
+      <div class="ladder" aria-label="Evidence ladder">
+        <article><span class="ladder-index">1</span><div><p class="mini">Calculated</p><h3>Equilibrium favorability</h3><p>The models calculate which products minimize Gibbs free energy under a defined starting inventory.</p></div></article>
+        <article><span class="ladder-index">2</span><div><p class="mini">Compared</p><h3>Kinetics and other samples</h3><p>Amino-acid calculations were compared with laboratory rates. Some broader abundance patterns qualitatively resemble meteorites and asteroid samples.</p></div></article>
+        <article><span class="ladder-index">3</span><div><p class="mini">Suggested</p><h3>A chemical baseline for Selk</h3><p>Molecular combinations could help infer past ammonia availability and identify patterns expected from abiotic chemistry.</p></div></article>
+        <article><span class="ladder-index">?</span><div><p class="mini">Unknown</p><h3>Pathways, rates, preservation</h3><p>The studies do not establish exact reaction routes, real-world yields, or what remains accessible at Dragonfly's sampling depth.</p></div></article>
+      </div>
+      <details><summary>How close might the chemistry get to equilibrium?</summary><p>For glycine and alanine nitrile hydrolysis, the 2025 study compared equilibrium outputs with laboratory kinetics. Extrapolated equilibration times ranged from years to centuries, shorter than the longest modeled deep-melt lifetimes, but potentially longer than some shallow melt intervals. This supports plausibility in some settings, not complete equilibration everywhere.</p></details>
+    </section>
+
+    <section class="section chapter dragonfly" aria-labelledby="dragonfly-title">
+      <span class="chapter-number" aria-hidden="true">04</span>
+      <div class="heading"><p class="kicker">What comes next</p><h2 id="dragonfly-title">Dragonfly will look for ingredients and patterns.</h2><p>Finding one familiar molecule would not be evidence of life. The stronger test is whether many measurements across Selk fit an abiotic chemical baseline, or depart from it in a way that demands closer investigation.</p></div>
+      <div class="signals">
+        <article><h3>Ammonia-poor pattern</h3><p>Alanine, beta-alanine, proline, adenine, and butanoic acid alone would match the model's narrow, ammonia-free window.</p></article>
+        <article><h3>Ammonia-rich pattern</h3><p>A broader amino-acid set, pyrimidine-favoring nucleobases, ribose, and many fatty-acid lengths would be consistent with ammonia-rich processing.</p></article>
+        <article><h3>A possible anomaly</h3><p>Strongly selective distributions, such as pronounced even-carbon fatty-acid enrichment or large chiral excess, could justify further tests. Neither is proof of biology.</p></article>
+      </div>
+      <div class="instrument"><figure class="instrument-visual"><img src="Dragonfly_SurfaceOps.jpg" alt="Artist's depiction of NASA's Dragonfly rotorcraft operating on Titan's surface."><figcaption>IMAGE CREDIT: NASA/JOHNS HOPKINS APL/STEVE GRIBBEN</figcaption></figure><div><p class="mini">A mission-ready question</p><h3>Can DraMS read the frozen record?</h3><p>Dragonfly's mass spectrometer combines laser desorption and gas chromatography. Together, those modes can screen complex organics, separate some isomers, and examine distributions across samples. Ribose identification and some chiral measurements remain operationally uncertain.</p></div></div>
+    </section>
+
+    <section class="section about" aria-labelledby="about-title">
+      <div><p class="kicker">About the project</p><h2 id="about-title">A shared thermodynamic map of Selk crater chemistry.</h2></div>
+      <div class="about-copy"><p>These complementary studies were led by <strong>Ishaan Madan</strong> with <strong>Ben K. D. Pearce</strong> at Purdue University. Together they assess amino acids, nucleobases, ribose, and fatty acids within one Titan-relevant melt-pool setting. This work was Ishaan's first chapter of his PhD.</p><p>Ishaan Madan was supported by Purdue University's Frederick N. Andrews Fellowship (2024-2026). The research used Purdue's Negishi cluster and acknowledged the Rosen Center for Advanced Computing, methodological discussions, and manuscript reviewers.</p><a href="https://doi.org/10.5281/zenodo.17445312">Explore the open code and computational outputs on Zenodo ↗</a></div>
+    </section>
+  </main>
+
+  <footer>
+    <div><p class="kicker">Sources</p><p>Madan, I., &amp; Pearce, B. K. D. (2025). “Prebiotic Chemistry Insights for Dragonfly: Thermodynamics of Amino Acid Synthesis in Selk Crater on Titan.” <em>The Planetary Science Journal</em>, 6:284. <a href="https://doi.org/10.3847/PSJ/ae1c18">doi:10.3847/PSJ/ae1c18</a>.</p><p>Madan, I., &amp; Pearce, B. K. D. (2026). “Prebiotic Chemistry Insights for Dragonfly. II. Thermodynamic Favorability of Nucleobases, Ribose, and Fatty Acids in Selk Crater on Titan.” <em>The Planetary Science Journal</em>, 7:107. <a href="https://doi.org/10.3847/PSJ/ae5f91">doi:10.3847/PSJ/ae5f91</a>.</p></div>
+    <div><p>Published figures are cropped excerpts from the supplied open-access papers, licensed CC BY 4.0. Educational diagrams are conceptual. The ammonia control displays reported model states and is not a predictive tool.</p><a href="#hero-title">Back to the top ↑</a></div>
+  </footer>
+
+  <script>
+    const conditions = {
+      0: {
+        title: "A narrow chemical window",
+        summary: "Only five of the 40 studied molecules are thermodynamically accessible without added ammonia.",
+        note: "The exceptions are striking because their formulas fit the starting supply of carbon, hydrogen, nitrogen, and oxygen especially well.",
+        classes: [
+          ["Amino acids", "3 of 21", "Alanine, beta-alanine, proline", false],
+          ["Nucleobases", "1 of 7", "Adenine", false],
+          ["Ribose", "0 of 1", "Not accessible", false],
+          ["Fatty acids", "1 of 11", "Butanoic acid", false]
+        ]
+      },
+      1: {
+        title: "The gate swings open",
+        summary: "A small modeled addition of ammonia makes nearly the entire investigated set accessible at equilibrium.",
+        note: "One percent means one ammonia molecule for roughly every 100 water molecules in the model's starting mixture.",
+        classes: [
+          ["Amino acids", "19 of 21", "All studied except cysteine and methionine", true],
+          ["Nucleobases", "7 of 7", "Purines and pyrimidines", true],
+          ["Ribose", "1 of 1", "Thermodynamically accessible", true],
+          ["Fatty acids", "11 of 11", "C₂ through C₁₂", true]
+        ]
+      },
+      2: {
+        title: "Broad access, different maximum conversions",
+        summary: "At 2% NH₃, the modeled starting inventory remains broadly convertible into the molecular families studied; the accessible set is already near its maximum at 1% NH₃.",
+        note: "This describes accessibility and the conversion of starting inventory into products, not the yield of one product. Many amino acids and longer fatty acids reach their highest modeled conversions around 2% NH₃, while nucleobases, ribose, and shorter fatty acids peak at 1% NH₃.",
+        classes: [
+          ["Amino acids", "19 of 21", "Many yields peak near 2% NH₃", true],
+          ["Nucleobases", "7 of 7", "Accessible; yields are slightly below the 1% NH₃ case", true],
+          ["Ribose", "1 of 1", "Accessible; yield is slightly below the 1% NH₃ case", true],
+          ["Fatty acids", "11 of 11", "C₇-C₁₂ peak near 2% NH₃", true]
+        ]
+      }
+    };
+
+    const title = document.getElementById("condition-title");
+    const summary = document.getElementById("condition-summary");
+    const note = document.getElementById("condition-note");
+    const grid = document.getElementById("molecule-grid");
+    const buttons = Array.from(document.querySelectorAll("[data-condition]"));
+
+    function renderCondition(key) {
+      const data = conditions[key];
+      title.textContent = data.title;
+      summary.textContent = data.summary;
+      note.textContent = data.note;
+      grid.replaceChildren(...data.classes.map(([name, count, examples, open]) => {
+        const card = document.createElement("article");
+        card.className = "molecule" + (open ? " open" : "");
+        const top = document.createElement("div");
+        const label = document.createElement("span");
+        const value = document.createElement("strong");
+        const detail = document.createElement("p");
+        label.textContent = name;
+        value.textContent = count;
+        detail.textContent = examples;
+        top.append(label, value);
+        card.append(top, detail);
+        return card;
+      }));
+      buttons.forEach(button => {
+        const active = button.dataset.condition === String(key);
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+    }
+
+    buttons.forEach(button => button.addEventListener("click", () => renderCondition(button.dataset.condition)));
+    renderCondition("0");
+  </script>
+</body>
+</html>
