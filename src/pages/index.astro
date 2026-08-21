@@ -9,16 +9,16 @@ import { SITE } from '../consts';
   description="Computational astrobiologist and PhD student at Purdue modeling chemical pathways for life beyond Earth, building research workflows, and communicating science."
 >
   <section
-    class="grid gap-8 lg:grid-cols-[minmax(260px,0.8fr)_minmax(0,1.4fr)] lg:items-start lg:gap-10"
+    class="grid gap-8 lg:grid-cols-[minmax(260px,0.8fr)_minmax(0,1.4fr)] lg:items-stretch lg:gap-10"
     aria-labelledby="home-heading"
   >
-    <figure class="overflow-hidden rounded-2xl border border-line bg-surface shadow-lift">
+    <figure class="overflow-hidden rounded-2xl border border-line bg-surface shadow-lift lg:flex lg:min-h-0 lg:flex-col">
       <img
         src="/assets/headshot.jpg"
         alt="Ishaan Madan"
         width="800"
         height="1000"
-        class="aspect-[4/5] w-full object-cover"
+        class="aspect-[4/5] w-full object-cover lg:h-0 lg:min-h-0 lg:flex-1 lg:aspect-auto"
       />
       <figcaption class="border-t border-line bg-surface p-5 text-sm leading-relaxed text-ink-muted">
         Taken Aug 2025 as part of{' '}
@@ -56,7 +56,6 @@ import { SITE } from '../consts';
       </p>
       <div class="relative mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <Button href="/work-with-me/" variant="primary">Work With Me</Button>
-        <Button href="#site-footer">CV &amp; Links</Button>
       </div>
     </div>
   </section>
