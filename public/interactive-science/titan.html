@@ -76,21 +76,23 @@
     .gatekeeper { background: var(--cream); }
     .condition-panel { overflow: hidden; border: 1px solid #cdd5ce; border-radius: 1.4rem; background: #fffdf8; }
     .controls { padding: clamp(1.2rem,3vw,1.8rem) clamp(1.5rem,4vw,4rem); border-bottom: 1px solid #d9dfd9; }
-    .controls label { display: block; color: #24453e; font-size: .88rem; font-weight: 700; }
-    .slider-row, .slider-scale { display: grid; grid-template-columns: 4.4rem minmax(0,1fr); gap: 1rem; }
-    .slider-row { align-items: center; margin-top: .7rem; }
-    .slider-value { min-width: 0; border: 1px solid #b6c4bc; border-radius: .75rem; background: #f3f7f2; color: #173c34; padding: .55rem .4rem; text-align: center; font-size: .92rem; font-weight: 800; box-shadow: inset 0 1px rgba(255,255,255,.85); }
+    .controls label { display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: #24453e; font-size: .88rem; font-weight: 700; }
+    .slider-row { margin-top: .85rem; }
+    .slider-value { flex: none; border: 1px solid #b6c4bc; border-radius: .75rem; background: #f3f7f2; color: #173c34; padding: .45rem .6rem; text-align: center; font-size: .82rem; font-weight: 800; box-shadow: inset 0 1px rgba(255,255,255,.85); }
     .ammonia-slider { --slider-progress: 0%; width: 100%; min-width: 0; appearance: none; -webkit-appearance: none; height: 1.45rem; margin: 0; border: 0; border-radius: 999px; background: linear-gradient(to right, #2d796b 0 var(--slider-progress), #d2ded7 var(--slider-progress) 100%); cursor: pointer; }
     .ammonia-slider::-webkit-slider-runnable-track { height: .42rem; border-radius: 999px; background: transparent; }
     .ammonia-slider::-webkit-slider-thumb { appearance: none; -webkit-appearance: none; width: 1.25rem; height: 1.25rem; margin-top: -.415rem; border: 3px solid #fffdf8; border-radius: 50%; background: #1a6155; box-shadow: 0 2px 6px rgba(17,57,49,.28); }
     .ammonia-slider::-moz-range-track { height: .42rem; border-radius: 999px; background: #d2ded7; }
     .ammonia-slider::-moz-range-progress { height: .42rem; border-radius: 999px; background: #2d796b; }
     .ammonia-slider::-moz-range-thumb { width: 1.25rem; height: 1.25rem; border: 3px solid #fffdf8; border-radius: 50%; background: #1a6155; box-shadow: 0 2px 6px rgba(17,57,49,.28); }
-    .slider-scale { margin-top: .15rem; }
-    .slider-spacer { min-width: 0; }
-    .slider-ticks { display: grid; grid-template-columns: repeat(7, 1fr); color: #5d7069; font-size: clamp(.62rem,1.5vw,.78rem); }
-    .slider-ticks span { position: relative; padding-top: .78rem; text-align: center; }
+    .slider-scale { position: relative; height: 1.6rem; margin-top: .15rem; }
+    .slider-ticks { position: absolute; inset: 0; color: #5d7069; font-size: clamp(.62rem,1.5vw,.78rem); }
+    .slider-ticks span { position: absolute; top: 0; left: var(--tick); padding-top: .78rem; text-align: center; white-space: nowrap; transform: translateX(-50%); }
     .slider-ticks span::before { position: absolute; top: .12rem; left: 50%; width: .3rem; height: .3rem; border-radius: 50%; background: #a7b8af; content: ""; transform: translateX(-50%); }
+    .slider-ticks span:first-child { text-align: left; transform: none; }
+    .slider-ticks span:first-child::before { left: 0; }
+    .slider-ticks span:last-child { text-align: right; transform: translateX(-100%); }
+    .slider-ticks span:last-child::before { left: 100%; }
     .slider-ticks span.active { color: #173c34; font-weight: 800; }
     .slider-ticks span.active::before { background: #1a6155; box-shadow: 0 0 0 3px rgba(45,121,107,.13); }
     .condition-content { display: grid; grid-template-columns: minmax(240px,.65fr) minmax(0,1.35fr); gap: clamp(2rem,5vw,5rem); padding: clamp(1.5rem,4vw,4rem); }
@@ -229,12 +231,11 @@
       <div class="heading split"><div><p class="kicker">The creative question</p><h2 id="gatekeeper-title">What can Titan's simplest ingredients assemble?</h2></div><p>The models begin with water, hydrogen cyanide, acetylene, and a changing amount of ammonia. They then search for the lowest-energy arrangement of atoms, without prescribing a reaction path.</p></div>
       <div class="condition-panel">
         <div class="controls">
-          <label for="ammonia-slider">Choose the modeled starting ammonia concentration</label>
+          <label for="ammonia-slider"><span>Choose the modeled starting ammonia concentration</span><output class="slider-value" id="ammonia-value" for="ammonia-slider">0% NH₃</output></label>
           <div class="slider-row">
-            <output class="slider-value" id="ammonia-value" for="ammonia-slider">0% NH₃</output>
             <input class="ammonia-slider" id="ammonia-slider" type="range" min="0" max="6" step="1" value="0" aria-valuetext="0% ammonia">
           </div>
-          <div class="slider-scale" aria-hidden="true"><span class="slider-spacer"></span><div class="slider-ticks"><span class="active">0%</span><span>1%</span><span>2%</span><span>3%</span><span>4%</span><span>5%</span><span>10%</span></div></div>
+          <div class="slider-scale" aria-hidden="true"><div class="slider-ticks"><span class="active" style="--tick: 0%">0%</span><span style="--tick: 16.6667%">1%</span><span style="--tick: 33.3333%">2%</span><span style="--tick: 50%">3%</span><span style="--tick: 66.6667%">4%</span><span style="--tick: 83.3333%">5%</span><span style="--tick: 100%">10%</span></div></div>
         </div>
         <div class="condition-content" aria-live="polite">
           <div class="summary"><p class="mini">Model result</p><h3 id="condition-title">A narrow chemical window</h3><p id="condition-summary">Only five of the 40 studied molecules are thermodynamically accessible without added ammonia.</p><small id="condition-note">The exceptions are striking because their formulas fit the starting supply of carbon, hydrogen, nitrogen, and oxygen especially well.</small></div>
