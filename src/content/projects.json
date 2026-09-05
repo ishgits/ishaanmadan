@@ -1,0 +1,60 @@
+[
+  {
+    "id": "titan",
+    "name": "Titan",
+    "question": "Could a temporary melt pool help assemble life’s ingredients?",
+    "summary": "An impact can briefly turn Titan’s icy surface into liquid water. I study what chemistry might become possible in that temporary window.",
+    "setting": "Saturn’s largest moon",
+    "image": "/interactive-science/titan-selk.jpg",
+    "imageAlt": "False-color composite of Titan with Selk crater marked by a yellow box.",
+    "imageCredit": "NASA / JPL / University of Arizona / CNRS / LPG. False-color composite; Selk crater is highlighted.",
+    "imageMode": "planet",
+    "featuredOrder": 1,
+    "publications": [
+      "titan1",
+      "titan2"
+    ],
+    "resources": [
+      "abscicon-2026",
+      "telluride-2025"
+    ],
+    "contribution": "I led these two complementary studies with Ben K. D. Pearce at Purdue. Together, they form the first chapter of my PhD: a shared thermodynamic view of amino acids, nucleobases, ribose, and fatty acids in a Titan-like melt pool.",
+    "approach": "We start with water and simple organic ingredients, then calculate which molecular arrangements are energetically favored. By varying the starting amount of ammonia, we ask how the accessible chemical inventory changes.",
+    "finding": "In the reported models, adding a small amount of ammonia opens access to many more of the molecules studied. At 1% ammonia, 38 of the 40 investigated molecules are thermodynamically accessible, compared with five without added ammonia.",
+    "limitations": "Energetic favorability does not establish how quickly reactions happen, how much material survives, or what a spacecraft will find. These calculations offer a chemical baseline to investigate, rather than evidence that life exists on Titan.",
+    "insideTitle": "One ingredient, a very different chemical picture",
+    "inside": "Ammonia changes the supply of hydrogen available to build molecules. The interactive lets you step through the reported starting concentrations and see how the modeled molecular inventory changes.",
+    "connection": "This work brought together the chemistry, computation, and planetary questions that drew me back to research after working in healthcare software.",
+    "storyAnchor": "research",
+    "dataUrl": "https://doi.org/10.5281/zenodo.17445312",
+    "dataLabel": "Open code & computational outputs on Zenodo",
+    "nextQuestion": "How closely can real melt-pool chemistry approach these modeled outcomes, and what traces might remain for Dragonfly to investigate?"
+  },
+  {
+    "id": "venus",
+    "name": "Venus",
+    "question": "Could unfamiliar chemistry emerge in sulfuric-acid clouds?",
+    "summary": "Life on Earth gives us one chemical example. This study asks whether carbon-free polymer structures could be plausible in a very different planetary setting.",
+    "setting": "The clouds of our planetary neighbor",
+    "image": "/interactive-science/venus-polymer-model-05.png",
+    "imageAlt": "Published molecular models of a phosphorus-sulfur ring and its precursor.",
+    "imageCredit": "Madan et al. (2025), Figure 3, cropped. QRB Discovery. CC BY 4.0.",
+    "imageMode": "molecule",
+    "featuredOrder": 2,
+    "publications": [
+      "venus"
+    ],
+    "resources": [
+      "telluride-2025"
+    ],
+    "contribution": "I joined Martin Rahm’s group at Chalmers through the CASSUM fellowship. The project began in the group before I arrived; I later led the final calculations and manuscript writing, working with the collaborators credited in the paper.",
+    "approach": "We use computational chemistry to examine model structures built from phosphorus, sulfur, and oxygen. Calculations test selected formation routes, bond-cleavage properties, and potential spectroscopic fingerprints under the study’s assumptions.",
+    "finding": "Some modeled routes to these carbon-free structures are chemically plausible under the chosen Venus-like conditions. That makes this family of molecules worth further investigation.",
+    "limitations": "The study does not establish that these molecules exist in Venus’s clouds, how abundant they would be, or whether they could have a biological role. Real cloud chemistry involves processes the model does not capture.",
+    "insideTitle": "Why model a ring instead of a long chain?",
+    "inside": "A finite chain has end groups that complicate comparisons. A small cyclic structure provides a manageable stand-in for a longer polymer, with limitations that matter when interpreting the results.",
+    "connection": "This project grew out of my summer in Sweden before starting at Purdue: a chance to follow an unconventional question while learning what kind of scientific work felt meaningful to me.",
+    "storyAnchor": "research",
+    "nextQuestion": "If these structures can form, which measurements could distinguish them from other cloud-particle chemistry?"
+  }
+]

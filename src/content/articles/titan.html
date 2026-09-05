@@ -1,0 +1,102 @@
+<div>
+    <section class="hero" aria-labelledby="hero-title">
+      
+      <div>
+        <p class="kicker">An interactive guide to two complementary studies</p>
+        <h1 id="hero-title">Could an ancient melt pool left behind after an impact unlock life's ingredients on Titan?</h1>
+        <p class="hero-intro">Saturn's largest moon is bitterly cold, but an impact event can briefly melt its icy crust. Two thermodynamic studies ask what chemistry might become possible in that temporary water.</p>
+        <div class="paper-links" aria-label="Source papers">
+          <a href="https://doi.org/10.3847/PSJ/ae1c18">Amino acids, 2025 ↗</a>
+          <a href="https://doi.org/10.3847/PSJ/ae5f91">Nucleobases, ribose &amp; fatty acids, 2026 ↗</a>
+        </div>
+      </div>
+      <figure class="titan-stage">
+        <img width="720" height="713" loading="eager" decoding="async" class="titan-image" src="/interactive-science/titan-selk.jpg" alt="False-color composite of Titan with Selk crater marked by a yellow box.">
+        <div class="fact f1"><strong>Atmospheric chemistry</strong><span>deposits organics on the surface</span></div>
+        <div class="fact f2"><strong>Impact crater sites</strong><span>can mix organics in liquid water</span></div>
+        <div class="fact f3"><strong>Dragonfly at Selk</strong><span>arrival planned for 2034</span></div>
+        <figcaption><em>False color composite of Titan with the red controlled by the 1.59/1.27 µm, green by the 2.03/1.27 µm and blue by the 1.27/1.08 µm band ratios. The equatorial dune fields appear in a consistent brown color. Selk crater is highlighted by the yellow box. Credits NASA/JPL/Univ. Arizona/CNRS/LPG.</em></figcaption>
+      </figure>
+    </section>
+
+    <section class="section thesis" aria-labelledby="thesis-title">
+      <p class="kicker">Key Takeaway</p>
+      <h2 id="thesis-title">In the models, ammonia behaves like a gatekeeper: a little of it opens routes to nearly every molecular class studied.</h2>
+      <div class="trust">
+        <article class="shows"><span class="icon" aria-hidden="true">✓</span><h3>What this shows</h3><p>Given the studies' starting ingredients and equilibrium assumptions, many biologically relevant molecules are energetically accessible in a Selk-like melt pool.</p></article>
+        <article class="not-shows"><span class="icon" aria-hidden="true">×</span><h3>What this does not show</h3><p>It does not show that the reactions happen quickly, that the molecules survive, or that life exists on Titan.</p></article>
+      </div>
+    </section>
+
+    <section class="section chapter setting" aria-labelledby="setting-title">
+      <span class="chapter-number" aria-hidden="true">01</span>
+      <div class="heading"><p class="kicker">A cold world, a temporary pond</p><h2 id="setting-title">It’s so cold that water is essentially frozen solid like a rock, but for a while, an impact can alter the conditions.</h2><p>Titan's surface is built from water ice and coated with organics that are made in, and deposited from, the atmosphere. At Selk crater, a melt pool left after an impact could have allowed for the organics to undergo aqueous processing before the melt froze again.</p></div>
+      <div class="sequence" aria-label="Conceptual sequence from atmosphere to refrozen crater">
+        <article><span class="num">01</span><div class="sequence-visual"><img width="700" height="394" loading="lazy" decoding="async" src="/interactive-science/titan-sequence-atmosphere.webp" alt="Conceptual illustration of organic particles settling through Titan's hazy atmosphere onto an icy surface."></div><h3>Complex atmospheric chemistry</h3><p>Sunlight and energetic particles turn nitrogen and methane into a rich organic haze that settles on the surface.</p></article>
+        <article><span class="num">02</span><div class="sequence-visual"><img width="700" height="394" loading="lazy" decoding="async" src="/interactive-science/titan-sequence-impact-v2.webp" alt="Simple conceptual cross-section of an impact striking Titan's icy surface."></div><h3>Impact on surface</h3><p>A collision melts part of the water-ice crust, allowing deposited organics to mix into the water.</p></article>
+        <article><span class="num">03</span><div class="sequence-visual"><img width="700" height="394" loading="lazy" decoding="async" src="/interactive-science/titan-sequence-melt-pool-v2.webp" alt="Simple conceptual cross-section of a liquid-water melt pool inside an icy Titan crater."></div><h3>Melt pool</h3><p>Shallow zones may last years to centuries. Deeper liquid can persist for thousands of years.</p></article>
+        <article><span class="num">04</span><div class="sequence-visual"><img width="700" height="394" loading="lazy" decoding="async" src="/interactive-science/titan-sequence-refreezing-v2.webp" alt="Conceptual cross-section of the same crater after the melt pool has frozen into solid ice."></div><h3>Refreezing</h3><p>The chemical record is locked into ice, altered by the process of refreezing and potential environmental changes like exposure to cosmic rays or freeze–thaw cycling.</p></article>
+      </div>
+      <p class="concept">Conceptual sequence. Times and mixing vary with depth and location.</p>
+    </section>
+
+    <section class="section chapter gatekeeper" aria-labelledby="gatekeeper-title">
+      <span class="chapter-number" aria-hidden="true">02</span>
+      <div class="heading split"><div><p class="kicker">The creative question</p><h2 id="gatekeeper-title">What can Titan's simplest ingredients assemble?</h2></div><p>The models begin with water, hydrogen cyanide, acetylene, and a changing amount of ammonia. They then search for the lowest-energy arrangement of atoms, without prescribing a reaction path.</p></div>
+      <div class="static-model"><h3>Reported ammonia settings</h3><p>The control needs JavaScript. These are the reported equilibrium-model states; they do not predict reaction rates or life.</p><table><caption>Thermodynamically accessible molecules, out of 40 studied</caption><thead><tr><th scope="col">Starting NH₃</th><th scope="col">Accessible molecules</th></tr></thead><tbody><tr><th scope="row">0%</th><td>5: three amino acids, adenine, and butanoic acid</td></tr><tr><th scope="row">1%, 2%, 3%, 4%, 5%, 10%</th><td>38: all except cysteine and methionine</td></tr></tbody></table></div><div class="condition-panel">
+        <div class="controls">
+          <label for="ammonia-slider"><span>Choose the modeled starting ammonia concentration</span><output class="slider-value" id="ammonia-value" for="ammonia-slider">0% NH₃</output></label>
+          <div class="slider-row">
+            <input class="ammonia-slider" id="ammonia-slider" type="range" min="0" max="6" step="1" value="0" aria-valuetext="0% ammonia">
+          </div>
+          <div class="slider-scale" aria-hidden="true"><div class="slider-ticks"><span class="active" style="--tick: 0%">0%</span><span style="--tick: 16.6667%">1%</span><span style="--tick: 33.3333%">2%</span><span style="--tick: 50%">3%</span><span style="--tick: 66.6667%">4%</span><span style="--tick: 83.3333%">5%</span><span style="--tick: 100%">10%</span></div></div>
+        </div>
+        <div class="condition-content" aria-live="polite">
+          <div class="summary"><p class="mini">Model result</p><h3 id="condition-title">A narrow chemical window</h3><p id="condition-summary">Only five of the 40 studied molecules are thermodynamically accessible without added ammonia.</p><small id="condition-note">The exceptions are striking because their formulas fit the starting supply of carbon, hydrogen, nitrogen, and oxygen especially well.</small></div>
+          <div class="molecules" id="molecule-grid"></div>
+        </div>
+        <p class="concept">This control displays reported equilibrium-model outcomes. It is not a predictive simulator.</p>
+      </div>
+      <div class="why">
+        <div class="formula" aria-hidden="true"><span>HCN</span><span>C₂H₂</span><span>H₂O</span><span class="ammonia">+ NH₃</span></div>
+        <div><h3>Why does ammonia matter?</h3><p>The starting organics are short on available hydrogen for building many reduced, hydrogen-rich molecules. In the model, ammonia supplies hydrogen while the system balances atoms and lowers its Gibbs free energy.</p><details><summary>For the technically curious</summary><p>The Cantera VCS solver minimizes total Gibbs free energy at fixed temperature, pressure, and elemental abundances. The calculations assume a closed, ideal, homogeneous aqueous phase. They do not include explicit pH, reaction pathways, rate barriers, mineral catalysis, photolysis, radiolysis, adsorption, polymerization, or phase separation.</p></details></div>
+      </div>
+    </section>
+
+    <section class="section chapter evidence" aria-labelledby="evidence-title">
+      <span class="chapter-number" aria-hidden="true">03</span>
+      <div class="heading split"><div><p class="kicker">The evidence</p><h2 id="evidence-title">The pattern appears across four molecular families.</h2></div><p>Each heat map is a published model result. Dark purple means zero modeled yield. Brighter cells mean a larger equilibrium yield relative to the limiting starting ingredient.</p></div>
+      <div class="figures">
+        <figure><div class="figure-frame"><img width="1115" height="1480" loading="lazy" decoding="async" src="/interactive-science/amino-acid-yields.png" alt="Published heat map showing modeled yields for 21 amino acids across zero to ten percent ammonia. Only alanine, beta-alanine, and proline appear at zero ammonia."></div><figcaption><strong>Amino acids.</strong> At zero ammonia, only alanine, beta-alanine, and proline are favored. At 1%, all but the two sulfur-bearing amino acids become accessible. Cropped from Figure 1, Madan &amp; Pearce (2025).</figcaption></figure>
+        <figure><div class="figure-frame"><img width="1100" height="1354" loading="lazy" decoding="async" src="/interactive-science/nucleobase-ribose-fatty-acid-yields.png" alt="Published heat maps showing modeled yields for seven nucleobases, ribose, and eleven fatty acids across zero to ten percent ammonia."></div><figcaption><strong>Nucleobases, ribose, and fatty acids.</strong> Without ammonia, only adenine and butanoic acid appear. At 1%, every investigated molecule in these groups is accessible. Cropped from Figure 2, Madan &amp; Pearce (2026).</figcaption></figure>
+      </div>
+      <div class="ladder" aria-label="Evidence ladder">
+        <article><span class="ladder-index">1</span><div><p class="mini">Calculated</p><h3>Equilibrium favorability</h3><p>The models calculate which products minimize Gibbs free energy under a defined starting inventory.</p></div></article>
+        <article><span class="ladder-index">2</span><div><p class="mini">Compared</p><h3>Kinetics and other samples</h3><p>Amino-acid calculations were compared with laboratory rates. Some broader abundance patterns qualitatively resemble meteorites and asteroid samples.</p></div></article>
+        <article><span class="ladder-index">3</span><div><p class="mini">Suggested</p><h3>A chemical baseline for Selk</h3><p>Molecular combinations could help infer past ammonia availability and identify patterns expected from abiotic chemistry.</p></div></article>
+        <article><span class="ladder-index">?</span><div><p class="mini">Unknown</p><h3>Pathways, rates, preservation</h3><p>The studies do not establish exact reaction routes, real-world yields, or what remains accessible at Dragonfly's sampling depth.</p></div></article>
+      </div>
+      <details><summary>How close might the chemistry get to equilibrium?</summary><p>For glycine and alanine nitrile hydrolysis, the 2025 study compared equilibrium outputs with laboratory kinetics. Extrapolated equilibration times ranged from years to centuries, shorter than the longest modeled deep-melt lifetimes, but potentially longer than some shallow melt intervals. This supports plausibility in some settings, not complete equilibration everywhere.</p></details>
+    </section>
+
+    <section class="section chapter dragonfly" aria-labelledby="dragonfly-title">
+      <span class="chapter-number" aria-hidden="true">04</span>
+      <div class="heading"><p class="kicker">What comes next</p><h2 id="dragonfly-title">Dragonfly will look for ingredients and patterns.</h2><p>Finding one familiar molecule would not be evidence of life. The stronger test is whether many measurements across Selk fit an abiotic chemical baseline, or depart from it in a way that demands closer investigation.</p></div>
+      <div class="signals">
+        <article><h3>Ammonia-poor pattern</h3><p>Alanine, beta-alanine, proline, adenine, and butanoic acid alone would match the model's narrow, ammonia-free window.</p></article>
+        <article><h3>Ammonia-rich pattern</h3><p>A broader amino-acid set, pyrimidine-favoring nucleobases, ribose, and many fatty-acid lengths would be consistent with ammonia-rich processing.</p></article>
+        <article><h3>A possible anomaly</h3><p>Strongly selective distributions, such as pronounced even-carbon fatty-acid enrichment or large chiral excess, could justify further tests. Neither is proof of biology.</p></article>
+      </div>
+      <div class="instrument"><figure class="instrument-visual"><img width="1400" height="788" loading="lazy" decoding="async" src="/interactive-science/Dragonfly_SurfaceOps.webp" alt="Artist's depiction of NASA's Dragonfly rotorcraft operating on Titan's surface."><figcaption>IMAGE CREDIT: NASA/JOHNS HOPKINS APL/STEVE GRIBBEN</figcaption></figure><div><p class="mini">A mission-ready question</p><h3>Can DraMS read the frozen record?</h3><p>Dragonfly's mass spectrometer combines laser desorption and gas chromatography. Together, those modes can screen complex organics, separate some isomers, and examine distributions across samples. Ribose identification and some chiral measurements remain operationally uncertain.</p></div></div>
+    </section>
+
+    <section class="section about" aria-labelledby="about-title">
+      <div><p class="kicker">About the project</p><h2 id="about-title">A shared thermodynamic map of Selk crater chemistry.</h2></div>
+      <div class="about-copy"><p>These complementary studies were led by <strong>Ishaan Madan</strong> with <strong>Ben K. D. Pearce</strong> at Purdue University. Together they assess amino acids, nucleobases, ribose, and fatty acids within one Titan-relevant melt-pool setting. This work was Ishaan's first chapter of his PhD.</p><p>Ishaan Madan was supported by Purdue University's Frederick N. Andrews Fellowship (2024-2026). The research used Purdue's Negishi cluster and acknowledged the Rosen Center for Advanced Computing, methodological discussions, and manuscript reviewers.</p><a href="https://doi.org/10.5281/zenodo.17445312">Explore the open code and computational outputs on Zenodo ↗</a></div>
+    </section>
+  </div>
+
+  <footer>
+    <div><p class="kicker">Sources</p><p>Madan, I., &amp; Pearce, B. K. D. (2025). “Prebiotic Chemistry Insights for Dragonfly: Thermodynamics of Amino Acid Synthesis in Selk Crater on Titan.” <em>The Planetary Science Journal</em>, 6:284. <a href="https://doi.org/10.3847/PSJ/ae1c18">doi:10.3847/PSJ/ae1c18</a>.</p><p>Madan, I., &amp; Pearce, B. K. D. (2026). “Prebiotic Chemistry Insights for Dragonfly. II. Thermodynamic Favorability of Nucleobases, Ribose, and Fatty Acids in Selk Crater on Titan.” <em>The Planetary Science Journal</em>, 7:107. <a href="https://doi.org/10.3847/PSJ/ae5f91">doi:10.3847/PSJ/ae5f91</a>.</p></div>
+    <div><p>Published figures are cropped excerpts from the supplied open-access papers, licensed CC BY 4.0. Educational diagrams are conceptual. The ammonia control displays reported model states and is not a predictive tool.</p><a href="#hero-title">Back to the top ↑</a></div>
+  </footer>

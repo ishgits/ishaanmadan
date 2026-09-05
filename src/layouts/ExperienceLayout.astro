@@ -1,0 +1,33 @@
+---
+import Layout from './Layout.astro';
+import RelatedContent from '../components/RelatedContent.astro';
+import ChapterNav from '../components/ChapterNav.astro';
+interface Props { title:string; description:string; ogImage:string; label:string; parent:{href:string;label:string}; chapters:{id:string;label:string}[]; links:{href:string;title:string;description:string}[]; kind?:'science'|'reflection'; }
+const { title,description,ogImage,label,parent,chapters,links,kind='science' } = Astro.props;
+---
+<Layout title={title} description={description} ogImage={ogImage} fullBleed schema={{'@type':'Article',headline:title,description,author:{'@id':new URL('/#ishaan',Astro.site).href},mainEntityOfPage:new URL(Astro.url.pathname,Astro.site).href}}>
+  <div class="experience-intro"><nav aria-label="Breadcrumb"><a href="/">Ishaan Madan</a><span aria-hidden="true">/</span><a href={parent.href}>{parent.label}</a><span aria-hidden="true">/</span><span aria-current="page">{label}</span></nav><p>{kind === 'science' ? 'An interactive explanation of my research. Start with the story; go deeper wherever your curiosity takes you.' : 'A personal reflection by Ishaan Madan. Part of an ongoing process of self-discovery.'}</p><ChapterNav chapters={chapters}/></div>
+  <slot/>
+  <div class="experience-ending"><RelatedContent links={links}/></div>
+</Layout>
+<style>.experience-intro,.experience-ending{width:min(100% - 80px,1240px);margin:auto;}.experience-intro{padding-top:24px;}.experience-intro>nav{display:flex;flex-wrap:wrap;gap:8px 12px;font-size:.76rem;color:var(--c-ink-muted);}.experience-intro>nav a{text-decoration:underline;text-decoration-color:var(--c-line-strong);}.experience-intro>p{font-size:.83rem;color:var(--c-ink-muted);margin-top:12px;}.experience-intro :global(.chapter-nav){margin:22px 0 0;border-bottom:0;}.experience-ending :global(.related-content){margin-top:40px;}@media(max-width:700px){.experience-intro,.experience-ending{width:calc(100% - 40px);}}</style>
+<style is:global>
+.experience-titan,.experience-venus,.experience-first-retreat { isolation:isolate; overflow:clip; }
+.experience-titan :focus-visible,.experience-venus :focus-visible,.experience-first-retreat :focus-visible { outline:3px solid #92621b;outline-offset:4px; }
+.experience-titan .hero :focus-visible { outline-color:#f0c26a; }
+.experience-titan .hero { min-height:0;padding-top:3rem; }
+.experience-titan .chapter { scroll-margin-top:100px; }
+.experience-titan .static-model { padding:28px;max-width:1000px;margin:0 auto 24px;background:#fffdf8;color:#17352f; }
+.experience-titan .static-model table { width:100%;border-collapse:collapse;margin-top:20px; }
+.experience-titan .static-model th,.experience-titan .static-model td { text-align:left;padding:12px;border:1px solid #aabdb0; }
+.experience-titan .static-model caption { text-align:left;margin-bottom:12px; }
+.experience-venus { line-height:1.58; }
+.experience-venus .hero { min-height:0; }
+.experience-venus .chapter-list { top:100px; }
+.experience-venus .deep ul { list-style:disc;padding-left:24px; }
+.experience-venus .evidence button { min-height:44px; }
+.experience-venus .static-model { padding:35px 0; }
+.experience-first-retreat .hero { padding-top:50px; }
+.experience-first-retreat .source-card ul { list-style:disc;padding-left:20px; }
+@media(max-width:700px){.experience-venus .hero-visual{order:0}.experience-venus .hero h1{font-size:2.8rem}.experience-venus .tag{font-size:.75rem;max-width:160px}.experience-venus .chapter-list{position:static;}.experience-titan .hero{padding-top:2rem;}}
+</style>

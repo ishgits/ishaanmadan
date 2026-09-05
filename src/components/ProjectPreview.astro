@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { project: CollectionEntry<'projects'>; }
+const { project } = Astro.props;
+const p = project.data;
+---
+<article class:list={['project-preview', p.imageMode]}>
+  <a class="project-visual" href={`/research/${project.id}/explore/`} aria-label={`Explore the ${p.name} interactive`}>
+    <img src={p.image} alt={p.imageAlt} width={p.imageMode === 'planet' ? 800 : 1200} height={p.imageMode === 'planet' ? 800 : 600} loading="lazy" decoding="async" />
+    <span class="visual-label">{p.name} <span aria-hidden="true">↗</span></span>
+  </a>
+  <div class="project-copy">
+    <p class="eyebrow">{p.setting}</p>
+    <h3><a href={`/research/${project.id}/`}>{p.question}</a></h3>
+    <p>{p.summary}</p>
+    <div class="text-actions">
+      <a class="text-link" href={`/research/${project.id}/explore/`}>Explore the interactive <span aria-hidden="true">↗</span></a>
+      <a class="quiet-link" href={`/research/${project.id}/`}>About the research</a>
+    </div>
+    <p class="asset-credit">{p.imageCredit}</p>
+  </div>
+</article>

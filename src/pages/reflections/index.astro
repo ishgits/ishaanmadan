@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import RelatedContent from '../../components/RelatedContent.astro';
+import { editorial } from '../../data/editorial';
+import { getEntry } from 'astro:content';
+import { readingTime } from '../../lib/content';
+import retreat from '../../content/articles/first-retreat.html?raw';
+const reflection = (await getEntry('reflections','first-retreat'))!;
+---
+<Layout title="Reflections & Meditation | Ishaan Madan" description="A space for self-discovery: personal reflections, guided meditations, and free live meditation circles with Ishaan Madan." ogImage="/og/reflections.png">
+  <PageIntro label="Reflections & Meditation" title="A little more room to notice." description="Alongside my research, meditation and reflection help me understand my experience and the person I’m becoming. This is a space to share some of that practice."><div class="text-actions"><a class="quiet-link" href="#read">Read ↓</a><a class="quiet-link" href="#practice">Practice ↓</a><a class="quiet-link" href="#gather">Gather ↓</a></div></PageIntro>
+  <section id="read" class="retreat-feature" aria-labelledby="retreat-heading"><div class="retreat-art" aria-hidden="true"><div class="ring outer"></div><div class="ring middle"></div><div class="ring inner"></div><span>01 / Read</span></div><div class="retreat-description"><p class="eyebrow">Retreat · {reflection.data.eventDate} · {readingTime(retreat)}</p><h2 id="retreat-heading">What happens when<br/>you give yourself time?</h2><p>{reflection.data.summary}</p><a class="text-link" href={reflection.data.url}>Read my first-retreat reflections →</a></div></section>
+  <div class="practice-grid section-block">
+    <section id="practice" aria-labelledby="practice-heading"><p class="eyebrow">02 / Practice</p><h2 id="practice-heading">Sit with me.</h2><p>Some guided meditations I’ve recorded, shared as an invitation to pause and explore your own experience.</p><p>You can browse the recordings and choose a practice in my YouTube playlist.</p><a class="action" href={editorial.meditationPlaylist} target="_blank" rel="noopener">Listen on YouTube ↗</a></section>
+    <section id="gather" aria-labelledby="gather-heading"><p class="eyebrow">03 / Gather</p><h2 id="gather-heading">Practice in community.</h2><p>Live meditation circles offer a space to connect virtually and practice with others. Always free.</p><p>Register to receive the schedule and joining information.</p><a class="action primary" href={editorial.circleRegistration} target="_blank" rel="noopener">Register for a live circle ↗</a></section>
+  </div>
+  <RelatedContent links={[{href:'/about/',title:'The thread of self-discovery',description:'How research, life transitions, and reflection connect in my story.'},{href:'/connect/',title:'Continue the conversation',description:'Share a thought, a question, or something you’re exploring.'}]}/>
+</Layout>
+<style>
+.retreat-feature { display:grid;grid-template-columns:.7fr 1fr;gap:50px;align-items:center;background:#eae5d7;color:#2b3833;border-radius:10px;padding:52px; }.retreat-art { position:relative;aspect-ratio:1;max-width:300px;width:100%; }.ring { position:absolute;border:1px solid #899587;border-radius:50%; }.outer { inset:0; }.middle { inset:16%; }.inner { inset:33%;background:radial-gradient(circle at 30% 30%,#cebb93,#7c8972);border:none; }.retreat-art span { position:absolute;bottom:-24px;left:0;right:0;text-align:center;font-family:var(--font-mono);font-size:.65rem;color:#505e4d;letter-spacing:.15em;text-transform:uppercase; }.retreat-description .eyebrow { color:#80502b; }.retreat-description h2 { font:400 clamp(2rem,3.5vw,3.4rem)/1.15 Georgia,serif;letter-spacing:-.04em;margin:20px 0; }.retreat-description>p:not(.eyebrow) { color:#505e55;margin-bottom:24px; }.retreat-description .text-link { color:#80502b;text-decoration-color:#bc9c77; }
+.practice-grid { display:grid;grid-template-columns:1fr 1fr;gap:60px; }.practice-grid section { padding-top:30px;border-top:1px solid var(--c-line); }.practice-grid h2 { font-size:2.5rem;margin:20px 0; }.practice-grid p:not(.eyebrow) { color:var(--c-ink-muted);margin-bottom:18px;max-width:50ch; }.practice-grid .action { margin-top:15px; }
+@media(max-width:700px){.retreat-feature{grid-template-columns:1fr;padding:30px;gap:45px;}.retreat-art{width:150px;justify-self:center;}.practice-grid{grid-template-columns:1fr;gap:45px;}.practice-grid h2{font-size:2rem;}}
+</style>

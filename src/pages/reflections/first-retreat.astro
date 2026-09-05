@@ -1,0 +1,9 @@
+---
+import ExperienceLayout from '../../layouts/ExperienceLayout.astro';
+import Retreat from '../../components/experiences/first-retreat.astro';
+import { getEntry } from 'astro:content';
+import { readingTime } from '../../lib/content';
+import body from '../../content/articles/first-retreat.html?raw';
+const reflection = (await getEntry('reflections','first-retreat'))!;
+---
+<ExperienceLayout title="First Virtual Meditation Retreat | Ishaan Madan" description={reflection.data.summary} ogImage="/og/first-retreat.png" label={readingTime(body)} parent={{href:'/reflections/',label:'Reflections & Meditation'}} kind="reflection" chapters={[{id:'top',label:'The retreat'},{id:'story',label:'The story'},{id:'learnings',label:'What I learned'}]} links={[{href:'/reflections/#practice',title:'Explore guided practice',description:'Recorded meditations and opportunities to sit together.'},{href:'/about/',title:'A path of self-discovery',description:'The wider story of how I got here.'},{href:'/connect/',title:'Share a reflection',description:'Continue the conversation.'}]}><Retreat/></ExperienceLayout>

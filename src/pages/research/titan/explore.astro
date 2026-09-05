@@ -1,0 +1,5 @@
+---
+import ExperienceLayout from '../../../layouts/ExperienceLayout.astro';
+import Titan from '../../../components/experiences/titan.astro';
+---
+<ExperienceLayout title="Titan: a melt pool and life's ingredients | Ishaan Madan" description="Explore two studies of Titan's prebiotic chemistry. Adjust reported ammonia settings, examine the evidence, and discover what the models can and cannot tell us." ogImage="/og/titan-explore.png" label="Interactive story" parent={{href:'/research/titan/',label:'Titan research'}} chapters={[{id:'hero-title',label:'The question'},{id:'setting-title',label:'The setting'},{id:'gatekeeper-title',label:'Explore the model'},{id:'evidence-title',label:'Evidence'},{id:'dragonfly-title',label:'What comes next'}]} links={[{href:'/research/titan/',title:'The Titan project',description:'My contribution, publications, code, and related talks.'},{href:'/research/venus/explore/',title:'Next stop: Venus',description:'Could sulfuric-acid clouds allow unfamiliar chemistry?'},{href:'/about/#research',title:'The person behind the work',description:'How I found my way to these questions.'}]}><Titan/></ExperienceLayout>

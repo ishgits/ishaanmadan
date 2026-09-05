@@ -1,0 +1,10 @@
+---
+interface Props { label?: string; links: { href: string; title: string; description: string }[]; }
+const { label = 'Keep exploring', links } = Astro.props;
+const current = Astro.url.pathname.replace(/\/$/, '');
+const unique = links.filter((link, index) => link.href.replace(/\/$/, '') !== current && links.findIndex(l => l.href === link.href) === index);
+---
+<aside class="related-content" aria-label={label}>
+  <p class="eyebrow">{label}</p>
+  <div class="related-grid">{unique.map(link => <a href={link.href}><h2>{link.title} <span aria-hidden="true">↗</span></h2><p>{link.description}</p></a>)}</div>
+</aside>

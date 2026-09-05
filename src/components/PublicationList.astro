@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { publications: CollectionEntry<'publications'>[]; }
+const { publications } = Astro.props;
+---
+<ol class="publication-list">
+  {publications.toSorted((a,b) => b.data.year - a.data.year).map(({ data: p }) => (
+    <li>
+      <span class="publication-year">{p.year}</span>
+      <div>
+        <h3><a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title} <span class="external-mark" aria-label="opens in a new tab">↗</span></a></h3>
+        <p>{p.authors.length > 3 ? `${p.authors.slice(0, 2).join(', ')}, et al.` : p.authors.join(' & ')} · {p.venue} {p.volume}, {p.article}</p>
+        {p.authors.length > 3 && <details class="author-details"><summary>All authors</summary><p>{p.authors.join(', ')}</p></details>}
+        <a class="quiet-link" href={`/research/${p.project.id}/`}>The {p.project.id === 'titan' ? 'Titan' : 'Venus'} project →</a>
+      </div>
+    </li>
+  ))}
+</ol>

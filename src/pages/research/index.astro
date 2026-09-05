@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import ProjectPreview from '../../components/ProjectPreview.astro';
+import PublicationList from '../../components/PublicationList.astro';
+import RelatedContent from '../../components/RelatedContent.astro';
+import { featuredProjects } from '../../lib/content';
+import { getCollection } from 'astro:content';
+import { SITE } from '../../consts';
+const projects = await featuredProjects();
+const publications = await getCollection('publications');
+---
+<Layout title="Research | Ishaan Madan" description="How might life's ingredients form beyond Earth? Explore Ishaan Madan's Titan and Venus research, interactive explanations, publications, and methods." ogImage="/og/research.png">
+  <PageIntro label="Research / Chemistry across worlds" title="How does life become possible?" description="I use chemistry and computation to explore that question in environments very different from our own. Titan’s temporary melt pools and Venus’s sulfuric-acid clouds offer two places to start."><div class="text-actions"><a class="text-link" href="#publications">Selected publications ↓</a><a class="quiet-link" href={SITE.academicCV} target="_blank" rel="noopener">Academic CV ↗</a></div></PageIntro>
+  <section aria-labelledby="projects-heading"><h2 class="sr-only" id="projects-heading">Research projects</h2><div class="project-grid">{projects.map(project => <ProjectPreview project={project}/>)}</div></section>
+  <section class="section-block" aria-labelledby="methods-heading"><div class="section-heading"><div><p class="eyebrow">From possibility to a testable question</p><h2 id="methods-heading">How I work</h2></div></div><div class="methods-grid">
+    <article><span>01</span><h3>Model the chemistry</h3><p>Use computational chemistry and thermodynamics to ask what molecules and transformations are plausible in a given environment.</p><a class="quiet-link" href="/research/venus/#approach">Inside the Venus approach →</a></article>
+    <article><span>02</span><h3>Build useful workflows</h3><p>Connect calculations and computational outputs so complex chemical systems become easier to investigate and compare.</p><a class="quiet-link" href="https://doi.org/10.5281/zenodo.17445312">Titan code & outputs ↗</a></article>
+    <article><span>03</span><h3>Make the work approachable</h3><p>Turn papers into visual explanations, interactive experiences, and talks that invite people into the questions.</p><a class="quiet-link" href="/research/titan/explore/">Try the Titan companion →</a></article>
+  </div></section>
+  <section class="section-block" id="publications" aria-labelledby="pub-heading"><div class="section-heading"><div><p class="eyebrow">The published work</p><h2 id="pub-heading">Selected publications</h2></div><a class="quiet-link" href={SITE.orcid}>My ORCID record ↗</a></div><PublicationList publications={publications}/></section>
+  <RelatedContent links={[{href:'/about/#research',title:'How I got here',description:'The path from healthcare software to planetary chemistry.'},{href:'/resources/',title:'Talks & teaching',description:'Presentations that explore the science from another angle.'},{href:'/connect/',title:'Let’s compare questions',description:'Research ideas, focused collaboration, and conversation.'}]} />
+</Layout>
+<style>.methods-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:38px; }.methods-grid article { border-top:1px solid var(--c-line);padding-top:22px; }.methods-grid span { font-family:var(--font-mono);color:var(--c-accent-ink);font-size:.75rem; }.methods-grid h3 { font-size:1.35rem;margin:18px 0; }.methods-grid p { color:var(--c-ink-muted);font-size:.9rem;margin-bottom:22px; }@media(max-width:700px){.methods-grid{grid-template-columns:1fr;gap:30px;}}</style>

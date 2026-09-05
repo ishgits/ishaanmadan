@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "npm run build && wrangler dev",
-    "og": "node scripts/generate-og.mjs",
+    "preview": "npm run build && node scripts/preview-production.mjs",
+    "og": "node scripts/generate-site-assets.mjs",
     "generate-types": "wrangler types",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "test": "node scripts/check-site.mjs",
+    "check": "astro check",
+    "review": "node scripts/preview-review.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^14.1.2",
@@ -21,7 +24,11 @@
     "tailwindcss": "^4.3.2"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "axe-core": "^4.13.0",
+    "linkedom": "^0.18.13",
     "sharp": "^0.35.3",
+    "typescript": "^6.0.3",
     "wrangler": "^4.110.0"
   }
 }
