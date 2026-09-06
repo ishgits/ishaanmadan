@@ -1,10 +1,10 @@
 ---
-interface Props { label: string; title: string; description?: string; }
+interface Props { label: string; title?: string; description?: string; }
 const { label, title, description } = Astro.props;
 ---
 <header class="page-intro">
   <p class="eyebrow">{label}</p>
-  <h1>{title}</h1>
+  <h1><slot name="title">{title}</slot></h1>
   {description && <p class="lede">{description}</p>}
   <slot />
 </header>

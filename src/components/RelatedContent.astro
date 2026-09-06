@@ -6,5 +6,5 @@ const unique = links.filter((link, index) => link.href.replace(/\/$/, '') !== cu
 ---
 <aside class="related-content" aria-label={label}>
   <p class="eyebrow">{label}</p>
-  <div class="related-grid">{unique.map(link => <a href={link.href}><h2>{link.title} <span aria-hidden="true">↗</span></h2><p>{link.description}</p></a>)}</div>
+  <div class="related-grid">{unique.map(link => <a href={link.href}><h2>{link.title}</h2><p>{link.description}</p></a>)}</div>
 </aside>

@@ -6,6 +6,7 @@ import PublicationList from '../components/PublicationList.astro';
 import ResourceRow from '../components/ResourceRow.astro';
 import RelatedContent from '../components/RelatedContent.astro';
 import ChapterNav from '../components/ChapterNav.astro';
+import LinkMark from '../components/LinkMark.astro';
 interface Props { project: CollectionEntry<'projects'>; }
 const { project } = Astro.props;
 const p = project.data;
@@ -15,18 +16,18 @@ const other = project.id === 'titan' ? 'venus' : 'titan';
 const schema = { '@type':'CollectionPage', name:p.question, description:p.summary, author:{'@id':new URL('/#ishaan',Astro.site).href}, hasPart:publications.map(({data:d})=>({'@type':'ScholarlyArticle', name:d.title, author:d.authors.map(name=>({'@type':'Person',name})), datePublished:String(d.year), url:`https://doi.org/${d.doi}`, isPartOf:{'@type':'Periodical',name:d.venue}})) };
 ---
 <Layout title={`${p.name}: ${p.question} | Ishaan Madan`} description={p.summary} ogImage={`/og/${project.id}.png`} schema={schema}>
-  <a class="quiet-link" href="/research/">← Research</a>
-  <header class="project-header"><div><p class="eyebrow">{p.name} / Project overview</p><h1>{p.question}</h1><p class="lede">{p.summary}</p><div class="actions"><a class="action primary" href={`/research/${project.id}/explore/`}>Explore the interactive ↗</a><a class="action" href="#papers">Read the papers ↓</a></div></div><figure class:list={['project-image',p.imageMode]}><img src={p.image} alt={p.imageAlt} width="800" height={p.imageMode === 'planet' ? 800 : 400}/><figcaption>{p.imageCredit}</figcaption></figure></header>
+  <a class="quiet-link" href="/research/"><LinkMark kind="back" /> Research</a>
+  <header class="project-header"><div><p class="eyebrow">{p.name} / Project overview</p><h1>{p.question}</h1><p class="lede">{p.summary}</p><div class="actions"><a class="action primary" href={`/research/${project.id}/explore/`}>Explore the interactive</a><a class="action" href="#papers">Read the papers<LinkMark kind="down" /></a></div></div><figure class:list={['project-image',p.imageMode]}><img src={p.image} alt={p.imageAlt} width={p.imageWidth} height={p.imageHeight}/><figcaption>{p.imageCredit}</figcaption></figure></header>
   <ChapterNav chapters={[{id:'brief',label:'In brief'},{id:'contribution',label:'My contribution'},{id:'approach',label:'The approach'},{id:'papers',label:'Papers & resources'}]}/>
   <div class="project-body">
     <section id="brief"><p class="eyebrow">In brief</p><h2>What the work suggests</h2><p>{p.finding}</p><div class="limits"><h3>Where the evidence stops</h3><p>{p.limitations}</p></div></section>
     <section id="contribution"><p class="eyebrow">The people behind the work</p><h2>My contribution</h2><p>{p.contribution}</p></section>
     <section id="approach"><p class="eyebrow">The approach</p><h2>Turning a question into calculations</h2><p>{p.approach}</p><div class="inside-note"><h3>{p.insideTitle}</h3><p>{p.inside}</p></div></section>
-    <section class="explore-note"><p class="eyebrow">See the ideas take shape</p><h2>Step inside the science.</h2><p>Follow the setting, explore the model, and take a closer look at the evidence. Technical explanations are there when you want them.</p><a class="action primary" href={`/research/${project.id}/explore/`}>Explore {p.name} ↗</a></section>
+    <section class="explore-note"><p class="eyebrow">See the ideas take shape</p><h2>Step inside the science.</h2><p>Follow the setting, explore the model, and take a closer look at the evidence. Technical explanations are there when you want them.</p><a class="action primary" href={`/research/${project.id}/explore/`}>Explore {p.name}</a></section>
     <section><p class="eyebrow">An open question</p><h2>{p.nextQuestion}</h2></section>
   </div>
-  <section class="section-block" id="papers"><div class="section-heading"><div><p class="eyebrow">Go to the source</p><h2>Papers & related resources</h2></div></div><PublicationList publications={publications}/>{p.dataUrl && <p class="data-link"><a class="text-link" href={p.dataUrl}>{p.dataLabel} ↗</a></p>}{resources.map(resource=><ResourceRow resource={resource}/>)}</section>
-  <section class="project-connection"><p class="eyebrow">A personal connection</p><p>{p.connection}</p><a class="text-link" href={`/about/#${p.storyAnchor}`}>Read that part of my story →</a></section>
+  <section class="section-block" id="papers"><div class="section-heading"><div><p class="eyebrow">Go to the source</p><h2>Papers & related resources</h2></div></div><PublicationList publications={publications}/>{p.dataUrl && <p class="data-link"><a class="text-link" href={p.dataUrl} target="_blank" rel="noopener">{p.dataLabel}<LinkMark kind="external" /></a></p>}{resources.map(resource=><ResourceRow resource={resource}/>)}</section>
+  <section class="project-connection"><p class="eyebrow">A personal connection</p><p>{p.connection}</p><a class="text-link" href={`/about/#${p.storyAnchor}`}>Read that part of my story</a></section>
   <RelatedContent links={[{href:`/research/${other}/`,title:`Another world: ${other === 'titan' ? 'Titan' : 'Venus'}`,description:'Explore a different setting for chemical possibility.'},{href:'/connect/',title:'Continue the conversation',description:'Questions, research ideas, and opportunities to learn together.'}]}/>
 </Layout>
 <style>

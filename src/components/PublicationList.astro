@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import LinkMark from './LinkMark.astro';
 interface Props { publications: CollectionEntry<'publications'>[]; }
 const { publications } = Astro.props;
 ---
@@ -8,10 +9,10 @@ const { publications } = Astro.props;
     <li>
       <span class="publication-year">{p.year}</span>
       <div>
-        <h3><a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title} <span class="external-mark" aria-label="opens in a new tab">↗</span></a></h3>
+        <h3><a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}<LinkMark kind="external" /></a></h3>
         <p>{p.authors.length > 3 ? `${p.authors.slice(0, 2).join(', ')}, et al.` : p.authors.join(' & ')} · {p.venue} {p.volume}, {p.article}</p>
         {p.authors.length > 3 && <details class="author-details"><summary>All authors</summary><p>{p.authors.join(', ')}</p></details>}
-        <a class="quiet-link" href={`/research/${p.project.id}/`}>The {p.project.id === 'titan' ? 'Titan' : 'Venus'} project →</a>
+        <a class="quiet-link" href={`/research/${p.project.id}/`}>The {p.project.id === 'titan' ? 'Titan' : 'Venus'} project</a>
       </div>
     </li>
   ))}

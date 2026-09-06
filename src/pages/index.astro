@@ -5,6 +5,7 @@ import ResourceRow from '../components/ResourceRow.astro';
 import { featuredProjects, validateContent } from '../lib/content';
 import { getEntry } from 'astro:content';
 import { editorial } from '../data/editorial';
+import LinkMark from '../components/LinkMark.astro';
 await validateContent();
 const projects = await featuredProjects();
 const resources = await Promise.all(['nsf-application','fellowships'].map(id => getEntry('resources', id)));
@@ -15,31 +16,31 @@ const resources = await Promise.all(['nsf-application','fellowships'].map(id => 
       <p class="eyebrow">Ishaan Madan / Scientist & curious human</p>
       <h1 id="home-heading">Exploring other worlds.<br/><span>Discovering myself.</span></h1>
       <p class="lede">I'm Ishaan, a PhD student in Planetary Science and Astrobiology at Purdue. I study how life's ingredients might form beyond Earth. Through research, reflection, and meditation, I'm also learning more about myself and what matters to me.</p>
-      <div class="actions"><a class="action primary" href="/research/">Explore my research <span aria-hidden="true">↗</span></a><a class="action" href="/about/">Read my story <span aria-hidden="true">→</span></a></div>
+      <div class="actions"><a class="action primary" href="/research/">Explore my research</a><a class="action" href="/about/">Read my story</a></div>
       <p class="hero-affiliation">Purdue University <span aria-hidden="true">·</span> NSF Graduate Research Fellow</p>
     </div>
     <figure class="hero-portrait">
-      <img src="/assets/headshot-800.webp" srcset="/assets/headshot-480.webp 480w, /assets/headshot-800.webp 800w" sizes="(max-width: 700px) 280px, (max-width: 1000px) 35vw, 400px" width="800" height="1000" alt="Ishaan Madan standing in front of a chemistry whiteboard." fetchpriority="high" />
-      <figcaption>At Purdue, August 2025<br/><a href={editorial.purduePortraitStory} target="_blank" rel="noopener">John Underwood / Purdue University ↗</a></figcaption>
+      <img src="/assets/headshot-800.webp" srcset="/assets/headshot-480.webp 480w, /assets/headshot-800.webp 800w" sizes="(max-width: 700px) 280px, (max-width: 1000px) 35vw, 400px" width="800" height="533" alt="Ishaan Madan standing in front of a chemistry whiteboard." fetchpriority="high" />
+      <figcaption>At Purdue, August 2025<br/><a href={editorial.purduePortraitStory} target="_blank" rel="noopener">John Underwood / Purdue University<LinkMark kind="external" /></a></figcaption>
     </figure>
   </section>
   <section class="section-block" aria-labelledby="questions-heading">
-    <div class="section-heading"><div><p class="eyebrow">01 / Research</p><h2 id="questions-heading">Two worlds. A lot of possibility.</h2></div><a class="quiet-link" href="/research/">All research & publications →</a></div>
+    <div class="section-heading"><div><p class="eyebrow">01 / Research</p><h2 id="questions-heading">Two worlds. A lot of possibility.</h2></div><a class="quiet-link" href="/research/">All research & publications</a></div>
     <div class="project-grid">{projects.map(project => <ProjectPreview project={project}/>)}</div>
   </section>
   <section class="personal-bridge section-block" aria-labelledby="person-heading">
     <div><p class="eyebrow">02 / The person behind the questions</p><h2 id="person-heading">The path has been<br/>anything but straight.</h2></div>
-    <div><p>I grew up in New Delhi, moved to the United States at thirteen, and went to college planning to become a surgeon. After working in healthcare software, I found my way back to chemistry and space.</p><p>Each transition has taught me something about who I am. That process of self-discovery is still unfolding.</p><a class="text-link" href="/about/">Follow the story <span aria-hidden="true">→</span></a></div>
+    <div><p>I grew up in New Delhi, moved to the United States at thirteen, and went to college planning to become a surgeon. After working in healthcare software, I found my way back to chemistry and space.</p><p>Each transition has taught me something about who I am. That process of self-discovery is still unfolding.</p><a class="text-link" href="/about/">Follow the story</a></div>
   </section>
   <section class="reflection-feature section-block" aria-labelledby="reflection-heading">
     <div class="reflection-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
-    <div class="reflection-copy"><p class="eyebrow">03 / Reflection & practice</p><h2 id="reflection-heading">Learning to be here,<br/>while looking out there.</h2><p>Meditation gives me another way to explore experience and understand myself. In August, five days of retreat brought ambition, gratitude, surrender, and ordinary life into the same conversation.</p><div class="text-actions"><a class="text-link" href="/reflections/first-retreat/">Read my retreat reflections →</a><a class="quiet-link" href="/reflections/#practice">Explore guided practice</a></div></div>
+    <div class="reflection-copy"><p class="eyebrow">03 / Reflection & practice</p><h2 id="reflection-heading">Learning to be here,<br/>while looking out there.</h2><p>Meditation gives me another way to explore experience and understand myself. In August, five days of retreat brought ambition, gratitude, surrender, and ordinary life into the same conversation.</p><div class="text-actions"><a class="text-link" href="/reflections/first-retreat/">Read my retreat reflections</a><a class="quiet-link" href="/reflections/#practice">Explore guided practice</a></div></div>
   </section>
   <section class="section-block" aria-labelledby="share-heading">
-    <div class="section-heading"><div><p class="eyebrow">04 / Shared along the way</p><h2 id="share-heading">Something useful for your path.</h2></div><a class="quiet-link" href="/resources/">Browse all resources →</a></div>
+    <div class="section-heading"><div><p class="eyebrow">04 / Shared along the way</p><h2 id="share-heading">Something useful for your path.</h2></div><a class="quiet-link" href="/resources/">Browse all resources</a></div>
     {resources.map(resource => resource && <ResourceRow resource={resource} compact />)}
   </section>
-  <section class="now-note section-block" aria-labelledby="now-heading"><div><p class="eyebrow">A note from here</p><h2 id="now-heading">What has my attention</h2><p class="now-date">Updated {editorial.focusDate}</p></div><div><p>{editorial.focus}</p><a class="text-link" href="/connect/">Have a question or something to share? Let’s connect →</a></div></section>
+  <section class="now-note section-block" aria-labelledby="now-heading"><div><p class="eyebrow">A note from here</p><h2 id="now-heading">What has my attention</h2><p class="now-date">Updated {editorial.focusDate}</p></div><div><p>{editorial.focus}</p><a class="text-link" href="/connect/">Have a question or something to share? Let’s connect</a></div></section>
 </Layout>
 <style>
 .home-hero { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(260px,.85fr); align-items:center; gap:clamp(36px,6vw,90px); padding:20px 0 30px; }
@@ -48,9 +49,8 @@ const resources = await Promise.all(['nsf-application','fellowships'].map(id => 
 .hero-copy .lede { font-size:1.02rem; max-width:54ch; }
 .hero-affiliation { margin-top:28px; font-size:.72rem; color:var(--c-ink-faint); }
 .hero-affiliation span { margin:0 8px; }
-.hero-portrait { position:relative; margin:0; padding-top:12px; }
-.hero-portrait::before { content:''; position:absolute; inset:-8px 16px 60px -16px; border:1px solid var(--c-line-strong); border-radius:160px 160px 10px 10px; z-index:-1; }
-.hero-portrait img { width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:160px 160px 10px 10px; }
+.hero-portrait { margin:0; }
+.hero-portrait img { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; border:1px solid var(--c-line-strong); border-radius:160px 160px 10px 10px; }
 .hero-portrait figcaption { margin-top:18px; color:var(--c-ink-faint); font-size:.65rem; line-height:1.6; }
 .personal-bridge { display:grid; grid-template-columns:1fr 1fr; gap:70px; padding:54px 0; border-block:1px solid var(--c-line); }
 .personal-bridge h2 { font-size:clamp(2rem,3.5vw,3.2rem); margin-top:20px; }

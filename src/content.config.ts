@@ -6,7 +6,7 @@ const projects = defineCollection({
   loader: file('src/content/projects.json'),
   schema: z.object({
     name: z.string(), question: z.string(), summary: z.string(), setting: z.string(),
-    image: z.string(), imageAlt: z.string(), imageCredit: z.string(),
+    image: z.string(), imageAlt: z.string(), imageCredit: z.string(), imageWidth: z.number(), imageHeight: z.number(),
     imageMode: z.enum(['planet', 'molecule']), featuredOrder: z.number(),
     publications: z.array(reference('publications')), resources: z.array(reference('resources')),
     contribution: z.string(), approach: z.string(), finding: z.string(), limitations: z.string(),

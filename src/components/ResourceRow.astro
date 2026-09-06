@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import LinkMark from './LinkMark.astro';
 interface Props { resource: CollectionEntry<'resources'>; compact?: boolean; }
 const { resource, compact = false } = Astro.props;
 const r = resource.data;
@@ -11,7 +12,7 @@ const r = resource.data;
     <p>{r.summary}</p>
     <p class="resource-meta">For {r.audience.toLowerCase()} · {r.format}</p>
     {!compact && <details class="resource-details"><summary>About this resource</summary>{r.details.map(p => <p>{p}</p>)}</details>}
-    {!compact && r.projects.length > 0 && <div class="text-actions">{r.projects.map(p => <a class="quiet-link" href={`/research/${p.id}/`}>{p.id === 'titan' ? 'Titan' : 'Venus'} research →</a>)}</div>}
+    {!compact && r.projects.length > 0 && <div class="text-actions">{r.projects.map(p => <a class="quiet-link" href={`/research/${p.id}/`}>{p.id === 'titan' ? 'Titan' : 'Venus'} research</a>)}</div>}
   </div>
-  <a class="text-link resource-action" href={r.url} target="_blank" rel="noopener">{r.action} <span aria-label="opens in a new tab">↗</span></a>
+  <a class="text-link resource-action" href={r.url} target="_blank" rel="noopener">{r.action}<LinkMark kind="external" /></a>
 </article>

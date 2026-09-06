@@ -1,0 +1,16 @@
+---
+interface Props { kind: 'external' | 'down' | 'back'; }
+const { kind } = Astro.props;
+---
+{kind === 'external' ? (
+  <>
+    <svg class="link-mark" viewBox="0 0 16 16" aria-hidden="true">
+      <path d="M6.25 3.25H3.75a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-2.5M9 2.75h4.25V7M13 3 7.25 8.75" />
+    </svg>
+    <span class="sr-only"> (opens in a new tab)</span>
+  </>
+) : kind === 'down' ? (
+  <svg class="link-mark direction-mark" viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg>
+) : (
+  <svg class="link-mark direction-mark" viewBox="0 0 16 16" aria-hidden="true"><path d="m9.5 3.5-4 4 4 4" /></svg>
+)}
