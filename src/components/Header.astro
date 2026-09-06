@@ -4,7 +4,7 @@ const path = Astro.url.pathname;
 ---
 <header class="site-header">
   <div class="header-inner">
-    <a class="site-name" href="/" aria-label="Ishaan Madan — home"><span class="name-orbit" aria-hidden="true">✳</span> Ishaan Madan</a>
+    <a class="site-name" href="/" aria-label="Ishaan Madan — home">Ishaan Madan</a>
     <nav class="desktop-nav" aria-label="Main navigation"><ul>{NAV.map(item => <li><a href={item.href} aria-current={path.startsWith(item.href) ? 'page' : undefined}>{item.label}</a></li>)}</ul></nav>
     <div class="header-tools">
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to light theme" hidden>

@@ -41,7 +41,6 @@ img { max-width:100%; }
 .site-header { position:sticky; top:0; z-index:50; background:color-mix(in srgb,var(--c-canvas) 94%,transparent); border-bottom:1px solid var(--c-line); backdrop-filter:blur(16px); }
 .header-inner { max-width:1320px; margin:auto; min-height:80px; padding:0 40px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
 .site-name { font-family:var(--font-display); font-size:1.1rem; font-weight:600; letter-spacing:-.03em; white-space:nowrap; }
-.name-orbit { color:var(--c-accent-ink); font-size:1.65rem; vertical-align:middle; margin-right:8px; font-weight:400; }
 .desktop-nav ul { display:flex; align-items:center; gap:28px; list-style:none; padding:0; }
 .desktop-nav a { font-size:.8rem; color:var(--c-ink-muted); display:block; padding:12px 0; }
 .desktop-nav a:hover,.desktop-nav a[aria-current],.mobile-menu a[aria-current] { color:var(--c-accent-ink); }
@@ -133,7 +132,6 @@ img { max-width:100%; }
 @media(max-width:700px) {
  .header-inner { padding:0 20px; min-height:68px; gap:10px; }
  .site-name { font-size:1rem; }
- .name-orbit { font-size:1.4rem; margin-right:4px; }
  .site-main { width:calc(100% - 40px); padding-top:36px; }
  .page-intro { padding:10px 0 25px; }
  .page-intro h1 { margin-top:16px; }
