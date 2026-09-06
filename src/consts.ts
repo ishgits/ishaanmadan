@@ -19,10 +19,9 @@ export const SITE = {
 } as const;
 
 export const NAV = [
-  { href: '/', label: 'Home' },
+  { href: '/research/', label: 'Research' },
   { href: '/about/', label: 'My Story' },
-  { href: '/work-with-me/', label: 'Work With Me' },
-  { href: '/meditations/', label: 'Meditations' },
-  { href: '/interactive-science/', label: 'Interactive Science' },
+  { href: '/reflections/', label: 'Reflections & Meditation' },
   { href: '/resources/', label: 'Resources' },
+  { href: '/connect/', label: 'Connect' },
 ] as const;

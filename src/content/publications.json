@@ -1,0 +1,56 @@
+[
+  {
+    "id": "titan1",
+    "title": "Prebiotic Chemistry Insights for Dragonfly: Thermodynamics of Amino Acid Synthesis in Selk Crater on Titan",
+    "authors": [
+      "Ishaan Madan",
+      "Ben K. D. Pearce"
+    ],
+    "year": 2025,
+    "venue": "The Planetary Science Journal",
+    "volume": "6",
+    "article": "284",
+    "doi": "10.3847/psj/ae1c18",
+    "project": "titan",
+    "status": "Published"
+  },
+  {
+    "id": "titan2",
+    "title": "Prebiotic Chemistry Insights for Dragonfly. II. Thermodynamic Favorability of Nucleobases, Ribose, and Fatty Acids in Selk Crater on Titan",
+    "authors": [
+      "Ishaan Madan",
+      "Ben K. D. Pearce"
+    ],
+    "year": 2026,
+    "venue": "The Planetary Science Journal",
+    "volume": "7",
+    "article": "107",
+    "doi": "10.3847/psj/ae5f91",
+    "project": "titan",
+    "status": "Published"
+  },
+  {
+    "id": "venus",
+    "title": "On the possibility of carbon-free heteropolymers on Venus: a computational astrobiology study",
+    "authors": [
+      "Ishaan Madan",
+      "Shekoufeh Arabi Aliabadi",
+      "Johanna Huhtasaari",
+      "Ebba Matic",
+      "Emil Hogedal",
+      "Kinga Kamińska",
+      "Filip Nilsson",
+      "Axel Stark",
+      "Fernando Izquierdo-Ruiz",
+      "Hilda Sandström",
+      "Martin Rahm"
+    ],
+    "year": 2025,
+    "venue": "QRB Discovery",
+    "volume": "6",
+    "article": "e23",
+    "doi": "10.1017/qrd.2025.10012",
+    "project": "venus",
+    "status": "Published"
+  }
+]

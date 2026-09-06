@@ -1,62 +1,88 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Button from '../components/Button.astro';
-import { SITE } from '../consts';
+import ProjectPreview from '../components/ProjectPreview.astro';
+import ResourceRow from '../components/ResourceRow.astro';
+import { featuredProjects, validateContent } from '../lib/content';
+import { getEntry } from 'astro:content';
+import { editorial } from '../data/editorial';
+import LinkMark from '../components/LinkMark.astro';
+await validateContent();
+const projects = await featuredProjects();
+const resources = await Promise.all(['nsf-application','fellowships'].map(id => getEntry('resources', id)));
 ---
-
-<Layout
-  title="Ishaan Madan | Planetary Science & Astrobiology"
-  description="Computational astrobiologist and PhD student at Purdue modeling chemical pathways for life beyond Earth, building research workflows, and communicating science."
->
-  <section
-    class="grid gap-8 lg:grid-cols-[minmax(260px,0.8fr)_minmax(0,1.4fr)] lg:items-stretch lg:gap-10"
-    aria-labelledby="home-heading"
-  >
-    <figure class="overflow-hidden rounded-2xl border border-line bg-surface shadow-lift lg:flex lg:min-h-0 lg:flex-col">
-      <img
-        src="/assets/headshot.jpg"
-        alt="Ishaan Madan"
-        width="800"
-        height="1000"
-        class="aspect-[4/5] w-full object-cover lg:h-0 lg:min-h-0 lg:flex-1 lg:aspect-auto"
-      />
-      <figcaption class="border-t border-line bg-surface p-5 text-sm leading-relaxed text-ink-muted">
-        Taken Aug 2025 as part of{' '}
-        <a
-          href="https://www.purdue.edu/newsroom/purduetoday/2025/Q3/purdue-students-capture-16-competitive-nsf-graduate-research-fellowships-for-2025-17-others-achieve-honorable-mentions/?TSPD_101_R0=08993c5290ab20001b314169cb8f4153bd123d75b9042c973e0b5791030c24ab5ed4c8c3aa4a4a09088cebe30c143000c1fa2c6cb6216d6c4279113ca3410a62073cfd46aefb419c7630d3dea0ea4cfccc25a25e17f4507c2bab049297f6b33c"
-          class="link"
-          target="_blank"
-          rel="noopener"
-          >Purdue's NSF Story</a
-        >
-        <br />
-        Photo by John Underwood / Purdue University
-      </figcaption>
-    </figure>
-
-    <div class="relative overflow-hidden rounded-3xl border border-line bg-surface/70 p-7 shadow-card md:p-12">
-      <div
-        class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full opacity-60 blur-3xl"
-        style="background: radial-gradient(circle, color-mix(in srgb, var(--c-accent) 22%, transparent), transparent 70%)"
-        aria-hidden="true"
-      >
-      </div>
-      <p class="eyebrow relative">{SITE.tagline}</p>
-      <h1
-        id="home-heading"
-        class="relative mt-5 text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl"
-      >
-        I explore life and its potential beyond Earth through scientific investigation and
-        contemplative practice.
-      </h1>
-      <p class="relative mt-6 text-lg leading-relaxed text-ink-muted md:text-xl">
-        I'm a PhD student in Planetary Science &amp; Astrobiology at Purdue, where I build automated
-        scientific workflows that connect computational chemistry, thermodynamic modeling, prebiotic
-        chemistry, planetary environments, and future mission science.
-      </p>
-      <div class="relative mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        <Button href="/work-with-me/" variant="primary">Work With Me</Button>
-      </div>
+<Layout title="Ishaan Madan | Exploring worlds. Discovering myself." description="I'm Ishaan, a planetary science PhD student at Purdue. Explore my research on Titan and Venus, personal journey, reflections, and resources.">
+  <section class="home-hero" aria-labelledby="home-heading">
+    <div class="hero-copy">
+      <p class="eyebrow">Ishaan Madan / Scientist & curious human</p>
+      <h1 id="home-heading">Exploring other worlds.<br/><span>Discovering myself.</span></h1>
+      <p class="lede">I'm Ishaan, a PhD student in Planetary Science and Astrobiology at Purdue. I study how life's ingredients might form beyond Earth. Through research, reflection, and meditation, I'm also learning more about myself and what matters to me.</p>
+      <div class="actions"><a class="action primary" href="/research/">Explore my research</a><a class="action" href="/about/">Read my story</a></div>
+      <p class="hero-affiliation">Purdue University <span aria-hidden="true">·</span> NSF Graduate Research Fellow</p>
     </div>
+    <figure class="hero-portrait">
+      <img src="/assets/headshot-800.webp" srcset="/assets/headshot-480.webp 480w, /assets/headshot-800.webp 800w" sizes="(max-width: 700px) 280px, (max-width: 1000px) 35vw, 400px" width="800" height="533" alt="Ishaan Madan standing in front of a chemistry whiteboard." fetchpriority="high" />
+      <figcaption>At Purdue, August 2025<br/><a href={editorial.purduePortraitStory} target="_blank" rel="noopener">John Underwood / Purdue University<LinkMark kind="external" /></a></figcaption>
+    </figure>
   </section>
+  <section class="section-block" aria-labelledby="questions-heading">
+    <div class="section-heading"><div><p class="eyebrow">01 / Research</p><h2 id="questions-heading">Two worlds. A lot of possibility.</h2></div><a class="quiet-link" href="/research/">All research & publications</a></div>
+    <div class="project-grid">{projects.map(project => <ProjectPreview project={project}/>)}</div>
+  </section>
+  <section class="personal-bridge section-block" aria-labelledby="person-heading">
+    <div><p class="eyebrow">02 / The person behind the questions</p><h2 id="person-heading">The path has been<br/>anything but straight.</h2></div>
+    <div><p>I grew up in New Delhi, moved to the United States at thirteen, and went to college planning to become a surgeon. After working in healthcare software, I found my way back to chemistry and space.</p><p>Each transition has taught me something about who I am. That process of self-discovery is still unfolding.</p><a class="text-link" href="/about/">Follow the story</a></div>
+  </section>
+  <section class="reflection-feature section-block" aria-labelledby="reflection-heading">
+    <div class="reflection-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="reflection-copy"><p class="eyebrow">03 / Reflection & practice</p><h2 id="reflection-heading">Learning to be here,<br/>while looking out there.</h2><p>Meditation gives me another way to explore experience and understand myself. In August, five days of retreat brought ambition, gratitude, surrender, and ordinary life into the same conversation.</p><div class="text-actions"><a class="text-link" href="/reflections/first-retreat/">Read my retreat reflections</a><a class="quiet-link" href="/reflections/#practice">Explore guided practice</a></div></div>
+  </section>
+  <section class="section-block" aria-labelledby="share-heading">
+    <div class="section-heading"><div><p class="eyebrow">04 / Shared along the way</p><h2 id="share-heading">Something useful for your path.</h2></div><a class="quiet-link" href="/resources/">Browse all resources</a></div>
+    {resources.map(resource => resource && <ResourceRow resource={resource} compact />)}
+  </section>
+  <section class="now-note section-block" aria-labelledby="now-heading"><div><p class="eyebrow">A note from here</p><h2 id="now-heading">What has my attention</h2><p class="now-date">Updated {editorial.focusDate}</p></div><div><p>{editorial.focus}</p><a class="text-link" href="/connect/">Have a question or something to share? Let’s connect</a></div></section>
 </Layout>
+<style>
+.home-hero { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(260px,.85fr); align-items:center; gap:clamp(36px,6vw,90px); padding:20px 0 30px; }
+.hero-copy h1 { font-size:clamp(2.7rem,5.25vw,4.6rem); line-height:1.07; margin:26px 0; letter-spacing:-.055em; }
+.hero-copy h1 span { color:var(--c-accent-ink); }
+.hero-copy .lede { font-size:1.02rem; max-width:54ch; }
+.hero-affiliation { margin-top:28px; font-size:.72rem; color:var(--c-ink-faint); }
+.hero-affiliation span { margin:0 8px; }
+.hero-portrait { margin:0; }
+.hero-portrait img { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; border:1px solid var(--c-line-strong); border-radius:160px 160px 10px 10px; }
+.hero-portrait figcaption { margin-top:18px; color:var(--c-ink-faint); font-size:.65rem; line-height:1.6; }
+.personal-bridge { display:grid; grid-template-columns:1fr 1fr; gap:70px; padding:54px 0; border-block:1px solid var(--c-line); }
+.personal-bridge h2 { font-size:clamp(2rem,3.5vw,3.2rem); margin-top:20px; }
+.personal-bridge p:not(.eyebrow) { color:var(--c-ink-muted); margin-bottom:18px; }
+.reflection-feature { position:relative; background:#eae5d7; color:#2b3833; border-radius:10px; overflow:hidden; display:grid; grid-template-columns:.65fr 1fr; align-items:center; gap:40px; padding:68px; }
+.reflection-copy { position:relative; }
+.reflection-copy .eyebrow { color:#80502b; }
+.reflection-copy h2 { font-family:Georgia,serif; font-weight:400; font-size:clamp(2.2rem,3.6vw,3.5rem); line-height:1.1; margin:24px 0; }
+.reflection-copy>p:not(.eyebrow) { color:#505e55; max-width:54ch; font-size:.95rem; }
+.reflection-copy .text-link { color:#80502b; text-decoration-color:#bc9c77; }
+.reflection-copy .quiet-link { color:#4e6257; text-decoration-color:#9ca99c; }
+.reflection-orbit { aspect-ratio:1; position:relative; }
+.reflection-orbit span { position:absolute; width:90%; height:90%; border-radius:50%; border:1px solid #829487; left:5%; top:5%; }
+.reflection-orbit span:nth-child(2) { width:65%; height:65%; left:17.5%; top:17.5%; }
+.reflection-orbit span:nth-child(3) { width:30%; height:30%; left:35%; top:35%; border:0; background:radial-gradient(circle at 35% 30%,#c9b790,#697b6a); box-shadow:0 0 65px #adb49a; }
+.now-note { display:grid; grid-template-columns:1fr 1.4fr; gap:50px; padding-top:42px; border-top:1px solid var(--c-line); }
+.now-note h2 { font-size:1.7rem; margin-top:12px; }
+.now-date { color:var(--c-ink-faint); font-size:.72rem; margin-top:12px; }
+.now-note>div>p:not(.eyebrow):not(.now-date) { color:var(--c-ink-muted); margin-bottom:20px; }
+@media(max-width:900px) { .reflection-feature { padding:42px; grid-template-columns:.5fr 1fr; } .personal-bridge { gap:35px; } }
+@media(max-width:700px) {
+ .home-hero { grid-template-columns:1fr; gap:38px; padding-top:5px; }
+ .hero-copy h1 { font-size:clamp(2.55rem,10.8vw,3.6rem); margin:20px 0; }
+ .hero-copy .lede { font-size:.95rem; }
+ .hero-affiliation { font-size:.67rem; margin-top:22px; }
+ .hero-portrait { width:260px; max-width:85%; justify-self:center; }
+ .hero-portrait img { aspect-ratio:1; object-position:center 30%; }
+ .hero-portrait figcaption { text-align:center; }
+ .personal-bridge,.now-note { grid-template-columns:1fr; gap:25px; }
+ .personal-bridge { padding:35px 0; }
+ .reflection-feature { display:block; padding:34px 26px; }
+ .reflection-orbit { width:110px; margin-bottom:30px; }
+ .reflection-copy h2 { font-size:2.25rem; }
+}
+</style>

@@ -1,0 +1,15 @@
+[
+  {
+    "id": "first-retreat",
+    "title": "First Virtual Meditation Retreat",
+    "summary": "Five days of practice brought ambition, gratitude, surrender, and ordinary life into the same conversation. A reflection on what I noticed, and what stayed with me.",
+    "eventDate": "August 12–16, 2026",
+    "eventISO": "2026-08-12",
+    "bodyFile": "first-retreat.html",
+    "related": [
+      "/about/",
+      "/reflections/#practice"
+    ],
+    "url": "/reflections/first-retreat/"
+  }
+]

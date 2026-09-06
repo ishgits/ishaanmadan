@@ -1,0 +1,8 @@
+---
+interface Props { chapters: { id: string; label: string }[]; }
+const { chapters } = Astro.props;
+---
+<nav class="chapter-nav" aria-label="On this page">
+  <span>On this page</span>
+  <ul>{chapters.map(c => <li><a href={`#${c.id}`}>{c.label}</a></li>)}</ul>
+</nav>

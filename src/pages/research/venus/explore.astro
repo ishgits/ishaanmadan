@@ -1,0 +1,5 @@
+---
+import ExperienceLayout from '../../../layouts/ExperienceLayout.astro';
+import Venus from '../../../components/experiences/venus.astro';
+---
+<ExperienceLayout title="Venus: chemistry beyond the familiar | Ishaan Madan" description="An interactive guide to carbon-free polymer chemistry in Venus's clouds. Explore the question, evidence, limitations, and possible chemical fingerprints." ogImage="/og/venus-explore.png" label="Interactive story" parent={{href:'/research/venus/',label:'Venus research'}} chapters={[{id:'question',label:'The question'},{id:'place',label:'The setting'},{id:'idea',label:'The idea'},{id:'evidence',label:'Evidence'},{id:'look',label:'How to look'}]} links={[{href:'/research/venus/',title:'The Venus project',description:'My role, the source paper, and related work.'},{href:'/research/titan/explore/',title:'Next stop: Titan',description:'A temporary melt pool and life’s ingredients.'},{href:'/about/#research',title:'A summer in Sweden',description:'The personal journey behind this project.'}]}><Venus/></ExperienceLayout>

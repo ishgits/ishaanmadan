@@ -1,0 +1,17 @@
+{
+  "/interactive-science": "/research/",
+  "/interactive-science/": "/research/",
+  "/interactive-science/titan.html": "/research/titan/explore/",
+  "/interactive-science/titan": "/research/titan/explore/",
+  "/interactive-science/titan/": "/research/titan/explore/",
+  "/interactive-science/venus-chemistry-story.html": "/research/venus/explore/",
+  "/interactive-science/venus-chemistry-story": "/research/venus/explore/",
+  "/interactive-science/venus-chemistry-story/": "/research/venus/explore/",
+  "/meditations": "/reflections/",
+  "/meditations/": "/reflections/",
+  "/meditations/first-retreat-reflections.html": "/reflections/first-retreat/",
+  "/meditations/first-retreat-reflections": "/reflections/first-retreat/",
+  "/meditations/first-retreat-reflections/": "/reflections/first-retreat/",
+  "/work-with-me": "/connect/",
+  "/work-with-me/": "/connect/"
+}

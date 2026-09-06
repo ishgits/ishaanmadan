@@ -1,0 +1,90 @@
+[
+  {
+    "id": "abscicon-2026",
+    "title": "Prebiotic Chemistry Insights for Dragonfly",
+    "summary": "Thermodynamics of amino acid, nucleobase, ribose, and fatty acid synthesis in Selk crater on Titan.",
+    "context": "AbSciCon · 2026",
+    "details": [
+      "I initially submitted this work as a poster for the 2026 Astrobiology Science Conference and was later invited to present it as an oral talk instead. A fitting outcome for a project centered on molecular abundance!",
+      "The presentation explores how thermodynamic modeling can help predict the accessibility and abundance of biologically relevant molecules in Titan’s Selk crater, a future exploration site for NASA’s Dragonfly mission."
+    ],
+    "url": "https://canva.link/yps6w2wag24ecop",
+    "format": "Slide presentation",
+    "audience": "Curious readers & researchers",
+    "group": "science",
+    "projects": [
+      "titan"
+    ],
+    "action": "View slides"
+  },
+  {
+    "id": "telluride-2025",
+    "title": "Alternative Chemistries Beyond Earth",
+    "summary": "Venusian heteropolymers and Titan’s amino acids.",
+    "context": "Telluride Science · 2025",
+    "details": [
+      "I presented this work at the Telluride Science Workshop in October 2025 alongside some of the most experienced researchers in astrobiology. I was the only graduate student in attendance, which made the opportunity especially meaningful and slightly intimidating!",
+      "The talk brings together two projects that challenge familiar assumptions about life beyond Earth: the possibility of non-carbon-based heteropolymers in Venus’s sulfuric-acid clouds and the thermodynamic accessibility of amino acids in Titan’s post-impact environments."
+    ],
+    "url": "https://canva.link/ads34memmvt7hba",
+    "format": "Slide presentation",
+    "audience": "Curious readers & researchers",
+    "group": "science",
+    "projects": [
+      "titan",
+      "venus"
+    ],
+    "action": "View slides"
+  },
+  {
+    "id": "organics-lecture",
+    "title": "Organics",
+    "summary": "A lecture on organic chemistry in the context of planetary environments and space exploration.",
+    "context": "Astrobiology Missions · 2026",
+    "details": [
+      "This lecture was created for an Astrobiology Missions course and examines organic chemistry in the context of planetary environments and space exploration.",
+      "The slide deck took a long time to make, but I genuinely enjoy the creative process of turning dense scientific material into something visual, structured, and engaging. Some things cannot, and probably should not, be rushed."
+    ],
+    "url": "https://canva.link/wbuoig9gxvd8wpv",
+    "format": "Slide presentation",
+    "audience": "Students & educators",
+    "group": "science",
+    "projects": [],
+    "action": "View slides"
+  },
+  {
+    "id": "fellowships",
+    "title": "Fellowships",
+    "summary": "Finding, applying for, and receiving undergraduate and graduate fellowships.",
+    "context": "Lab meeting · 2026",
+    "details": [
+      "A practical presentation about my experience finding, applying for, and receiving undergraduate and graduate fellowships.",
+      "I originally presented this during a lab meeting to share lessons from my own application journey, including how I approached opportunity discovery, personal storytelling, research proposals, rejection, and persistence."
+    ],
+    "url": "https://canva.link/b04tqud6l7zurv6",
+    "format": "Slide presentation",
+    "audience": "Students & early-career researchers",
+    "group": "fellowships",
+    "projects": [],
+    "action": "View slides"
+  },
+  {
+    "id": "nsf-application",
+    "title": "My NSF Graduate Research Fellowship application",
+    "summary": "The personal statement and graduate research plan I submitted in Fall 2024, awarded in the 2025 cycle.",
+    "context": "Submitted Fall 2024 · Awarded 2025",
+    "details": [
+      "The personal statement connects my childhood fascination with space, immigration experience, scientific development, and commitment to mentorship. The research plan proposes thermochemical modeling of Titan’s prebiotic chemistry.",
+      "I was not selected in the initial award announcement and received the fellowship in the additional round of awards a few months later.",
+      "These materials reflect my experiences and proposal at the time. Use them as an example, alongside current official guidance. Your application should tell your own story."
+    ],
+    "url": "https://drive.google.com/drive/folders/1NHL4GLXRj_xQLOyMbSSxaXk2cYUm_COK?usp=share_link",
+    "format": "Application folder",
+    "audience": "Prospective fellowship applicants",
+    "group": "fellowships",
+    "projects": [
+      "titan"
+    ],
+    "action": "Open application folder"
+  }
+]
