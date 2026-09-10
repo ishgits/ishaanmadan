@@ -86,5 +86,21 @@
       "titan"
     ],
     "action": "Open application folder"
+  },
+  {
+    "id": "purdue-grfp-tax-starter-guide",
+    "title": "Purdue GRFP Fellowship Tax Starter Guide",
+    "summary": "A research-based starting point for Purdue domestic PhD students navigating fellowship taxes.",
+    "context": "Starter guide · September 2026",
+    "details": [
+      "This guide covers the transition from assistantship wages to a fellowship stipend, including taxable income, recordkeeping, estimated-tax planning, and questions to take to a qualified preparer.",
+      "It is shared as educational starting material, not tax or financial advice. Read the current primary sources and consult Purdue Tax Services or a qualified preparer for guidance on your return."
+    ],
+    "url": "https://ishaanmadan.org/resources/purdue-grfp-fellowship-tax-starter-guide.html",
+    "format": "Interactive web guide",
+    "audience": "Purdue domestic PhD students and prospective fellows",
+    "group": "fellowships",
+    "projects": [],
+    "action": "Read tax starter guide"
   }
 ]
