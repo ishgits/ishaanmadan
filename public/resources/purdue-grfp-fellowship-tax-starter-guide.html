@@ -40,5 +40,17 @@
   <section><div class="section-head"><div class="eyebrow">Primary sources</div><h2>Read these alongside your own records</h2></div><ul class="source-list"><li><b>IRS Publication 970: Tax Benefits for Education:</b> taxable scholarship and fellowship rules, worksheet, and reporting on Schedule 1 line 8r. <a href="https://www.irs.gov/publications/p970">IRS Publication 970</a></li><li><b>IRS estimated taxes:</b> current federal estimated-payment guidance and Form 1040-ES. <a href="https://www.irs.gov/payments/estimated-taxes">IRS estimated taxes</a></li><li><b>IRS Publication 590-A:</b> IRA contribution eligibility and limits. <a href="https://www.irs.gov/publications/p590a">IRS Publication 590-A</a></li><li><b>Purdue Graduate Funding &amp; Fellowships Manual:</b> Purdue’s current description of True Fellows, payment, and withholding treatment. <a href="https://www.purdue.edu/academics/ogsps/fellowship/wp-content/uploads/sites/3/2025/11/Fellowship-Manual.pdf">Purdue Fellowship Manual (PDF)</a></li><li><b>Indiana Department of Revenue:</b> current estimated-tax and payment information. <a href="https://www.in.gov/dor/individual-income-taxes/estimated-tax/">Indiana estimated tax</a> · <a href="https://www.in.gov/dor/online-services/intime-tax-center/">INTIME</a></li><li><b>Personal Finance for PhDs:</b> an educational resource with fellowship-focused articles; useful background, but not a substitute for the primary sources or personal advice. <a href="https://pfforphds.com/tax/">Fellowship tax resources</a></li></ul></section>
   <footer><p><strong>Scope.</strong> This guide is intended for Purdue domestic PhD students considering or receiving NSF GRFP-style fellowship support. It does not address nonresident-alien returns, visa/treaty rules, international fellowship withholding, married filing, dependents, self-employment, or individualized financial planning. Last editorial review: September 2026.</p></footer>
 </main>
+<script>
+  const updatedLinks = {
+    'https://www.irs.gov/payments/direct-pay': 'https://www.irs.gov/payments/pay-personal-taxes-from-your-bank-account',
+    'https://www.irs.gov/payments/estimated-taxes': 'https://www.irs.gov/businesses/small-businesses-self-employed/estimated-taxes',
+    'https://www.in.gov/dor/individual-income-taxes/estimated-tax/': 'https://www.in.gov/dor/i-need-to/make-a-payment/estimated-payments/',
+    'https://www.in.gov/dor/online-services/intime-tax-center/': 'https://www.in.gov/dor/i-need-to/make-a-payment/estimated-payments/'
+  };
+  document.querySelectorAll('a[href]').forEach((link) => {
+    const updatedHref = updatedLinks[link.href];
+    if (updatedHref) link.href = updatedHref;
+  });
+</script>
 </body>
 </html>
