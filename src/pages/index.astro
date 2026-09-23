@@ -29,7 +29,10 @@ const paths = [
 <section class="home-paths section-block" aria-label="Research, meditation, and learning">
  {paths.map(path=><a class="path-card" href={path.href}><h2>{path.title}</h2><p>{path.description}</p><span aria-hidden="true">→</span></a>)}
 </section>
-<div class="section-block"><CourseFeature /></div>
+<section class="latest-updates section-block" aria-labelledby="latest-heading">
+  <div class="section-heading"><h2 id="latest-heading">Latest from Ish</h2><time datetime="2026-09">September 2026</time></div>
+  <CourseFeature />
+</section>
 <section class="home-conversation section-block"><h2>Let’s have a conversation.</h2><p>A question, a shared curiosity, or something you’re working through.</p><a class="text-link" href="/connect/">Book a conversation</a></section>
 </Layout>
 <style>
@@ -43,6 +46,7 @@ const paths = [
 .hero-portrait img { display:block; width:100%; aspect-ratio:4/5; object-fit:cover; border:1px solid var(--c-line-strong); border-radius:160px 160px 10px 10px; }
 .hero-portrait figcaption { margin-top:18px; color:var(--c-ink-faint); font-size:.65rem; line-height:1.6; }
 
+.latest-updates .section-heading h2{font-size:clamp(1.8rem,3vw,2.8rem);margin:0}.latest-updates time{font-size:.8rem;color:var(--c-ink-faint);white-space:nowrap}
 .home-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.path-card{display:flex;flex-direction:column;padding:28px;border:1px solid var(--c-line);border-radius:10px;background:var(--c-surface)}.path-card:hover{border-color:var(--c-accent-ink)}.path-card h2{font-size:1.35rem;line-height:1.3;margin-bottom:16px}.path-card p{font-size:.92rem;color:var(--c-ink-muted)}.path-card span{color:var(--c-accent-ink);margin-top:auto;padding-top:24px}.home-conversation{max-width:650px;padding-top:32px;border-top:1px solid var(--c-line)}.home-conversation h2{font-size:1.8rem}.home-conversation p{color:var(--c-ink-muted);margin:16px 0}
 @media(max-width:700px){.home-hero{grid-template-columns:1fr;gap:32px}.hero-copy h1{font-size:clamp(2.5rem,10vw,3.5rem)}.hero-portrait{width:240px;justify-self:center}.hero-portrait img{aspect-ratio:1;object-position:center 30%}.home-paths{grid-template-columns:1fr}.path-card{padding:24px}.hero-portrait figcaption{text-align:center}}
 </style>

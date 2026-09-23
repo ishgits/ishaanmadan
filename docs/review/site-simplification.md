@@ -2,7 +2,7 @@
 
 ## Scope
 
-The homepage now introduces Ishaan and offers three equal paths into research, meditation, and learning, followed by the free course and a conversation invitation. Resources use a two-column desktop / single-column mobile card library. Meditation leads with the weekly circle; booking is immediately available on Connect. Scholarships move to My Story. Research cards have one project destination, and How I Work retains its content without outgoing links.
+The homepage now introduces Ishaan and offers three equal paths into research, meditation, and learning, followed by a Latest from Ish section featuring the free course, and a conversation invitation. Resources use a two-column desktop / single-column mobile card library. Meditation leads with the weekly circle; booking is immediately available on Connect. Scholarships move to My Story. Research cards open the interactive guides directly (two clicks from home, one from Research), with project background and papers still linked from each guide, and How I Work retains its content without outgoing links.
 
 The footer retains its previous content, order, and destinations. Existing page URLs and meditation anchors remain valid. This branch does not deploy the site.
 
