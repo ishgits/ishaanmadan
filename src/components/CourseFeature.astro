@@ -1,0 +1,11 @@
+---
+import { editorial } from '../data/editorial';
+import LinkMark from './LinkMark.astro';
+---
+<section class="course-feature" aria-labelledby="course-heading">
+  <img src="/assets/course-flyer.webp" alt="Life Beyond and Within course flyer, with the five lesson titles and Ishaan Madan." width="1545" height="1999" loading="lazy" />
+  <div><p class="eyebrow">Free video course · 5 lessons</p><h2 id="course-heading">Life Beyond and Within</h2><p>Explore the science of life, from atoms and early Earth to other worlds and the wonder of being alive.</p><p class="course-note">No scientific background required.</p><a class="action primary" href={editorial.coursePlaylist} target="_blank" rel="noopener">Watch the course<LinkMark kind="external" /></a></div>
+</section>
+<style>
+.course-feature{display:grid;grid-template-columns:minmax(180px,280px) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center;padding:clamp(24px,4vw,48px);background:var(--c-surface);border:1px solid var(--c-line);border-radius:12px}.course-feature img{width:100%;height:auto;border-radius:6px}.course-feature h2{font-size:clamp(1.8rem,3vw,2.8rem);margin:14px 0 20px}.course-feature p:not(.eyebrow){color:var(--c-ink-muted);max-width:48ch}.course-feature .course-note{font-size:.85rem;margin:16px 0 24px}@media(max-width:600px){.course-feature{grid-template-columns:1fr}.course-feature img{max-width:250px;justify-self:center}}
+</style>

@@ -1,17 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageIntro from '../components/PageIntro.astro';
-import ResourceRow from '../components/ResourceRow.astro';
-import RelatedContent from '../components/RelatedContent.astro';
+import ResourceCard from '../components/ResourceCard.astro';
+import CourseFeature from '../components/CourseFeature.astro';
 import { getCollection } from 'astro:content';
-import LinkMark from '../components/LinkMark.astro';
 const resources = await getCollection('resources');
 ---
-<Layout title="Resources | Ishaan Madan" description="Science talks, teaching materials, fellowship advice, and Ishaan Madan's awarded NSF application, shared to help you learn and find your own path." ogImage="/og/resources.png">
-  <PageIntro label="Resources / Shared along the way" title="Useful things are worth sharing." description="Presentations, teaching materials, and application examples from my research and mentorship. I hope they help you learn something, ask a better question, or take your next step."><div class="text-actions"><a class="quiet-link" href="#science">Learn science<LinkMark kind="down" /></a><a class="quiet-link" href="#fellowships">Fellowships & applications<LinkMark kind="down" /></a></div></PageIntro>
-  <section id="science" aria-labelledby="science-heading"><div class="section-heading"><div><p class="eyebrow">Talks & teaching</p><h2 id="science-heading">Learn science</h2></div></div>{resources.filter(r=>r.data.group==='science').map(resource=><ResourceRow resource={resource}/>)}</section>
-  <section class="section-block" id="fellowships" aria-labelledby="fellowship-heading"><div class="section-heading"><div><p class="eyebrow">For your next step</p><h2 id="fellowship-heading">Fellowships & applications</h2></div></div><p class="lede">These materials reflect my experiences and circumstances when I created them. Use them as examples while telling your own story, and consult current official application guidance.</p>{resources.filter(r=>r.data.group==='fellowships').map(resource=><ResourceRow resource={resource}/>)}</section>
-  <aside class="honors section-block" aria-labelledby="honors-heading"><p class="eyebrow">Support along the way</p><h2 id="honors-heading">Fellowships & scholarships</h2><p>I’m grateful for the support that has helped make this path possible.</p><dl><div><dt>NSF Graduate Research Fellowship</dt><dd>Awarded in the 2025 cycle</dd></div><div><dt>Frederick N. Andrews Fellowship</dt><dd>Purdue University · 2024–26</dd></div><div><dt>Barry Goldwater Scholarship</dt><dd>2021</dd></div><div><dt>Posse Foundation Leadership Scholarship</dt><dd>Full tuition · 2018–22</dd></div></dl></aside>
-  <RelatedContent links={[{href:'/about/',title:'The story behind the applications',description:'Immigration, education, and finding a direction that feels meaningful.'},{href:'/connect/',title:'Thinking through your next step?',description:'Mentorship, questions, and focused conversations.'}]}/>
+<Layout title="Resources | Ishaan Madan" description="A free science video course, presentations, and fellowship application materials from Ishaan Madan." ogImage="/og/resources.png">
+<PageIntro label="Resources" title="Learn something. Take your next step." description="A free video course, science presentations, and fellowship materials I’ve shared along the way." />
+<section id="science" aria-labelledby="science-heading"><h2 id="science-heading" class="resource-group-heading">Science & Learning</h2><CourseFeature/><div class="resource-grid">{resources.filter(r=>r.data.group==='science').map(resource=><ResourceCard resource={resource}/>)}</div></section>
+<section class="section-block" id="fellowships" aria-labelledby="fellowship-heading"><h2 id="fellowship-heading" class="resource-group-heading">Fellowships & Applications</h2><p class="resource-guidance">These materials reflect my own experience. Use them as examples while telling your own story, alongside current official guidance.</p><div class="resource-grid">{resources.filter(r=>r.data.group==='fellowships').map(resource=><ResourceCard resource={resource}/>)}</div></section>
 </Layout>
-<style>.honors{border-top:1px solid var(--c-line);padding-top:30px;}.honors h2{font-size:1.8rem;margin:12px 0;}.honors>p:not(.eyebrow){color:var(--c-ink-muted);font-size:.9rem;}.honors dl{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px;}.honors dt{font-size:.95rem;}.honors dd{font-size:.8rem;color:var(--c-ink-faint);margin-top:5px;}@media(max-width:700px){.honors dl{grid-template-columns:1fr;}}</style>
+<style>.resource-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:32px}.resource-group-heading{font-size:1.8rem;margin-bottom:24px}.resource-guidance{color:var(--c-ink-muted);max-width:70ch}@media(max-width:700px){.resource-grid{grid-template-columns:1fr}}</style>

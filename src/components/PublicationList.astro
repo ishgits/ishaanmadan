@@ -12,7 +12,6 @@ const { publications } = Astro.props;
         <h3><a href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener">{p.title}<LinkMark kind="external" /></a></h3>
         <p>{p.authors.length > 3 ? `${p.authors.slice(0, 2).join(', ')}, et al.` : p.authors.join(' & ')} · {p.venue} {p.volume}, {p.article}</p>
         {p.authors.length > 3 && <details class="author-details"><summary>All authors</summary><p>{p.authors.join(', ')}</p></details>}
-        <a class="quiet-link" href={`/research/${p.project.id}/`}>The {p.project.id === 'titan' ? 'Titan' : 'Venus'} project</a>
       </div>
     </li>
   ))}

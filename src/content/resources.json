@@ -9,13 +9,15 @@
       "The presentation explores how thermodynamic modeling can help predict the accessibility and abundance of biologically relevant molecules in Titan’s Selk crater, a future exploration site for NASA’s Dragonfly mission."
     ],
     "url": "https://canva.link/yps6w2wag24ecop",
-    "format": "Slide presentation",
+    "format": "Slides",
     "audience": "Curious readers & researchers",
     "group": "science",
     "projects": [
       "titan"
     ],
-    "action": "View slides"
+    "action": "View slides",
+    "preview": "/assets/resources/abscicon-2026.webp",
+    "previewAlt": "Prebiotic Chemistry Insights for Dragonfly presentation cover"
   },
   {
     "id": "telluride-2025",
@@ -27,18 +29,20 @@
       "The talk brings together two projects that challenge familiar assumptions about life beyond Earth: the possibility of non-carbon-based heteropolymers in Venus’s sulfuric-acid clouds and the thermodynamic accessibility of amino acids in Titan’s post-impact environments."
     ],
     "url": "https://canva.link/ads34memmvt7hba",
-    "format": "Slide presentation",
+    "format": "Slides",
     "audience": "Curious readers & researchers",
     "group": "science",
     "projects": [
       "titan",
       "venus"
     ],
-    "action": "View slides"
+    "action": "View slides",
+    "preview": "/assets/resources/telluride-2025.webp",
+    "previewAlt": "Alternative Chemistries Beyond Earth presentation cover"
   },
   {
     "id": "organics-lecture",
-    "title": "Organics",
+    "title": "Organic Chemistry in Planetary Environments",
     "summary": "A lecture on organic chemistry in the context of planetary environments and space exploration.",
     "context": "Astrobiology Missions · 2026",
     "details": [
@@ -46,11 +50,13 @@
       "The slide deck took a long time to make, but I genuinely enjoy the creative process of turning dense scientific material into something visual, structured, and engaging. Some things cannot, and probably should not, be rushed."
     ],
     "url": "https://canva.link/wbuoig9gxvd8wpv",
-    "format": "Slide presentation",
+    "format": "Slides",
     "audience": "Students & educators",
     "group": "science",
     "projects": [],
-    "action": "View slides"
+    "action": "View slides",
+    "preview": "/assets/resources/organics-lecture.webp",
+    "previewAlt": "Organics presentation cover"
   },
   {
     "id": "fellowships",
@@ -62,11 +68,13 @@
       "I originally presented this during a lab meeting to share lessons from my own application journey, including how I approached opportunity discovery, personal storytelling, research proposals, rejection, and persistence."
     ],
     "url": "https://canva.link/b04tqud6l7zurv6",
-    "format": "Slide presentation",
+    "format": "Slides",
     "audience": "Students & early-career researchers",
     "group": "fellowships",
     "projects": [],
-    "action": "View slides"
+    "action": "View slides",
+    "preview": "/assets/resources/fellowships.webp",
+    "previewAlt": "Fellowships presentation cover"
   },
   {
     "id": "nsf-application",
@@ -79,12 +87,14 @@
       "These materials reflect my experiences and proposal at the time. Use them as an example, alongside current official guidance. Your application should tell your own story."
     ],
     "url": "https://drive.google.com/drive/folders/1NHL4GLXRj_xQLOyMbSSxaXk2cYUm_COK?usp=share_link",
-    "format": "Application folder",
+    "format": "Application example",
     "audience": "Prospective fellowship applicants",
     "group": "fellowships",
     "projects": [
       "titan"
     ],
-    "action": "Open application folder"
+    "action": "Open application",
+    "preview": "/assets/resources/nsf-application.webp",
+    "previewAlt": "Illustrated cover for the NSF fellowship personal statement and research plan"
   }
 ]
