@@ -28,7 +28,7 @@ const resources = defineCollection({
     title: z.string(), summary: z.string(), context: z.string(), details: z.array(z.string()),
     url: z.url(), format: z.string(), audience: z.string(),
     group: z.enum(['science', 'fellowships']), projects: z.array(reference('projects')),
-    action: z.string(),
+    action: z.string(), preview: z.string(), previewAlt: z.string(),
   }),
 });
 const reflections = defineCollection({

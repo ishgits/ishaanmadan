@@ -26,7 +26,7 @@ export const eras = [
       'I entered Wheaton as a pre-med student planning to become a surgeon. It was a practical dream, and one that made sense given where I came from.',
       'But my curiosity kept pulling me elsewhere.',
       'After taking a few astronomy courses, I joined a research project mapping geologic features on Enceladus, one of Saturn’s icy moons. It was fascinating, but not quite... me. I pivoted into an astronomy project, then a biology lab. Each experience taught me something, but none of them felt complete.',
-      'Then I took Astrobiology, and things began to click as I saw a clear application of the fundamental concepts of chemistry — cell biology, chemistry, and biochemistry — that I had learned and enjoyed through my pre-med track. For the first time, I could see a path that combined chemistry, space science, and the search for life beyond Earth.',
+      'Then I took Astrobiology, and things began to click as I saw a clear application of the fundamental concepts of chemistry (cell biology, chemistry, and biochemistry) that I had learned and enjoyed through my pre-med track. For the first time, I could see a path that combined chemistry, space science, and the search for life beyond Earth.',
       'My childhood curiosity had found a new scientific home.',
     ],
   },
@@ -45,7 +45,7 @@ export const eras = [
     marker: '2024 – Present',
     title: 'Coming Full Circle',
     paras: [
-      'Before starting my PhD, I received the CASSUM fellowship to work with Dr. Martin Rahm at Chalmers University of Technology in Sweden — another fun story; ask me about it sometime. There, I studied how non-carbon-based polymers could exist in the sulfuric-acid clouds of Venus. It was the kind of question I LOVE: chemically rigorous, planetary in scale, and open enough to challenge assumptions about what life could be. So creative, yet so grounded in scientific principles.',
+      'Before starting my PhD, I received the CASSUM fellowship to work with Dr. Martin Rahm at Chalmers University of Technology in Sweden. Another fun story; ask me about it sometime. There, I studied how non-carbon-based polymers could exist in the sulfuric-acid clouds of Venus. It was the kind of question I LOVE: chemically rigorous, planetary in scale, and open enough to challenge assumptions about what life could be. So creative, yet so grounded in scientific principles.',
       'Soon after, I began my PhD in Planetary Science and Astrobiology at Purdue University. Today, I study prebiotic chemistry and use computational tools to model how life’s molecular building blocks might form or become accessible in environments beyond Earth, especially on worlds like Titan.',
       'My work sits at the intersection of chemistry, computation, automation, and planetary science. I build workflows that help turn complex chemical systems into clearer scientific insight. More broadly, I am interested in how better tools, models, and ways of thinking can help us explore chemical possibility across worlds.',
       'In many ways, this feels like coming full circle.',
@@ -65,7 +65,7 @@ export const eras = [
     marker: 'Reflection',
     title: 'What I’ve Learned',
     paras: [
-      'Looking back, each phase of my life — childhood in India, immigration, college, corporate work, and now research — has felt like a recalibration toward greater alignment.',
+      'Looking back, each phase of my life (childhood in India, immigration, college, corporate work, and now research) has felt like a recalibration toward greater alignment.',
       'I used to think success meant achievement. Now, I see it more as the combination of clear intention, sustained effort, patience, and the willingness to keep realigning when something no longer fits.',
       'I do not know exactly what will come after the PhD. That uncertainty used to scare me more than it does now. These days, I see it as part of the work: staying open, building useful things, following meaningful questions, and trusting that no sincere effort is ever wasted.',
     ],

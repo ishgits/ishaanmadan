@@ -1,0 +1,12 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import LinkMark from './LinkMark.astro';
+interface Props { resource: CollectionEntry<'resources'>; }
+const { resource } = Astro.props;
+const r = resource.data;
+---
+<article class="resource-card" id={`resource-${resource.id}`}>
+<img src={r.preview} alt={r.previewAlt} width="1200" height="675" loading="lazy" decoding="async" />
+<div class="card-body"><p class="eyebrow">{r.format}</p><h3>{r.title}</h3><p class="card-summary">{r.summary}</p><a class="text-link" href={r.url} target="_blank" rel="noopener">{r.action}<LinkMark kind="external" /></a></div>
+</article>
+<style>.resource-card{border:1px solid var(--c-line);border-radius:10px;overflow:hidden;background:var(--c-surface);display:flex;flex-direction:column}.resource-card>img{width:100%;aspect-ratio:16/9;object-fit:contain;background:#f3efe5;border-bottom:1px solid var(--c-line)}.card-body{padding:26px;display:flex;flex-direction:column;flex:1}.card-body h3{font-size:1.35rem;line-height:1.35;margin:14px 0}.card-summary{color:var(--c-ink-muted);font-size:.92rem;margin-bottom:24px}.card-body>a{margin-top:auto;align-self:flex-start}</style>
