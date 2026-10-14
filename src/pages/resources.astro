@@ -5,10 +5,13 @@ import ResourceCard from '../components/ResourceCard.astro';
 import CourseFeature from '../components/CourseFeature.astro';
 import { getCollection } from 'astro:content';
 const resources = await getCollection('resources');
+const scienceResources = resources.filter(r => r.data.group === 'science').sort((a, b) =>
+  Number(b.id === 'tsc-2026-poster') - Number(a.id === 'tsc-2026-poster')
+);
 ---
-<Layout title="Resources | Ishaan Madan" description="A free science video course, presentations, and fellowship application materials from Ishaan Madan." ogImage="/og/resources.png">
-<PageIntro label="Resources" title="Learn something. Take your next step." description="A free video course, science presentations, and fellowship materials I’ve shared along the way." />
-<section id="science" aria-labelledby="science-heading"><h2 id="science-heading" class="resource-group-heading">Science & Learning</h2><CourseFeature/><div class="resource-grid">{resources.filter(r=>r.data.group==='science').map(resource=><ResourceCard resource={resource}/>)}</div></section>
+<Layout title="Resources | Ishaan Madan" description="A free science video course, downloadable research poster, presentations, and fellowship application materials from Ishaan Madan." ogImage="/og/resources.png">
+<PageIntro label="Resources" title="Learn something. Take your next step." description="A free video course, research poster, science presentations, and fellowship materials I’ve shared along the way." />
+<section id="science" aria-labelledby="science-heading"><h2 id="science-heading" class="resource-group-heading">Science & Learning</h2><CourseFeature/><div class="resource-grid">{scienceResources.map(resource=><ResourceCard resource={resource}/>)}</div></section>
 <section class="section-block" id="fellowships" aria-labelledby="fellowship-heading"><h2 id="fellowship-heading" class="resource-group-heading">Fellowships & Applications</h2><p class="resource-guidance">These materials reflect my own experience. Use them as examples while telling your own story, alongside current official guidance.</p><div class="resource-grid">{resources.filter(r=>r.data.group==='fellowships').map(resource=><ResourceCard resource={resource}/>)}</div></section>
 </Layout>
 <style>.resource-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin-top:32px}.resource-group-heading{font-size:1.8rem;margin-bottom:24px}.resource-guidance{color:var(--c-ink-muted);max-width:70ch}@media(max-width:700px){.resource-grid{grid-template-columns:1fr}}</style>
