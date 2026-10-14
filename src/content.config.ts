@@ -26,9 +26,10 @@ const resources = defineCollection({
   loader: file('src/content/resources.json'),
   schema: z.object({
     title: z.string(), summary: z.string(), context: z.string(), details: z.array(z.string()),
-    url: z.url(), format: z.string(), audience: z.string(),
+    url: z.union([z.url(), z.string().regex(/^\/(?!\/)[^?#]+$/)]), format: z.string(), audience: z.string(),
     group: z.enum(['science', 'fellowships']), projects: z.array(reference('projects')),
     action: z.string(), preview: z.string(), previewAlt: z.string(),
+    download: z.boolean().optional(),
   }),
 });
 const reflections = defineCollection({

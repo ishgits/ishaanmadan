@@ -1,5 +1,24 @@
 [
   {
+    "id": "tsc-2026-poster",
+    "title": "Why Did Life Choose A, C, G, U, and T in RNA and DNA?",
+    "summary": "A poster comparing the formation energetics of 21 nucleobase families to ask why life uses its familiar genetic alphabet.",
+    "context": "TSC 2026 · October 2026",
+    "details": [
+      "I presented this poster at TSC 2026 on October 13, 2026. It shares work with Ben K. D. Pearce from a manuscript in preparation.",
+      "Formation energetics alone did not uniquely favor the canonical alphabet, and rankings varied across computational treatments."
+    ],
+    "url": "/downloads/madan-tsc-2026-poster.pdf",
+    "format": "Poster PDF",
+    "audience": "Curious readers & researchers",
+    "group": "science",
+    "projects": [],
+    "action": "Download poster (PDF, 16 MB)",
+    "download": true,
+    "preview": "/assets/resources/tsc-2026-poster.webp",
+    "previewAlt": "Preview of the TSC 2026 poster on the origins of life's genetic alphabet"
+  },
+  {
     "id": "abscicon-2026",
     "title": "Prebiotic Chemistry Insights for Dragonfly",
     "summary": "Thermodynamics of amino acid, nucleobase, ribose, and fatty acid synthesis in Selk crater on Titan.",

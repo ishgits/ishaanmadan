@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { resource: CollectionEntry<'resources'>; }
+const { resource } = Astro.props;
+const poster = resource.data;
+---
+<article class="poster-feature" aria-labelledby="poster-heading">
+  <img src={poster.preview} alt={poster.previewAlt} width="1200" height="675" loading="lazy" decoding="async" />
+  <div>
+    <p class="eyebrow">{poster.context} · Research poster</p>
+    <h3 id="poster-heading">{poster.title}</h3>
+    <p>{poster.summary}</p>
+    <p class="poster-note">With Ben K. D. Pearce · Manuscript in preparation</p>
+    <a class="action primary" href={poster.url} download>{poster.action}</a>
+  </div>
+</article>
+<style>
+.poster-feature{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center;padding:clamp(24px,4vw,48px);background:var(--c-surface);border:1px solid var(--c-line);border-radius:12px}
+.poster-feature img{display:block;width:100%;height:auto;border-radius:6px}
+.poster-feature h3{font-size:clamp(1.65rem,2.7vw,2.5rem);margin:14px 0 20px}
+.poster-feature p:not(.eyebrow){color:var(--c-ink-muted);max-width:48ch}
+.poster-feature .poster-note{font-size:.85rem;margin:16px 0 24px}
+@media(max-width:700px){.poster-feature{grid-template-columns:1fr}}
+</style>
