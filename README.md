@@ -37,7 +37,7 @@ Companion styles are explicitly prefixed (`.experience-titan`, `.experience-venu
 
 ## Images and sharing
 
-Run `npm run og` to regenerate page-specific sharing images, responsive portraits, and optimized Titan illustrations. Original image assets remain available for compatibility. Preserve published figure credits and captions when editing. Sharing images are checked into `public/og/` so normal builds do not require image generation.
+Run `npm run og` to regenerate page-specific sharing images, responsive portraits, and optimized Titan illustrations. Full-resolution originals of the Titan/Dragonfly illustrations live in `assets-originals/` (kept in the repo, not deployed); only the optimized WebP versions are published from `public/`. Preserve published figure credits and captions when editing. Sharing images are checked into `public/og/` so normal builds do not require image generation.
 
 ## URLs and deployment
 
@@ -45,6 +45,3 @@ The domain is configured in `astro.config.mjs` and `public/robots.txt`. `src/dat
 
 The repository's existing **Workers Builds: ishaanmadan** check confirms the Workers deployment path. `npm run deploy` builds and deploys via Wrangler; it publishes production and should only be run when intended. The website redesign is submitted as a feature-branch PR for review, with production merge/deployment left to the owner. An automatic branch preview depends on the existing Cloudflare build configuration.
 
-## Review evidence
-
-See [the implementation review](docs/review/README.md) for screenshots, checks, content migration notes, and known limits of the local measurements.
