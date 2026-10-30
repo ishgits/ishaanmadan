@@ -1,6 +1,6 @@
 export const editorial = {
-  focusDate: 'September 2026',
-  focus: "My time is spread across research, outreach, and reflective projects. My current research is focused on exploring why early Earth life opted for specific chemical components from a diverse inventory. I'm developing a free online course that teaches scientific concepts with the goal of inciting awe and wonder. And I'm thinking on the bridges between science and spirituality; how we may use scientific principles to ask larger, more open questions about human existence.",
+  focusDate: 'October 2026',
+  focus: "My time is spread across research, outreach, and reflective projects. My current research is focused on exploring why early Earth life opted for specific chemical components from a diverse inventory. I've launched a free online course that teaches scientific concepts with the goal of inciting awe and wonder. And I'm thinking on the bridges between science and spirituality; how we may use scientific principles to ask larger, more open questions about human existence.",
   coursePlaylist: 'https://www.youtube.com/playlist?list=PLPrbqdk9a3Wo',
   meditationPlaylist: 'https://www.youtube.com/playlist?list=PLYDo0sMCDVOkjPQ5zTfEHOHTlasQcRzH8',
   circleRegistration: 'https://forms.gle/X2pzTcFjN97YT9en9',

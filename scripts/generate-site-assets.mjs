@@ -31,5 +31,5 @@ console.log(`Generated ${pages.length} sharing images and responsive portraits.`
 
 for (const name of ['Dragonfly_SurfaceOps.jpg', 'titan-sequence-refreezing-v2.png', 'titan-sequence-melt-pool-v2.png', 'titan-sequence-atmosphere.png', 'titan-sequence-impact-v2.png']) {
   const output = name.replace(/\.(png|jpg)$/, '.webp');
-  await sharp(`public/interactive-science/${name}`).resize({ width: name.startsWith('Dragonfly') ? 1400 : 700, withoutEnlargement: true }).webp({ quality: 86 }).toFile(`public/interactive-science/${output}`);
+  await sharp(`assets-originals/interactive-science/${name}`).resize({ width: name.startsWith('Dragonfly') ? 1400 : 700, withoutEnlargement: true }).webp({ quality: 86 }).toFile(`public/interactive-science/${output}`);
 }

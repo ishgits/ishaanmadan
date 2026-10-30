@@ -24,3 +24,6 @@ scripts/.fonts/
 .dev.vars*
 !.dev.vars.example
 !.env.example
+
+# local agent/editor tooling state
+.claude/
