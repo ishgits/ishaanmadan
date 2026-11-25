@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npm test",
     "preview": "npm run build && node scripts/preview-production.mjs",
     "og": "node scripts/generate-site-assets.mjs",
     "generate-types": "wrangler types",
