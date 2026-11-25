@@ -18,12 +18,18 @@ export const SITE = {
   },
 } as const;
 
-export const NAV = [
-  { href: '/about/', label: 'My Story' },
+export const FOOTER_NAV = [
   { href: '/research/', label: 'Research' },
-  { href: '/talks/', label: 'Talks & Teaching' },
-  { href: '/reflections/', label: 'Meditation & Reflections' },
+  { href: '/about/', label: 'My Story' },
+  { href: '/reflections/', label: 'Reflections & Meditation' },
+  { href: '/resources/', label: 'Resources' },
   { href: '/connect/', label: 'Connect' },
 ] as const;
 
-export const FOOTER_NAV = NAV;
+export const NAV = [
+  { href: '/about/', label: 'My Story' },
+  { href: '/research/', label: 'Research' },
+  { href: '/reflections/', label: 'Meditations & Reflections' },
+  { href: '/resources/', label: 'Resources' },
+  { href: '/connect/', label: 'Book a Conversation' },
+] as const;

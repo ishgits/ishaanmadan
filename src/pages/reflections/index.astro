@@ -8,8 +8,8 @@ import retreat from '../../content/articles/first-retreat.html?raw';
 import LinkMark from '../../components/LinkMark.astro';
 const reflection = (await getEntry('reflections','first-retreat'))!;
 ---
-<Layout title="Meditation & Reflections | Ishaan Madan" description="Join a free weekly meditation circle, listen to guided meditations, and read personal reflections from Ishaan Madan." ogImage="/og/reflections.png">
-  <PageIntro label="Meditation & Reflections" title="A little space to pause." description="Meditation and reflection help me understand my experience. Here are a few ways to share in that practice." />
+<Layout title="Meditations & Reflections | Ishaan Madan" description="Join a free weekly meditation circle, listen to guided meditations, and read personal reflections from Ishaan Madan." ogImage="/og/reflections.png">
+  <PageIntro label="Meditations & Reflections" title="A little space to pause." description="Meditation and reflection help me understand my experience. Here are a few ways to share in that practice." />
   <section id="gather" class="circle-panel" aria-labelledby="circle-heading">
     <div><h2 id="circle-heading">Weekly meditation circle</h2><p class="circle-time">Sundays · 10–11 AM Eastern</p><p>Practice together online, with space to pause and connect.</p><ul><li>Free, on Google Meet</li><li>All experience levels welcome</li><li>Cameras optional</li></ul><a class="action primary" href={editorial.circleRegistration} target="_blank" rel="noopener">Register for the circle<LinkMark kind="external" /></a><p class="circle-note">Register once to receive the meeting link and calendar invitation.</p></div>
     <img src="/assets/meditation-circle-flyer.webp" alt="Weekly virtual meditation circle flyer: Sundays, 10–11 AM Eastern, on Google Meet. All experience levels welcome; cameras optional." width="1545" height="2000" loading="lazy" />

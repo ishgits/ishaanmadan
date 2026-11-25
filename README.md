@@ -29,10 +29,6 @@ The review server injects axe-core and a small diagnostic report into responses 
 
 Collections are defined in `src/content.config.ts`. The homepage build validates cross-references. Project pages and previews share project records; publication and resource lists resolve the same references. Use stable IDs when adding or connecting content.
 
-## Talks and recent moments
-
-`src/data/events.ts` supplies the Astro on Tap photo, slides, and copy shared by Home and Talks & Teaching. Add future moments here and render selected entries on `/talks/`. Research presentations remain in the resources collection and are listed on Research. `/resources/` redirects to `/talks/`, which retains the legacy science and fellowships anchors. The shared footer includes a native disclosure for a short present-moment reminder.
-
 ## Layouts and experiences
 
 `Layout.astro` provides navigation, theme selection, metadata, and the footer. `ProjectLayout.astro` connects a research overview to its evidence and resources. `ExperienceLayout.astro` wraps the long-form experiences with author identity, chapters, and onward reading.
@@ -48,3 +44,4 @@ Run `npm run og` to regenerate page-specific sharing images, responsive portrait
 The domain is configured in `astro.config.mjs` and `public/robots.txt`. `src/data/redirects.json` documents old-to-new URL mappings. Astro receives one definition per normalized path; the Cloudflare adapter generates both slash variants in `dist/client/_redirects`. Keep original article anchor IDs when changing content so previously shared fragment links continue to work.
 
 The repository's existing **Workers Builds: ishaanmadan** check confirms the Workers deployment path. `npm run deploy` builds and deploys via Wrangler; it publishes production and should only be run when intended. The website redesign is submitted as a feature-branch PR for review, with production merge/deployment left to the owner. An automatic branch preview depends on the existing Cloudflare build configuration.
+

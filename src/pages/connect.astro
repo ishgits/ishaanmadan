@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import LinkMark from '../components/LinkMark.astro';
 import { SITE } from '../consts';
 ---
-<Layout title="Connect | Ishaan Madan" description="Book a 30-minute conversation with Ishaan Madan about research, mentorship, teaching, or a shared curiosity." ogImage="/og/connect.png">
+<Layout title="Book a Conversation | Ishaan Madan" description="Book a 30-minute conversation with Ishaan Madan about research, mentorship, teaching, or a shared curiosity." ogImage="/og/connect.png">
 <section class="booking" aria-labelledby="booking-heading">
 <h1 id="booking-heading">Let’s talk.</h1>
 <p class="lede">If something here resonates with you, I’d be glad to hear from you.</p>
@@ -11,12 +11,6 @@ import { SITE } from '../consts';
 <p class="booking-meta">30 minutes · Google Meet</p>
 <p>Prefer a note? <a class="quiet-link" href={`mailto:${SITE.email}`}>Email me</a>.</p>
 <p class="booking-context">We can talk about research, mentorship, teaching, or a question you’re curious about. Bring a little context about what’s on your mind.</p>
-<p class="speaking">Organizing a talk, class, or community event? <a class="text-link" href={`mailto:${SITE.email}?subject=Speaking%20or%20teaching%20invitation`}>Send me an invitation</a>.</p>
 </section>
-<section id="follow" class="follow" aria-labelledby="follow-heading"><h2 id="follow-heading">Elsewhere, and in touch.</h2><dl>
-<div><dt><a class="text-link" href={SITE.youtube.scientish}>Scient_ish</a></dt><dd>Science, space, and astrobiology.</dd></div>
-<div><dt><a class="text-link" href={SITE.youtube.spiritualish}>Spiritual_ish</a></dt><dd>Reflection, meditation, and self-understanding.</dd></div>
-<div><dt><a class="text-link" href={SITE.youtube.notesbyish}>Notes by Ish</a></dt><dd>Personal notes and creative explorations.</dd></div>
-</dl><div class="text-actions"><a class="quiet-link" href={SITE.linkedin}>LinkedIn</a><a class="quiet-link" href={SITE.github}>GitHub</a><a class="quiet-link" href={SITE.orcid}>ORCID</a><a class="quiet-link" href={SITE.industryCV} target="_blank" rel="noopener">Industry CV<LinkMark kind="external" /></a></div></section>
 </Layout>
-<style>.booking{max-width:680px;padding:24px 0 48px}.booking h1{font-size:clamp(2.5rem,5vw,4rem);margin-bottom:24px}.booking .action{margin-top:30px}.booking p{color:var(--c-ink-muted)}.booking .booking-meta{font-size:.85rem;margin:14px 0 24px}.booking-context{border-top:1px solid var(--c-line);padding-top:28px;margin-top:36px}.speaking{margin-top:24px}.follow{max-width:800px;border-top:1px solid var(--c-line);padding-top:32px}.follow h2{font-size:1.7rem}.follow dl{display:grid;gap:22px;margin:28px 0}.follow dd{font-size:.9rem;color:var(--c-ink-muted);margin:4px 0 0}</style>
+<style>.booking{max-width:680px;padding:24px 0 48px}.booking h1{font-size:clamp(2.5rem,5vw,4rem);margin-bottom:24px}.booking .action{margin-top:30px}.booking p{color:var(--c-ink-muted)}.booking .booking-meta{font-size:.85rem;margin:14px 0 24px}.booking-context{border-top:1px solid var(--c-line);padding-top:28px;margin-top:36px}</style>
