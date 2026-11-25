@@ -1,0 +1,14 @@
+<details class="little-pause">
+  <summary><span class="pause-star" aria-hidden="true">✧</span> A little pause</summary>
+  <div class="pause-note"><p class="pause-opening">This moment is what we have.</p><p>You don’t have to figure everything out today.<br/>Take a breath, give this moment your best,<br/>and let the next step unfold.</p><button type="button" hidden>Close this little pause</button></div>
+</details>
+<script>
+  const pause = document.querySelector<HTMLDetailsElement>('.little-pause');
+  const close = pause?.querySelector('button');
+  const dismiss = () => { if (pause) { pause.open = false; pause.querySelector('summary')?.focus(); } };
+  if (close) { close.hidden = false; close.addEventListener('click', dismiss); }
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && pause?.open) dismiss(); });
+</script>
+<style>
+.little-pause{grid-column:1/-1;border-top:1px solid var(--c-line);padding-top:24px;max-width:100%}.little-pause summary{display:flex;align-items:center;gap:10px;list-style:none;font-size:.85rem;color:var(--c-accent-ink);width:fit-content;min-height:44px}.little-pause summary::-webkit-details-marker{display:none}.pause-star{font-size:1.5rem;transition:filter .2s}.little-pause summary:hover .pause-star,.little-pause[open] .pause-star{filter:drop-shadow(0 0 6px var(--c-accent))}.pause-note{max-width:500px;padding:20px 0 0;animation:pause-in .25s ease-out}.pause-note p{font-size:.9rem;line-height:1.9;color:var(--c-ink-muted)}.pause-note .pause-opening{font-family:var(--font-display);font-size:1.25rem;color:var(--c-ink);margin-bottom:12px}.pause-note button{font-size:.78rem;color:var(--c-accent-ink);text-decoration:underline;text-underline-offset:4px;min-height:44px;margin-top:12px}@keyframes pause-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+</style>
