@@ -12,5 +12,5 @@ const r = resource.data;
     <p>{r.summary}</p>
     <p class="resource-meta">For {r.audience.toLowerCase()} · {r.format}</p>
   </div>
-  <a class="text-link resource-action" href={r.url} target="_blank" rel="noopener">{r.action}<LinkMark kind="external" /></a>
+  <a class="text-link resource-action" href={r.url} download={r.download ? true : undefined} target={r.download ? undefined : '_blank'} rel={r.download ? undefined : 'noopener'}>{r.action}{!r.download && <LinkMark kind="external" />}</a>
 </article>
