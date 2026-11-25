@@ -17,3 +17,12 @@ jobs:
       - run: npm ci
       - run: npm run check
       - run: npm run build
+  live-site:
+    name: Current public site
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Check homepage response
+        run: |
+          curl --fail --show-error --silent --location --retry 2 --max-time 30 'https://ishaanmadan.org/?health=github-${{ github.run_id }}' -o /tmp/home.html
+          node -e "const html=require('node:fs').readFileSync('/tmp/home.html','utf8'); if(!html.includes('<h1') || html.includes('TypeError: Invalid header value.')) { console.error(html.slice(0,2000)); process.exit(1); } console.log('Public homepage contains the expected HTML heading.');"
