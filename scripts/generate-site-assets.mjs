@@ -11,6 +11,7 @@ const pages = [
  ['about','MY STORY',['A path of','self-discovery.']],
  ['reflections','REFLECTIONS & MEDITATION',['A little more room','to notice.']],
  ['first-retreat','A PERSONAL REFLECTION',['My first virtual','meditation retreat.']],
+ ['talks','TALKS & TEACHING',['Sharing','the wonder.']],
  ['resources','RESOURCES',['Useful things are','worth sharing.']],
  ['connect','CONNECT',['Good questions start','a conversation.']],
 ];

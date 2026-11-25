@@ -13,5 +13,7 @@
   "/meditations/first-retreat-reflections": "/reflections/first-retreat/",
   "/meditations/first-retreat-reflections/": "/reflections/first-retreat/",
   "/work-with-me": "/connect/",
-  "/work-with-me/": "/connect/"
+  "/work-with-me/": "/connect/",
+  "/resources": "/talks/",
+  "/resources/": "/talks/"
 }
